@@ -1,53 +1,152 @@
-import ImageOne from "../../assets/3914478.jpg";
+import ImageOne from "../../assets/ImageTwo.jpg";
+import ImageTwo from "../../assets/ReservationOne.jpg";
+
 
 export default function Home() {
     return (
-        <>
-            <div className="flex items-center w-full lg:h-[28rem]">
-                <div className="h-full lg:w-1/2 lg:px-2.5 lg:py-2.5">
-                    <h3 className="font-bold lg:text-3xl lg:mb-4.5 lg:mt-2.5">Reservation API</h3>
-                    <p className="lg:text-base md:text-sm text-xs lg:mb-3.5">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla.
-                    </p>
-
-                    <p className="lg:text-base md:text-sm text-xs lg:mb-3.5">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </p>
-
-                    <p className="lg:text-base md:text-sm text-xs lg:mb-3.5">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla.
-                    </p>
-
-                </div>
-                <div className="h-full lg:w-1/2">
-                    <img className="h-full w-full object-center" src={ImageOne} alt="ImageOne" />
+        <div    >
+            {/* Image Container */}
+            <div className="relative w-full lg:h-[55rem] md:h-[45rem] h-[32rem]">
+                {/* Home page Image */}
+                <img className="w-full h-full absolute lg:object-center md:object-cover" src={ImageTwo} alt="ImageTwo" />
+                {/* Darkens the Background of the Landing Page to make Heading and paragraph more visible. */}
+                <div className="absolute inset-0 bg-black/40"></div>
+                {/* Landing Page Title & Paragraph */}
+                <div className="absolute flex flex-col items-center justify-center inset-0">
+                    <h3 className="block lg:text-6xl md:text-3xl text-base font-bold text-white">Easy Reservations, Great Experiences. </h3>
+                    <p className="lg:mx-3.5 lg:my-3.5 lg:text-lg md:text-base text-xs font-light text-white italic">Your time is precious — and so is your experience. Book ahead with ease and let us take care of the rest.</p>
                 </div>
             </div>
+            {/* Web Information Container */}
+            <div
+                className="flex lg:flex-row md:flex-row flex-col items-center w-full lg:h-[36rem] lg:mb-3.5 md:mb-2.5 mb-1.5 lg:mt-3.5">
+                <div className="flex flex-col justify-center h-full lg:w-1/2 md:w-full lg:px-2.5 lg:py-2.5">
+                    <h3 className="font-bold lg:text-3xl md:text-lg lg:mb-4.5 lg:mt-2.5">Reservation Web</h3>
 
-            <div className="flex items-center w-full lg:h-[28rem]">
-                <div className="h-full lg:w-1/2">
-                    <img className="h-full w-full object-center" src={ImageOne} alt="ImageOne" />
+                    <p className="lg:text-base md:text-sm text-xs lg:mb-3.5 md:mb-2.5 mb-1.5">
+                        Our Reservation Web makes it simple to manage bookings in real time. Whether you’re running a restaurant, hotel, or event, the system ensures quick and reliable scheduling for your customers.
+                    </p>
+
+                    <p className="lg:text-base md:text-sm text-xs lg:mb-3.5 md:mb-2.5 mb-1.5">
+                        With seamless integration and secure data handling, you can automate confirmations, reduce double-bookings, and give your users a hassle-free reservation experience.
+                    </p>
+
+                    <p className="lg:text-base md:text-sm text-xs lg:mb-3.5 md:mb-2.5 mb-1.5">
+                        Designed for scalability, the Reservation API adapts to businesses of all sizes — from small cafés to large enterprises — providing efficiency, flexibility, and customer satisfaction.
+                    </p>
+
+                    {/* Button Section */}
+                    <div className="w-full flex justify-center items-center">
+                        <button className="rounded-2xl border border-white bg-[#d4af37] text-white lg:text-base md:text-sm text-xs p-1 lg:px-2.5 lg:py-2.5 lg:w-[10rem] md:px-1.5 md:py-1.5 lg:[8rem] lg:font-medium md:mb-2.5 mb-1.5">Learn More</button>
+                    </div>
+
                 </div>
-                <div className="h-full lg:w-1/2 lg:px-2.5 lg:py-2.5">
-                    <h3 className="font-bold lg:text-3xl lg:mb-4.5 lg:mt-2.5">Reservation API</h3>
-                    <p className="lg:text-base md:text-sm text-xs lg:mb-3.5">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla.
-                    </p>
-
-                    <p className="lg:text-base md:text-sm text-xs lg:mb-3.5">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </p>
-
-                    <p className="lg:text-base md:text-sm text-xs lg:mb-3.5">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla.
-                    </p>
-
+                <div className="h-full lg:w-1/2 flex lg:justify-center items-center md:w-full lg:px-3.5 lg:py-3.5">
+                    <img className="w-full h-full object-center items-center rounded-md" src={ImageOne} alt="ImageOne" />
                 </div>
             </div>
+            <div className="flex flex-col justify-center items-center w-full lg:h-[44rem] lg:mt-12 bg-[#d4af37] text-white ">
+                <h3 className="font-bold lg:text-3xl md:text-lg lg:mb-4.5 lg:mt-2.5">
+                    Efficient and Seamless Reservation Services
+                </h3>
+                <p className="italic text-gray lg:text-base md:text-sm text-xs lg:mb-3.5 md:mb-2.5 mb-1.5">
+                    Simplify your bookings with our reliable and user-friendly system.
+                </p>
 
-            {/* <div className="flex items-center w-full lg:h-[24rem]">
-                Other Informations
-            </div> */}
-        </>
+                {/* Grid Container */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-5 py-5 place-items-center">
+                    {/* Box */}
+                    <div className="w-72 h-64 border border-white flex flex-col justify-between rounded-md p-4">
+                        {/* Card 1 */}
+                        <div className="flex justify-between">
+                            <i className="fa-solid fa-calendar-check text-lg"></i>
+                            <i className="fa-solid fa-arrow-up-right-from-square text-lg"></i>
+                        </div>
+
+                        <div>
+                            <h3 className="font-bold text-lg mb-3">Service Reservations</h3>
+                            <p className="italic text-sm">
+                                Secure your spot at your preferred time with ease. Book online and avoid the hassle of waiting.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div className="w-72 h-64 border border-white flex flex-col justify-between rounded-md p-4">
+                        {/* Card 2 */}
+                        <div className="flex justify-between">
+                            <i className="fa-solid fa-gear text-lg"></i>
+                            <i className="fa-solid fa-arrow-up-right-from-square text-lg"></i>
+                        </div>
+
+                        <div>
+                            <h3 className="font-bold text-lg mb-3">Custom Booking Options</h3>
+                            <p className="italic text-sm">
+                                Personalize your reservation — choose seating, special requests, or dietary preferences.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div className="w-72 h-64 border border-white flex flex-col justify-between rounded-md p-4">
+                        {/* Card 3 */}
+                        <div className="flex justify-between">
+                            <i className="fa-solid fa-pen-to-square text-lg"></i>
+                            <i className="fa-solid fa-arrow-up-right-from-square text-lg"></i>
+                        </div>
+
+                        <div>
+                            <h3 className="font-bold text-lg mb-3">Reservation Management</h3>
+                            <p className="italic text-sm">
+                                Modify or cancel your bookings quickly with our user-friendly system.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div className="w-72 h-64 border border-white flex flex-col justify-between rounded-md p-4">
+                        {/* Card 4 */}
+                        <div className="flex justify-between">
+                            <i className="fa-solid fa-gift text-lg"></i>
+                            <i className="fa-solid fa-arrow-up-right-from-square text-lg"></i>
+                        </div>
+
+                        <div>
+                            <h3 className="font-bold text-lg mb-3">Exclusive Offers</h3>
+                            <p className="italic text-sm">
+                                Access member-only discounts and seasonal promotions when you reserve online.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div className="w-72 h-64 border border-white flex flex-col justify-between rounded-md p-4">
+                        {/* Card 5 */}
+                        <div className="flex justify-between">
+                            <i className="fa-solid fa-bolt text-lg"></i>
+                            <i className="fa-solid fa-arrow-up-right-from-square text-lg"></i>
+                        </div>
+
+                        <div>
+                            <h3 className="font-bold text-lg mb-3">Efficient and Seamless Reservation Services</h3>
+                            <p className="italic text-sm">
+                                Simplify your bookings with our reliable and user-friendly system.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div className="w-72 h-64 border border-white flex flex-col justify-between rounded-md p-4">
+                        {/* Card 6 */}
+                        <div className="flex justify-between">
+                            <i className="fa-solid fa-clock text-lg"></i>
+                            <i className="fa-solid fa-arrow-up-right-from-square text-lg"></i>
+                        </div>
+
+                        <div>
+                            <h3 className="font-bold text-lg mb-3">Real-Time Availability</h3>
+                            <p className="italic text-sm">
+                                View up-to-date table availability and confirm your reservation instantly.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     )
 }
