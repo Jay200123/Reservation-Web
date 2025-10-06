@@ -1,28 +1,32 @@
+import { useNavigate } from "react-router-dom";
+
 export default function Navbar() {
+    const navigate = useNavigate();
+
     return (
         <>
-            <footer className={`w-full lg:h-14 md:h-12 h-10 flex justify-between border items-center border-black`}>
-                <div className="lg:p-1.5 md:p-1 p-0.5 w-1/4">
-                    <h3 className="cursor-pointer lg:text-lg lg:font-medium md:text-sm, md:font-medium text-xs">Navbar!</h3>
-                </div>
+            {/* Navbar */}
+            <nav className="w-full flex items-center justify-between px-6 lg:h-16 md:h-13 h-10 text-black shadow-lg">
 
-                <div className="lg:p-1.5 md:p-1 p-0.5 w-1/5 lg:block md:block hidden">
-                    {/* Menu here */}
-                    <ul className=" flex justify-between items-center">
-                        <li className="cursor-pointer lg:text-sm font-medium md:text-sm text-xs">Home</li>
-                        <li className="cursor-pointer lg:text-sm font-medium md:text-sm text-xs">About</li>
-                        <li className="cursor-pointer lg:text-sm font-medium md:text-sm text-xs">Contact Us</li>
-                        <li className="cursor-pointer lg:text-sm font-medium md:text-sm text-xs">Sign In</li>
-                        <li className="cursor-pointer lg:text-sm font-medium md:text-sm text-xs">Sign Up</li>
-                    </ul>
-                </div>
+                {/* Logo / Brand */}
+                <h3 className="cursor-pointer text-xs md:text-sm lg:text-xl font-medium">
+                    Reservation Web
+                </h3>
 
-                <div className="lg:p-1.5 md:p-1 p-0.5 w-1/5 lg:hidden md:hidden block">
-                    <ul>
-                        <li>Menu here!</li>
-                    </ul>
+                {/* Desktop Menu */}
+                <ul className="hidden md:flex gap-6 text-xs md:text-sm lg:text-sm items-center">
+                    <li onClick={() => navigate("/")} className="cursor-pointer transition-all duration-300 ease-in-out hover:text-gray-300"><i className="fa-solid fa-house mr-1"></i>Home</li>
+                    <li className="cursor-pointer  transition-all duration-300 hover:text-gray-300"><i className="fa-solid fa-circle-info mr-1"></i>About</li>
+                    <li className="cursor-pointer  transition-all duration-300 hover:text-gray-300"><i className="fa-solid fa-phone mr-1"></i>Contact Us</li>
+                    <li onClick={() => navigate("/signin")} className="cursor-pointer  transition-all duration-300 hover:text-gray-300"><i className="fa-solid fa-right-to-bracket mr-1"></i>Sign In</li>
+                    <li onClick={() => navigate("/signup")} className="cursor-pointer  transition-all duration-300 hover:text-gray-300"><i className="fa-solid fa-user-plus mr-1"></i>Sign Up</li>
+                </ul>
+
+                {/* Mobile Menu */}
+                <div className="block md:hidden">
+                    <button className="focus:outline-none">☰</button>
                 </div>
-            </footer>
+            </nav>
         </>
     )
 }
