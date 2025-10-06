@@ -5,7 +5,7 @@ export default function Footer() {
 
     return (
         <>
-            <footer className={`w-full lg:h-[18rem] lg:p-3 bg-gray flex flex-col border border-black`}>
+            <footer className={`w-full lg:h-[21rem] md:h-[18rem] h-full lg:p-3 bg-gray flex flex-col justify-between bg-[#333333] text-white`}>
                 <div className=" flex lg:flex-row justify-between lg:h-[12rem]">
                     <ul>
                         <li className="font-bold lg:text-lg md:text-lg lg:mt-1.5">Primary Information</li>
@@ -42,7 +42,7 @@ export default function Footer() {
                     <i className="lg:text-2xl lg:mr-3.5 fa-brands fa-twitter"></i>
                     <i className="lg:text-2xl lg:mr-3.5 fa-brands fa-google"></i>
                 </div>
-                <div className="flex justify-between border-t border-black">
+                <div className="flex justify-between border-t border-white">
                     <div className="lg:mt-1.5">
                         <p>Copyright {year.split("-")[0]} - Renyel Jay Sioc</p>
                     </div>
