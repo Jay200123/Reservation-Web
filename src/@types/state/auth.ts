@@ -13,22 +13,26 @@ type User = {
 };
 
 export type AuthState = {
-  status: number;
   details: {
-    user: User;
+    user: User | null;
     access_token: string;
     refresh_token: string;
-  } | null;
+  };
+};
+
+type AuthResponse = {
+  status: number;
+  details: {
+    user: User | null;
+    access_token: string;
+    refresh_token: string;
+  };
   message: string;
 };
 
-// export type AuthWithoutUser = Omit<AuthState, "details"> & {
-//   details: Omit<AuthState["details"], "user">;
-// };
-
 type AuthActions = {
   register: (data: any) => Promise<void>;
-  login: (email: string, password: string) => Promise<AuthState>;
+  login: (email: string, password: string) => Promise<AuthResponse>;
   refresh: () => Promise<void>;
   logout: () => Promise<void>;
 };

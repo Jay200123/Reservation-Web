@@ -3,4 +3,14 @@ type SignInFormik = {
   password: string;
 };
 
-export type { SignInFormik };
+type SignUpFormik = {
+  username: string;
+  password: string;
+  fullname: string;
+  email: string;
+  contact_number: string;
+  address: string;
+  city: string;
+};
+
+export type { SignInFormik, SignUpFormik };
