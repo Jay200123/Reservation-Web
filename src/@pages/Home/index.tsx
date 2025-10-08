@@ -8,7 +8,7 @@ export default function Home() {
             {/* Image Container */}
             <div className="relative w-full lg:h-[55rem] md:h-[45rem] h-[32rem]">
                 {/* Home page Image */}
-                <img className="w-full h-full absolute lg:object-center md:object-cover" src={ImageTwo} alt="ImageTwo" />
+                <img className="w-full h-full absolute object-cover lg:object-center" src={ImageTwo} alt="ImageTwo" />
                 {/* Darkens the Background of the Landing Page to make Heading and paragraph more visible. */}
                 <div className="absolute inset-0 bg-black/40"></div>
                 {/* Landing Page Title & Paragraph */}
@@ -19,26 +19,36 @@ export default function Home() {
             </div>
             {/* Web Information Container */}
             <div
-                className="flex lg:flex-row md:flex-row flex-col items-center w-full lg:h-[36rem] lg:mb-3.5 md:mb-2.5 mb-1.5 lg:mt-3.5">
+                className="flex lg:flex-row md:flex-row flex-col items-center w-full lg:h-[36rem] md:h-[33rem] h-[33rem] lg:mb-3.5 lg:p-3.5 md:p-2.5 p-2 md:mb-2.5 mb-1.5 lg:mt-3.5">
                 <div className="flex flex-col justify-center h-full lg:w-1/2 md:w-full lg:px-2.5 lg:py-2.5">
-                    <h3 className="font-bold lg:text-3xl md:text-lg lg:mb-4.5 lg:mt-2.5">Reservation Web</h3>
+                    <h3 className="font-bold lg:text-3xl md:text-2xl text-lg lg:mb-4.5 lg:mt-2.5">Reservation Web</h3>
 
-                    <p className="lg:text-base md:text-sm text-xs lg:mb-3.5 md:mb-2.5 mb-1.5">
+                    <p className="lg:text-base md:text-sm text-xs lg:mb-3.5 md:mb-2.5 mb-2">
                         Our Reservation Web makes it simple to manage bookings in real time. Whether you’re running a restaurant, hotel, or event, the system ensures quick and reliable scheduling for your customers.
                     </p>
 
-                    <p className="lg:text-base md:text-sm text-xs lg:mb-3.5 md:mb-2.5 mb-1.5">
+                    <p className="lg:text-base md:text-sm text-xs lg:mb-3.5 md:mb-2.5 mb-2">
                         With seamless integration and secure data handling, you can automate confirmations, reduce double-bookings, and give your users a hassle-free reservation experience.
                     </p>
 
-                    <p className="lg:text-base md:text-sm text-xs lg:mb-3.5 md:mb-2.5 mb-1.5">
+                    <p className="lg:text-base md:text-sm text-xs lg:mb-3.5 md:mb-2.5 mb-2">
                         Designed for scalability, the Reservation API adapts to businesses of all sizes — from small cafés to large enterprises — providing efficiency, flexibility, and customer satisfaction.
                     </p>
 
                     {/* Button Section */}
                     <div className="w-full flex justify-center items-center">
-                        <button className="rounded-2xl border border-white bg-[#d4af37] text-white lg:text-base md:text-sm text-xs p-1 lg:px-2.5 lg:py-2.5 lg:w-[10rem] md:px-1.5 md:py-1.5 lg:[8rem] lg:font-medium md:mb-2.5 mb-1.5">Learn More</button>
+                        <button
+                            className="rounded-2xl border border-white bg-[#d4af37] text-white 
+               text-xs md:text-sm lg:text-base font-medium
+               px-3 py-1.5 md:px-4 md:py-2 lg:px-5 lg:py-2.5
+               w-auto lg:w-40
+               mb-1.5 md:mb-2.5
+               transition-all duration-200 hover:bg-[#c9a128]"
+                        >
+                            Learn More
+                        </button>
                     </div>
+
 
                 </div>
                 <div className="h-full lg:w-1/2 flex lg:justify-center items-center md:w-full lg:px-3.5 lg:py-3.5">
