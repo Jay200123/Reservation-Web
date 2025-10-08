@@ -3,9 +3,11 @@ import type { useAuthApi } from "../../@types";
 import { basicApi } from "../api";
 
 export const useAuthStore: StateCreator<useAuthApi> = (set) => ({
-  status: 0,
-  details: null,
-  message: "",
+  details: {
+    user: null,
+    access_token: "",
+    refresh_token: "",
+  },
 
   register: async (data: any) => {
     const result = await basicApi.post("/register", data);
@@ -13,16 +15,18 @@ export const useAuthStore: StateCreator<useAuthApi> = (set) => ({
     return result.data;
   },
 
-  login: async (email: string, password: string) => {
+  login: async (username: string, password: string) => {
     const result = await basicApi.post("/login", {
-      email,
+      username,
       password,
     });
 
     set({
-      status: result.data.status,
-      details: result.data.details,
-      message: result.data.message,
+      details: {
+        user: result.data.details.user,
+        access_token: result.data.details.access_token,
+        refresh_token: result.data.details.refresh_token,
+      },
     });
 
     return result.data;
