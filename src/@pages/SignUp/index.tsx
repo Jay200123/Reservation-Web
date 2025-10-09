@@ -2,8 +2,13 @@ import ImageOne from "../../assets/ReservationOne.avif";
 import { useStore } from "../../@state/store";
 import { useFormik } from "formik";
 import type { SignUpFormik } from "../../@types";
+import { useNavigate } from "react-router-dom";
+import { signUpSchema } from "../../@validations";
+import { motion } from "motion/react";
+import { toast } from "react-toastify";
 
 export default function SignUp() {
+    const navigate = useNavigate();
 
     const { register } = useStore();
 
@@ -17,21 +22,21 @@ export default function SignUp() {
             address: "",
             city: "",
         },
-
+        validationSchema: signUpSchema,
         onSubmit: async (values) => {
             try {
                 await register(values);
-                alert("Registered Successfully.")
+                toast.success("Registered Successfully.");
+                navigate("/signin");
             } catch (err: any) {
-                alert(err.response.data.message);
+                toast.error(err.response.data.message);
             }
         }
     });
 
-
     return (
-        <div className="min-h-screen flex justify-center items-center lg:bg-[#d4af37] md:bg-[#d4af37]">
-            <div className="lg:w-[70rem] lg:h-[55rem] md:w-[60rem] md:h-[50rem] h-full w-full flex rounded-lg bg-white lg:shadow-lg md:shadow-lg shadow-none lg:m-0 md:m-3.5">
+        <div className="flex justify-center items-center lg:bg-[#d4af37] md:bg-[#d4af37] lg:p-5 md:p-4 p-0">
+            <div className="lg:w-[70rem] lg:h-[60rem] md:w-[60rem] md:h-[57rem] h-full w-full flex rounded-lg bg-white lg:shadow-lg md:shadow-lg shadow-none lg:m-0 md:m-3.5">
                 <div className="lg:block lg:w-1/2 md:block md:w-1/2 w-full hidden">
                     <img src={ImageOne} className="w-full h-full object-cover" alt="ImageOne" />
                 </div>
@@ -51,7 +56,21 @@ export default function SignUp() {
                                     onBlur={formik.handleBlur}
                                     onChange={formik.handleChange}
                                     value={formik.values.fullname}
-                                    className="p-1.5 border border-gray-400 w-full rounded-md pr-3 pl-10 focus:outline-none focus:border-[#d4af37]" placeholder="John Doe" />
+                                    className="p-1.5 border border-gray-400 w-full rounded-md pr-3 pl-10 focus:outline-none focus:border-[#d4af37]"
+                                    placeholder="John Doe" />
+                            </div>
+                            <div className="min-h-[1.25rem] mt-1.5">
+                                {formik.touched.fullname && formik.errors.fullname && (
+                                    <motion.p
+                                        initial={{ scale: 0 }}
+                                        animate={{
+                                            scale: 1,
+                                            transition: { duration: 0.5 }
+                                        }}
+                                        className="text-sm text-red-500">
+                                        {formik.errors.fullname}
+                                    </motion.p>
+                                )}
                             </div>
                         </div>
 
@@ -67,7 +86,21 @@ export default function SignUp() {
                                     onBlur={formik.handleBlur}
                                     onChange={formik.handleChange}
                                     value={formik.values.username}
-                                    className="p-1.5 border border-gray-400 w-full rounded-md pr-3 pl-10 focus:outline-none focus:border-[#d4af37]" placeholder="john123" />
+                                    className="p-1.5 border border-gray-400 w-full rounded-md pr-3 pl-10 focus:outline-none focus:border-[#d4af37]"
+                                    placeholder="john123" />
+                            </div>
+                            <div className="min-h-[1.25rem] mt-1.5">
+                                {formik.touched.username && formik.errors.username && (
+                                    <motion.p
+                                        initial={{ scale: 0 }}
+                                        animate={{
+                                            scale: 1,
+                                            transition: { duration: 0.5 }
+                                        }}
+                                        className="text-sm text-red-500">
+                                        {formik.errors.username}
+                                    </motion.p>
+                                )}
                             </div>
                         </div>
 
@@ -83,7 +116,21 @@ export default function SignUp() {
                                     onBlur={formik.handleBlur}
                                     onChange={formik.handleChange}
                                     value={formik.values.password}
-                                    className="p-1.5 border border-gray-400 w-full rounded-md pr-3 pl-10 focus:outline-none focus:border-[#d4af37]" placeholder="*****" />
+                                    className="p-1.5 border border-gray-400 w-full rounded-md pr-3 pl-10 focus:outline-none focus:border-[#d4af37]"
+                                    placeholder="*****" />
+                            </div>
+                            <div className="min-h-[1.25rem] mt-1.5">
+                                {formik.touched.password && formik.errors.password && (
+                                    <motion.p
+                                        initial={{ scale: 0 }}
+                                        animate={{
+                                            scale: 1,
+                                            transition: { duration: 0.5 }
+                                        }}
+                                        className="text-sm text-red-500">
+                                        {formik.errors.password}
+                                    </motion.p>
+                                )}
                             </div>
                         </div>
 
@@ -98,7 +145,21 @@ export default function SignUp() {
                                     onBlur={formik.handleBlur}
                                     onChange={formik.handleChange}
                                     value={formik.values.email}
-                                    className="p-1.5 border border-gray-400 w-full rounded-md pr-3 pl-10 focus:outline-none focus:border-[#d4af37]" placeholder="john.doe@gmail.com" />
+                                    className="p-1.5 border border-gray-400 w-full rounded-md pr-3 pl-10 focus:outline-none focus:border-[#d4af37]"
+                                    placeholder="john.doe@gmail.com" />
+                            </div>
+                            <div className="min-h-[1.25rem] mt-1.5">
+                                {formik.touched.email && formik.errors.email && (
+                                    <motion.p
+                                        initial={{ scale: 0 }}
+                                        animate={{
+                                            scale: 1,
+                                            transition: { duration: 0.5 }
+                                        }}
+                                        className="text-sm text-red-500">
+                                        {formik.errors.email}
+                                    </motion.p>
+                                )}
                             </div>
                         </div>
 
@@ -113,7 +174,21 @@ export default function SignUp() {
                                     onBlur={formik.handleBlur}
                                     onChange={formik.handleChange}
                                     value={formik.values.contact_number}
-                                    className="p-1.5 border border-gray-400 w-full rounded-md pr-3 pl-10 focus:outline-none focus:border-[#d4af37]" placeholder="+63 9123456789" />
+                                    className="p-1.5 border border-gray-400 w-full rounded-md pr-3 pl-10 focus:outline-none focus:border-[#d4af37]"
+                                    placeholder="09123456789" />
+                            </div>
+                            <div className="min-h-[1.25rem] mt-1.5">
+                                {formik.touched.contact_number && formik.errors.contact_number && (
+                                    <motion.p
+                                        initial={{ scale: 0 }}
+                                        animate={{
+                                            scale: 1,
+                                            transition: { duration: 0.5 }
+                                        }}
+                                        className="text-sm text-red-500">
+                                        {formik.errors.contact_number}
+                                    </motion.p>
+                                )}
                             </div>
                         </div>
 
@@ -128,7 +203,21 @@ export default function SignUp() {
                                     onBlur={formik.handleBlur}
                                     onChange={formik.handleChange}
                                     value={formik.values.address}
-                                    className="p-1.5 border border-gray-400 w-full rounded-md pr-3 pl-10 focus:outline-none focus:border-[#d4af37]" placeholder="Block 115 Lot 8 Juan Street, etc." />
+                                    className="p-1.5 border border-gray-400 w-full rounded-md pr-3 pl-10 focus:outline-none focus:border-[#d4af37]"
+                                    placeholder="Block 115 Lot 8 Juan Street, etc." />
+                            </div>
+                            <div className="min-h-[1.25rem] mt-1.5">
+                                {formik.touched.address && formik.errors.address && (
+                                    <motion.p
+                                        initial={{ scale: 0 }}
+                                        animate={{
+                                            scale: 1,
+                                            transition: { duration: 0.5 }
+                                        }}
+                                        className="text-sm text-red-500">
+                                        {formik.errors.address}
+                                    </motion.p>
+                                )}
                             </div>
                         </div>
 
@@ -143,15 +232,33 @@ export default function SignUp() {
                                     onBlur={formik.handleBlur}
                                     onChange={formik.handleChange}
                                     value={formik.values.city}
-                                    className="p-1.5 border border-gray-400 w-full rounded-md pr-3 pl-10 focus:outline-none focus:border-[#d4af37]" placeholder="Taguig City..." />
+                                    className="p-1.5 border border-gray-400 w-full rounded-md pr-3 pl-10 focus:outline-none focus:border-[#d4af37]"
+                                    placeholder="Taguig City..." />
+                            </div>
+                            <div className="min-h-[1.25rem] mt-1.5">
+                                {formik.touched.city && formik.errors.city && (
+                                    <motion.p
+                                        initial={{ scale: 0 }}
+                                        animate={{
+                                            scale: 1,
+                                            transition: { duration: 0.5 }
+                                        }}
+                                        className="text-sm text-red-500">
+                                        {formik.errors.city}
+                                    </motion.p>
+                                )}
                             </div>
                         </div>
                         <div className="w-full flex justify-center items-center p-2.5">
-                            <button type="submit"
-                                className="rounded-2xl border border-white bg-[#d4af37] text-white lg:text-base md:text-sm text-base p-1.5 lg:px-2.5 lg:py-2.5 w-full md:px-1.5 md:py-1.5 lg:[8rem] lg:font-medium md:mb-2.5 mb-1.5 cursor-pointer">Sign Up</button>
+                            <button
+                                type="submit"
+                                disabled={!formik.isValid || formik.isSubmitting}
+                                className={`rounded-2xl border border-white bg-[#d4af37] text-white lg:text-lg md:text-base text-base p-1.5 lg:px-2.5 lg:py-2.5 w-full md:px-1.5 md:py-1.5 lg:[8rem] lg:font-medium md:mb-2.5 mb-1.5 cursor-pointer ${!formik.isValid && "cursor-not-allowed opacity-50"}`}>
+                                Sign Up
+                            </button>
                         </div>
 
-                        <p className="lg:text-lg md:text-base text-sm text-center">Already have an account?<span className="text-[#d4af37] underline">Sign In</span></p>
+                        <p className="lg:text-lg md:text-base text-sm text-center">Already have an account?<span className="text-[#d4af37] underline ml-1.5">Sign In</span></p>
                     </form>
                 </div>
             </div>
