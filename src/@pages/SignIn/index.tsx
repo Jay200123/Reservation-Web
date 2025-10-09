@@ -4,8 +4,11 @@ import { useStore } from "../../@state/store";
 import { useFormik } from "formik";
 import { signInSchema } from "../../@validations";
 import { motion } from "motion/react";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 export default function SignUp() {
+    const navigate = useNavigate();
     const { login } = useStore();
 
     const formik = useFormik<SignInFormik>({
@@ -17,9 +20,15 @@ export default function SignUp() {
         onSubmit: async (values: SignInFormik) => {
             try {
                 const result = await login(values.username, values.password);
-                alert(`${result.message}`);
+                toast.success(`${result.message}`);
+
+                if (result.details.user?.role == "USER") {
+                    navigate("/profile");
+                } else {
+                    navigate("/dashboard");
+                }
             } catch (err: any) {
-                alert(err.response.data.message);
+                toast.error(err.response.data.message);
             }
 
         }
@@ -33,8 +42,12 @@ export default function SignUp() {
                 </div>
                 <div className="lg:w-1/2 md:w-1/2 w-full flex flex-col justify-center">
                     <form onSubmit={formik.handleSubmit} className=" lg:px-3.5 lg:py-3.5 md:px-2.5 md:py-2.5 px-1.5 py-1.5">
-                        <h3 className="lg:text-4xl md:text-2xl text-lg text-center font-medium">Create Account</h3>
-                        <p className="lg:text-base md:text-sm text-xs text-center">Join us today and start your journey.</p>
+                        <h3 className="lg:text-4xl md:text-2xl text-lg text-center font-semibold">
+                            Welcome Back
+                        </h3>
+                        <p className="lg:text-base md:text-sm text-xs text-center text-gray-600">
+                            Sign in to access your account and continue your journey with us.
+                        </p>
 
                         <div className="flex flex-col p-2.5">
                             <label htmlFor="username">Username</label>
@@ -95,8 +108,12 @@ export default function SignUp() {
                         </div>
 
                         <div className="w-full flex justify-center items-center p-2.5">
-                            <button type="submit"
-                                className="rounded-2xl border border-white bg-[#d4af37] text-white lg:text-lg md:text-base text-base p-1.5 lg:px-2.5 lg:py-2.5 w-full md:px-1.5 md:py-1.5 lg:[8rem] lg:font-medium md:mb-2.5 mb-1.5 cursor-pointer">Sign Up</button>
+                            <button
+                                type="submit"
+                                disabled={!formik.isValid || formik.isSubmitting}
+                                className={`rounded-2xl border border-white bg-[#d4af37] text-white lg:text-lg md:text-base text-base p-1.5 lg:px-2.5 lg:py-2.5 w-full md:px-1.5 md:py-1.5 lg:[8rem] lg:font-medium md:mb-2.5 mb-1.5 cursor-pointer ${!formik.isValid && "cursor-not-allowed opacity-50"}`}>
+                                Sign Up
+                            </button>
                         </div>
 
                         <p className="lg:text-lg md:text-base text-sm text-center">Already have an account?<span className="text-[#d4af37] underline ml-1.5">Sign In</span></p>
