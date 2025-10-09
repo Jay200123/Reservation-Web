@@ -1,7 +1,16 @@
 import { useNavigate } from "react-router-dom";
+import { useStore } from "../../@state/store";
+import { toast } from "react-toastify";
 
 export default function Navbar() {
     const navigate = useNavigate();
+    const { user, access_token, logout } = useStore();
+
+    const handleLogout = async () => {
+        await logout();
+        toast.success("Logout successfully");
+        navigate("/signin");
+    };
 
     return (
         <>
@@ -18,8 +27,18 @@ export default function Navbar() {
                     <li onClick={() => navigate("/")} className="cursor-pointer transition-all duration-300 ease-in-out hover:text-[#d4af37]"><i className="fa-solid fa-house mr-1"></i>Home</li>
                     <li className="cursor-pointer  transition-all duration-300 hover:text-[#d4af37]"><i className="fa-solid fa-circle-info mr-1"></i>About</li>
                     <li className="cursor-pointer  transition-all duration-300 hover:text-[#d4af37]"><i className="fa-solid fa-phone mr-1"></i>Contact Us</li>
-                    <li onClick={() => navigate("/signin")} className="cursor-pointer  transition-all duration-300 hover:text-[#d4af37]"><i className="fa-solid fa-right-to-bracket mr-1"></i>Sign In</li>
-                    <li onClick={() => navigate("/signup")} className="cursor-pointer  transition-all duration-300 hover:text-[#d4af37]"><i className="fa-solid fa-user-plus mr-1"></i>Sign Up</li>
+                    {user && access_token ? (
+                        <>
+                            <li onClick={() => navigate("/profile")} className="cursor-pointer  transition-all duration-300 hover:text-[#d4af37]"><i className="fa-solid fa-user mr-1"></i>Profile</li>
+                            <li onClick={handleLogout} className="cursor-pointer  transition-all duration-300 hover:text-[#d4af37]"><i className="fa-solid fa-arrow-right-from-bracket mr-1"></i>Logout</li>
+                        </>
+                    ) : (
+                        <>
+                            <li onClick={() => navigate("/signin")} className="cursor-pointer  transition-all duration-300 hover:text-[#d4af37]"><i className="fa-solid fa-right-to-bracket mr-1"></i>Sign In</li>
+                            <li onClick={() => navigate("/signup")} className="cursor-pointer  transition-all duration-300 hover:text-[#d4af37]"><i className="fa-solid fa-user-plus mr-1"></i>Sign Up</li>
+                        </>
+                    )}
+
                 </ul>
 
                 {/* Mobile Menu */}
