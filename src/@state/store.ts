@@ -2,6 +2,7 @@ import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 import type { Store } from "../@types/store";
 import { useAuthStore } from "./route/auth";
+import { useUserStore } from "./route/user";
 
 export const useStore = create<Store>()(
   persist(
@@ -12,6 +13,7 @@ export const useStore = create<Store>()(
       //api custom hooks here.
       //ex. ...useUserApi(...a)
       ...useAuthStore(...a),
+      ...useUserStore(...a),
     }),
     {
       name: "root",
