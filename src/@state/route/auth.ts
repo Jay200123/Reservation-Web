@@ -1,13 +1,11 @@
 import type { StateCreator } from "zustand";
 import type { useAuthApi } from "../../@types";
-import { basicApi } from "../api";
+import { basicApi, authApi, refreshApi } from "../api";
 
 export const useAuthStore: StateCreator<useAuthApi> = (set) => ({
-  details: {
-    user: null,
-    access_token: "",
-    refresh_token: "",
-  },
+  user: null,
+  access_token: "",
+  refresh_token: "",
 
   register: async (data: any) => {
     const result = await basicApi.post("/register", data);
@@ -22,11 +20,9 @@ export const useAuthStore: StateCreator<useAuthApi> = (set) => ({
     });
 
     set({
-      details: {
-        user: result.data.details.user,
-        access_token: result.data.details.access_token,
-        refresh_token: result.data.details.refresh_token,
-      },
+      user: result.data.details.user,
+      access_token: result.data.details.access_token,
+      refresh_token: result.data.details.refresh_token,
     });
 
     return result.data;
@@ -37,18 +33,24 @@ export const useAuthStore: StateCreator<useAuthApi> = (set) => ({
    * @returns
    */
   refresh: async () => {
-    const result = await basicApi.get("/refresh");
+    const result = await refreshApi.get("/refresh");
 
-    set((state) => ({
-      ...state,
+    set({
       access_token: result.data.details.access_token,
       refresh_token: result.data.details.refresh_token,
-    }));
+    });
   },
 
   /**
    * Needs to change into authApi -> implemented soon.
    * @returns
    */
-  logout: async () => {},
+  logout: async () => {
+    await authApi.post("/logout");
+    set({
+      user: null,
+      access_token: "",
+      refresh_token: "",
+    });
+  },
 });

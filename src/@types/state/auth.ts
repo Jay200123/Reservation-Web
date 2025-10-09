@@ -13,11 +13,9 @@ type User = {
 };
 
 export type AuthState = {
-  details: {
     user: User | null;
     access_token: string;
     refresh_token: string;
-  };
 };
 
 type AuthResponse = {
@@ -37,6 +35,12 @@ type AuthActions = {
   logout: () => Promise<void>;
 };
 
+  type ApiErrorResponse = {
+    status: number,
+    message: string
+  }
+
+
 type useAuthApi = AuthState & AuthActions;
 
-export type { useAuthApi };
+export type { useAuthApi, ApiErrorResponse };

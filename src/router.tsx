@@ -3,9 +3,15 @@ import {
     createBrowserRouter,
     createRoutesFromElements,
 } from "react-router-dom";
-import { MotionWrapper } from "./@components";
+import { MotionWrapper, ProtectedRoutes } from "./@components";
 import { HomeLayout } from "./@layouts";
-import { Home, SignIn, SignUp } from "./@pages";
+import {
+    Home,
+    SignIn,
+    SignUp,
+    Profile,
+    Dashboard,
+} from "./@pages";
 
 const Router = createBrowserRouter(
     createRoutesFromElements(
@@ -28,6 +34,23 @@ const Router = createBrowserRouter(
                     <MotionWrapper>
                         <SignUp />
                     </MotionWrapper>
+                } />
+
+                {/* Private Routes here */}
+                <Route path="/profile" element={
+                    <ProtectedRoutes>
+                        <MotionWrapper>
+                            <Profile />
+                        </MotionWrapper>
+                    </ProtectedRoutes>
+                } />
+
+                <Route path="/dashboard" element={
+                    <ProtectedRoutes>
+                        <MotionWrapper>
+                            <Dashboard />
+                        </MotionWrapper>
+                    </ProtectedRoutes>
                 } />
             </Route>
 
