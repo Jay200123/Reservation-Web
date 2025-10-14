@@ -6,7 +6,7 @@ export const useAuthStore: StateCreator<useAuthApi> = (set) => ({
   user: null,
   access_token: "",
   refresh_token: "",
-
+  isRefreshFailed: false,
   register: async (data: any) => {
     const result = await basicApi.post("/register", data);
 
@@ -35,10 +35,21 @@ export const useAuthStore: StateCreator<useAuthApi> = (set) => ({
   refresh: async () => {
     const result = await refreshApi.get("/refresh");
 
+    // If the API responds with 401 it means the user has invalid credentials and will clear the access & refresh token state.
+    if (result.data.status == 401) {
+      set({
+        access_token: "",
+        refresh_token: "",
+        isRefreshFailed: true,
+      });
+    }
+
     set({
       access_token: result.data.details.access_token,
       refresh_token: result.data.details.refresh_token,
     });
+
+    return result.data;
   },
 
   /**
