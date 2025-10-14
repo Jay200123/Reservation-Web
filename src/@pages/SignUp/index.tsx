@@ -29,10 +29,17 @@ export default function SignUp() {
                 toast.success("Registered Successfully.");
                 navigate("/signin");
             } catch (err: any) {
+                if (err.code == "ERR_NETWORK") {
+                    toast.error("We're having trouble connecting to the server. Please try again later.");
+                }
                 toast.error(err.response.data.message);
             }
         }
     });
+
+    const signin = () => {
+        navigate("/sigin");
+    }
 
     return (
         <div className="flex justify-center items-center lg:bg-[#d4af37] md:bg-[#d4af37] lg:p-5 md:p-4 p-0">
@@ -258,7 +265,7 @@ export default function SignUp() {
                             </button>
                         </div>
 
-                        <p className="lg:text-lg md:text-base text-sm text-center">Already have an account?<span className="text-[#d4af37] underline ml-1.5">Sign In</span></p>
+                        <p className="lg:text-lg md:text-base text-sm text-center">Already have an account?<span className="text-[#d4af37] underline ml-1.5 cursor-pointer" onClick={signin}>Sign In</span></p>
                     </form>
                 </div>
             </div>
