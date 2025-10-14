@@ -13,9 +13,10 @@ type User = {
 };
 
 export type AuthState = {
-    user: User | null;
-    access_token: string;
-    refresh_token: string;
+  user: User | null;
+  access_token: string;
+  refresh_token: string;
+  isRefreshFailed: boolean
 };
 
 type AuthResponse = {
@@ -28,18 +29,26 @@ type AuthResponse = {
   message: string;
 };
 
+type RefreshResponse = {
+  status: number;
+  details: {
+    access_token: string;
+    refresh_token: string;
+  };
+  message: string;
+};
+
 type AuthActions = {
   register: (data: any) => Promise<void>;
   login: (email: string, password: string) => Promise<AuthResponse>;
-  refresh: () => Promise<void>;
+  refresh: () => Promise<RefreshResponse>;
   logout: () => Promise<void>;
 };
 
-  type ApiErrorResponse = {
-    status: number,
-    message: string
-  }
-
+type ApiErrorResponse = {
+  status: number;
+  message: string;
+};
 
 type useAuthApi = AuthState & AuthActions;
 
