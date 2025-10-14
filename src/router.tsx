@@ -4,7 +4,7 @@ import {
     createRoutesFromElements,
 } from "react-router-dom";
 import { MotionWrapper, ProtectedRoutes } from "./@components";
-import { HomeLayout } from "./@layouts";
+import { HomeLayout, UserLayout } from "./@layouts";
 import {
     Home,
     SignIn,
@@ -36,15 +36,6 @@ const Router = createBrowserRouter(
                     </MotionWrapper>
                 } />
 
-                {/* Private Routes here */}
-                <Route path="/profile" element={
-                    <ProtectedRoutes>
-                        <MotionWrapper>
-                            <Profile />
-                        </MotionWrapper>
-                    </ProtectedRoutes>
-                } />
-
                 <Route path="/dashboard" element={
                     <ProtectedRoutes>
                         <MotionWrapper>
@@ -55,6 +46,18 @@ const Router = createBrowserRouter(
             </Route>
 
             {/* Private Routes here */}
+
+            {/* User Routes */}
+            <Route element={<UserLayout />}>
+                <Route path="/profile" element={
+                    <ProtectedRoutes>
+                        <MotionWrapper>
+                            <Profile />
+                        </MotionWrapper>
+                    </ProtectedRoutes>
+                } />
+            </Route>
+
         </Route>
     )
 );
