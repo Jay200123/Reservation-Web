@@ -21,9 +21,15 @@ type UserDetails = {
   city: string;
 };
 
+type UserApiResponse = {
+  status: number;
+  details: UserDetails;
+  message: string;
+};
+
 type UserActions = {
   getAllUsers: () => Promise<UserDetails[]>;
-  getUserById: (id: string) => Promise<UserDetails>;
+  getUserById: (id: string) => Promise<UserApiResponse>;
   updateUserById: (id: string, data: Partial<UserDetails>) => Promise<void>;
 };
 
