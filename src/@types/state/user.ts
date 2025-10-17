@@ -1,3 +1,5 @@
+import type { Image } from "./image";
+
 type UserStatus = "ACTIVE" | "INACTIVE" | "PENDING";
 type UserRole = "USER" | "ADMIN";
 
@@ -19,6 +21,7 @@ type UserDetails = {
   contact_number: string;
   address: string;
   city: string;
+  image: Image[];
 };
 
 type UserApiResponse = {
