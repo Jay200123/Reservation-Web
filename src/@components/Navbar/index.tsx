@@ -18,7 +18,7 @@ export default function Navbar() {
             <nav className="w-full flex items-center justify-between px-6 lg:h-16 md:h-13 h-10 text-black shadow-lg">
 
                 {/* Logo / Brand */}
-                <h3 className="cursor-pointer text-xs md:text-sm lg:text-xl font-medium transition-all duration-300 ease-in-out hover:text-[#d4af37]">
+                <h3 onClick={()=>navigate("/")} className="cursor-pointer text-xs md:text-sm lg:text-xl font-medium transition-all duration-300 ease-in-out hover:text-[#d4af37]">
                     Reservation Web
                 </h3>
 
