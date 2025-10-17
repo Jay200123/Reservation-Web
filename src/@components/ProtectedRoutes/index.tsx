@@ -33,9 +33,10 @@ export default function ProtectedRoutes({ children }: ProtectedRouteProp) {
     queryKey: ["verify"],
     queryFn: () => getUserById(user?._id!),
     enabled: !!user?._id,
-    refetchOnWindowFocus: false,
-    refetchOnMount: false,
-    refetchInterval: false,
+    refetchOnWindowFocus: false,   // Disable automatic refetching when the window or tab becomes active again.
+    refetchOnMount: false,   // Prevent refetching when the component remounts (use cached data instead).
+    refetchInterval: false,   // Disable polling — the query won’t auto-refetch at a set interval.
+
   });
 
   /**
