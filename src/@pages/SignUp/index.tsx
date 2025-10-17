@@ -38,7 +38,7 @@ export default function SignUp() {
     });
 
     const signin = () => {
-        navigate("/sigin");
+        navigate("/signin");
     }
 
     return (
