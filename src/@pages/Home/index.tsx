@@ -1,8 +1,22 @@
 import ImageOne from "../../assets/ImageTwo.jpg";
 import ImageTwo from "../../assets/ReservationOne.jpg";
-
+import { useQuery } from "@tanstack/react-query";
+import { useStore } from "../../@state/store";
 
 export default function Home() {
+
+    const { getAllServices } = useStore();
+
+    const { data } = useQuery({
+        queryKey: ["services"],
+        queryFn: getAllServices,
+        refetchOnWindowFocus: false, // Disable automatic refetching when the window or tab becomes active again.
+        refetchOnMount: false, // Prevent refetching when the component remounts (use cached data instead).
+        refetchInterval: false, // Disable polling — the query won’t auto-refetch at a set interval.
+    });
+
+    const services = data?.details;
+
     return (
         <div    >
             {/* Image Container */}
@@ -55,6 +69,44 @@ export default function Home() {
                     <img className="w-full h-full object-center items-center rounded-md" src={ImageOne} alt="ImageOne" />
                 </div>
             </div>
+
+            <div className="lg:h-[32rem] w-full border border-black p-4">
+                <h3 className="lg:text-4xl font-medium">Our Services</h3>
+
+                <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6">
+                    {services?.map((service) => (
+                        <div
+                            key={service._id}
+                            className="bg-white shadow-md rounded-2xl p-4 hover:shadow-lg transition-shadow duration-300 flex flex-col items-center text-center"
+                        >
+                            {/* Service Image */}
+                            {service.image?.length > 0 && (
+                                <img
+                                    src={service.image[0].url}
+                                    alt={service.service_name}
+                                    className="w-32 h-32 object-cover rounded-full mb-3"
+                                />
+                            )}
+
+                            {/* Service Info */}
+                            <h3 className="text-lg font-semibold text-gray-800">
+                                {service.service_name}
+                            </h3>
+                            <p className="text-sm text-gray-600 line-clamp-2">
+                                {service.description || "No description available"}
+                            </p>
+                            <p className="text-yellow-600 font-semibold mt-2">
+                                ₱{service.service_price}
+                            </p>
+                            <span className="text-xs text-gray-500 mt-1">
+                                Duration: {service.duration}
+                            </span>
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+
             <div className="flex flex-col justify-center items-center w-full lg:h-[44rem] lg:mt-12 bg-[#d4af37] text-white ">
                 <h3 className="font-bold lg:text-3xl md:text-lg lg:mb-4.5 lg:mt-2.5">
                     Efficient and Seamless Reservation Services
