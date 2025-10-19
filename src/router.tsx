@@ -10,6 +10,7 @@ import {
     SignIn,
     SignUp,
     Profile,
+    EditProfile,
     Dashboard,
 } from "./@pages";
 
@@ -53,6 +54,14 @@ const Router = createBrowserRouter(
                     <ProtectedRoutes>
                         <MotionWrapper>
                             <Profile />
+                        </MotionWrapper>
+                    </ProtectedRoutes>
+                } />
+
+                <Route path="/edit/profile/:id" element={
+                    <ProtectedRoutes>
+                        <MotionWrapper>
+                            <EditProfile />
                         </MotionWrapper>
                     </ProtectedRoutes>
                 } />
