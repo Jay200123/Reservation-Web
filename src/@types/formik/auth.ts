@@ -11,6 +11,20 @@ type SignUpFormik = {
   contact_number: string;
   address: string;
   city: string;
+  image: File[];
 };
 
-export type { SignInFormik, SignUpFormik };
+type EditProfileFormik = {
+  fullname: string;
+  email: string;
+  contact_number: string;
+  address: string;
+  city: string;
+  image: File[];
+};
+
+export type { 
+  SignInFormik, 
+  SignUpFormik, 
+  EditProfileFormik
+};
