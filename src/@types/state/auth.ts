@@ -16,7 +16,7 @@ export type AuthState = {
   user: User | null;
   access_token: string;
   refresh_token: string;
-  isRefreshFailed: boolean
+  isRefreshFailed: boolean;
 };
 
 type AuthResponse = {
@@ -39,7 +39,7 @@ type RefreshResponse = {
 };
 
 type AuthActions = {
-  register: (data: any) => Promise<void>;
+  register: (data: FormData) => Promise<void>;
   login: (email: string, password: string) => Promise<AuthResponse>;
   refresh: () => Promise<RefreshResponse>;
   logout: () => Promise<void>;
