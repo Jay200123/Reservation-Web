@@ -1,7 +1,10 @@
 import { useStore } from "../../@state/store";
 import { useQuery } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
 
 export default function Profile() {
+    const navigate = useNavigate();
+
     const { user, getUserById } = useStore();
 
     const { data } = useQuery({
@@ -14,19 +17,21 @@ export default function Profile() {
 
     return (
         <>
+            {/* Profile Page Header Container */}
             <div className="p-6">
-                {/* Header */}
+                {/* Profile Page Header */}
                 <div>
                     <h3 className="font-semibold text-3xl text-gray-800">
                         Welcome Back, <span className="text-yellow-600">{user_details?.user.username}</span>!
                     </h3>
+                    {/* Profile Page Paragraphs */}
                     <p className="text-gray-600 mt-2">
                         Welcome back! Here’s your personal space where you can view and manage your account details,
                         update your profile, and keep track of your latest activity.
                     </p>
                 </div>
 
-                {/* Card */}
+                {/* Information Card */}
                 <div className="mt-8 bg-white shadow-md rounded-xl p-6">
                     <h4 className="font-semibold text-2xl text-gray-800 mb-4 border-b pb-2">
                         Your Primary Information
@@ -90,6 +95,7 @@ export default function Profile() {
 
                     <div className="w-full flex justify-end items-center ">
                         <button
+                            onClick={() => navigate(`/edit/profile/${user?._id}`)}
                             className="rounded-2xl border border-white bg-[#d4af37] text-white 
                                             text-xs md:text-sm lg:text-base font-medium
                                             px-3 py-1.5 md:px-4 md:py-2 lg:px-5 lg:py-2.5
