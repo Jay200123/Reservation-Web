@@ -21,11 +21,25 @@ export default function SignUp() {
             contact_number: "",
             address: "",
             city: "",
+            image: [],
         },
         validationSchema: signUpSchema,
         onSubmit: async (values) => {
             try {
-                await register(values);
+                const formdata = new FormData();
+
+                formdata.append("username", formik.values.username);
+                formdata.append("password", formik.values.password);
+                formdata.append("fullname", formik.values.fullname);
+                formdata.append("email", formik.values.email);
+                formdata.append("contact_number", formik.values.contact_number);
+                formdata.append("addresss", formik.values.address);
+                formdata.append("city", formik.values.city);
+                values.image.forEach((file) => {
+                    formdata.append("image", file)
+                })
+
+                await register(formdata);
                 toast.success("Registered Successfully.");
                 navigate("/signin");
             } catch (err: any) {
@@ -37,13 +51,15 @@ export default function SignUp() {
         }
     });
 
+    console.log(formik.values);
+
     const signin = () => {
         navigate("/signin");
     }
 
     return (
         <div className="flex justify-center items-center lg:bg-[#d4af37] md:bg-[#d4af37] lg:p-5 md:p-4 p-0">
-            <div className="lg:w-[70rem] lg:h-[60rem] md:w-[60rem] md:h-[57rem] h-full w-full flex rounded-lg bg-white lg:shadow-lg md:shadow-lg shadow-none lg:m-0 md:m-3.5">
+            <div className="lg:w-[70rem] lg:h-[65rem] md:w-[60rem] md:h-[62rem] h-full w-full flex rounded-lg bg-white lg:shadow-lg md:shadow-lg shadow-none lg:m-0 md:m-3.5">
                 <div className="lg:block lg:w-1/2 md:block md:w-1/2 w-full hidden">
                     <img src={ImageOne} className="w-full h-full object-cover" alt="ImageOne" />
                 </div>
@@ -254,6 +270,23 @@ export default function SignUp() {
                                         {formik.errors.city}
                                     </motion.p>
                                 )}
+                            </div>
+                        </div>
+
+                        <div className="flex flex-col p-2.5">
+                            <label htmlFor="image">Image Upload</label>
+                            <div>
+                                <input
+                                    type="file"
+                                    id="image"
+                                    name="image"
+                                    multiple
+                                    onChange={(e) => {
+                                        const files = Array.from(e.currentTarget.files || []);
+                                        formik.setFieldValue("image", files)
+                                    }}
+                                    className="cursor-pointer p-1.5"
+                                />
                             </div>
                         </div>
                         <div className="w-full flex justify-center items-center p-2.5">
