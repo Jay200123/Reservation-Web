@@ -46,4 +46,4 @@ type ServiceActions = {
 
 type useServiceApi = ServiceActions;
 
-export type { useServiceApi };
+export type { Services, useServiceApi };
