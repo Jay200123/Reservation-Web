@@ -16,6 +16,7 @@
     "formik": "^2.4.6",
     "motion": "^12.23.22",
     "react": "^19.1.1",
+    "react-calendar": "^6.0.0",
     "react-dom": "^19.1.1",
     "react-router-dom": "^7.9.3",
     "react-spinners": "^0.17.0",

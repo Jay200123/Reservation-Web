@@ -11,6 +11,8 @@ import {
     SignUp,
     Profile,
     EditProfile,
+    ServiceDetails,
+    ReservationForms,
     Dashboard,
 } from "./@pages";
 
@@ -19,24 +21,29 @@ const Router = createBrowserRouter(
         <Route>
             {/*Public Routes here */}
             <Route element={<HomeLayout />}>
+
+                {/* Landing Page Route */}
                 <Route index path="/" element={
                     <MotionWrapper>
                         <Home />
                     </MotionWrapper>
                 } />
 
+                {/* Sign In Route */}
                 <Route path="/signin" element={
                     <MotionWrapper>
                         <SignIn />
                     </MotionWrapper>
                 } />
 
+                {/* Sign Up Route */}
                 <Route path="/signup" element={
                     <MotionWrapper>
                         <SignUp />
                     </MotionWrapper>
                 } />
 
+                {/* Admin Dashboard Route  */}
                 <Route path="/dashboard" element={
                     <ProtectedRoutes>
                         <MotionWrapper>
@@ -44,12 +51,27 @@ const Router = createBrowserRouter(
                         </MotionWrapper>
                     </ProtectedRoutes>
                 } />
+
+                {/* Service Details Route */}
+                <Route path="/service/details/:id" element={
+                    <MotionWrapper>
+                        <ServiceDetails />
+                    </MotionWrapper>
+                } />
+
+                {/*  Reservation Forms */}
+                <Route path="/reservation/forms" element={
+                    <MotionWrapper>
+                        <ReservationForms />
+                    </MotionWrapper>
+                } />
             </Route>
 
             {/* Private Routes here */}
 
             {/* User Routes */}
             <Route element={<UserLayout />}>
+                {/* Profile Route */}
                 <Route path="/profile" element={
                     <ProtectedRoutes>
                         <MotionWrapper>
@@ -58,6 +80,7 @@ const Router = createBrowserRouter(
                     </ProtectedRoutes>
                 } />
 
+                {/* Edit Profile Route */}
                 <Route path="/edit/profile/:id" element={
                     <ProtectedRoutes>
                         <MotionWrapper>

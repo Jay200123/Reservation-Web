@@ -81,7 +81,7 @@ export default function EditProfile() {
                                 name="fullname"
                                 onBlur={formik.handleBlur}
                                 onChange={formik.handleChange}
-                                value={user_details?.fullname || ""}
+                                value={formik.values.fullname || ""}
                                 className="border border-gray-300 rounded-lg px-3 py-2 text-gray-800 focus:outline-none bg-gray-50"
                             />
                         </div>
@@ -94,7 +94,7 @@ export default function EditProfile() {
                                 name="email"
                                 onBlur={formik.handleBlur}
                                 onChange={formik.handleChange}
-                                value={user_details?.email || ""}
+                                value={formik.values.email || ""}
                                 className="border border-gray-300 rounded-lg px-3 py-2 text-gray-800 focus:outline-none bg-gray-50"
                             />
                         </div>
@@ -107,7 +107,7 @@ export default function EditProfile() {
                                 name="contact_number"
                                 onBlur={formik.handleBlur}
                                 onChange={formik.handleChange}
-                                value={user_details?.contact_number || ""}
+                                value={formik.values.contact_number || ""}
                                 className="border border-gray-300 rounded-lg px-3 py-2 text-gray-800 focus:outline-none bg-gray-50"
                             />
                         </div>
@@ -122,7 +122,7 @@ export default function EditProfile() {
                                 name="address"
                                 onBlur={formik.handleBlur}
                                 onChange={formik.handleChange}
-                                value={user_details?.address || ""}
+                                value={formik.values.address || ""}
                                 className="border border-gray-300 rounded-lg px-3 py-2 text-gray-800 focus:outline-none bg-gray-50"
                             />
                         </div>
@@ -137,7 +137,7 @@ export default function EditProfile() {
                                 name="city"
                                 onBlur={formik.handleBlur}
                                 onChange={formik.handleChange}
-                                value={user_details?.city || ""}
+                                value={formik.values.city || ""}
                                 className="border border-gray-300 rounded-lg px-3 py-2 text-gray-800 focus:outline-none bg-gray-50"
                             />
                         </div>
@@ -149,12 +149,13 @@ export default function EditProfile() {
                             <input
                                 type="file"
                                 id="image"
-                                name="city"
+                                name="image"
+                                multiple
                                 onChange={(e) => {
-                                    const files = e.currentTarget.files || [];
+                                    const files = Array.from(e.currentTarget.files || []);
                                     formik.setFieldValue("image", files)
                                 }}
-                                className="border border-gray-300 rounded-lg px-3 py-2 text-gray-800 focus:outline-none bg-gray-50"
+                                className="cursor-pointer p-1.5"
                             />
                         </div>
                     </div>
