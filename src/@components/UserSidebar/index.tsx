@@ -18,9 +18,15 @@ export default function UserSidebar() {
             <nav className="w-full flex flex-col justify-between px-6 h-full text-white bg-[#d4af37] shadow-lg p-2">
 
                 {/* Logo / Brand */}
-                <h3 className="cursor-pointer text-xs md:text-sm lg:text-xl mt-4 font-medium transition-all duration-300 ease-in-out">
-                    Reservation Web
-                </h3>
+                <div className="relative inline-block">
+                    <h3 className="cursor-pointer text-xs md:text-sm lg:text-xl mt-4 font-medium transition-all duration-300 ease-in-out">
+                        <i className="fa-solid fa-calendar mr-1"></i> Reservations
+                    </h3>
+
+                    <span className="absolute -top-1 -right-3 bg-red-500 text-white text-[10px] md:text-xs font-semibold lg:w-8 lg:h-8 lg:text-base flex items-center justify-center rounded-full">
+                        0
+                    </span>
+                </div>
 
                 {/* Desktop Menu */}
                 <ul className="hidden md:flex flex-col gap-6 text-xs md:text-sm lg:text-sm">
@@ -42,7 +48,7 @@ export default function UserSidebar() {
                         <i className="fa-solid fa-user-gear mr-1"></i>Services
                     </li>
 
-                     <li onClick={() => toast.error("Feature on progress")} className="cursor-pointer  transition-all duration-300 hover:bg-white hover:text-[#d4af37] lg:p-2.5 rounded-md font-medium">
+                    <li onClick={() => toast.error("Feature on progress")} className="cursor-pointer  transition-all duration-300 hover:bg-white hover:text-[#d4af37] lg:p-2.5 rounded-md font-medium">
                         <i className="fa-solid fa-bookmark mr-1"></i>Reservations
                     </li>
 
