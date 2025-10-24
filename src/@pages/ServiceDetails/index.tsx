@@ -43,7 +43,8 @@ export default function ServiceDetails() {
                                     type="text"
                                     id="service_name"
                                     name="service_name"
-                                    value={service?.service_name}
+                                    value={service?.service_name || ""}
+                                    readOnly
                                     className="p-1.5 border border-gray-400 w-full rounded-md pr-3 focus:outline-none focus:border-[#d4af37]"
                                 />
                             </div>
@@ -57,7 +58,8 @@ export default function ServiceDetails() {
                                     type="text"
                                     id="service_name"
                                     name="service_name"
-                                    value={service?.service_price}
+                                    value={service?.service_price || ""}
+                                    readOnly
                                     className="p-1.5 border border-gray-400 w-full rounded-md pr-3 focus:outline-none focus:border-[#d4af37]"
                                 />
                             </div>
@@ -70,7 +72,8 @@ export default function ServiceDetails() {
                                     type="text"
                                     id="service_name"
                                     name="service_name"
-                                    value={service?.duration}
+                                    value={service?.duration || ""}
+                                    readOnly
                                     className="p-1.5 border border-gray-400 w-full rounded-md pr-3 focus:outline-none focus:border-[#d4af37]"
                                 />
                             </div>
@@ -82,8 +85,9 @@ export default function ServiceDetails() {
                                 <textarea
                                     id="service_name"
                                     name="service_name"
-                                    value={service?.description}
+                                    value={service?.description || ""}
                                     rows={6}
+                                    readOnly
                                     className="p-1.5 border border-gray-400 w-full rounded-md pr-3 focus:outline-none focus:border-[#d4af37]"
                                 />
                             </div>
