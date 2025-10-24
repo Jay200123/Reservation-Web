@@ -51,8 +51,6 @@ export default function SignUp() {
         }
     });
 
-    console.log(formik.values);
-
     const signin = () => {
         navigate("/signin");
     }

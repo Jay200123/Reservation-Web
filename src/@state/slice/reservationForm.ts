@@ -31,5 +31,12 @@ export const useReservationSlice: StateCreator<useReservationFormSlice> = (
     });
   },
 
-  clearForm: () => {},
+  clearForm: () => {
+    set({
+      services: [],
+      timeslot: null,
+      reservation_date: null,
+      payment_type: null,
+    });
+  },
 });

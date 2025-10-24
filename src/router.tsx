@@ -12,6 +12,7 @@ import {
     Profile,
     EditProfile,
     ServiceDetails,
+    Checkout,
     ReservationForms,
     Dashboard,
 } from "./@pages";
@@ -64,6 +65,16 @@ const Router = createBrowserRouter(
                     <MotionWrapper>
                         <ReservationForms />
                     </MotionWrapper>
+                } />
+
+                {/* Checkout Form */}
+                <Route path="/checkout" element={
+                    <ProtectedRoutes>
+                        <MotionWrapper>
+                            <Checkout />
+                        </MotionWrapper>
+                    </ProtectedRoutes>
+
                 } />
             </Route>
 

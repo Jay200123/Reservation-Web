@@ -5,6 +5,7 @@ import Profile from "./Profile";
 import EditProfile from "./EditProfile";
 import ServiceDetails from "./ServiceDetails";
 import ReservationForms from "./ReservationForms";
+import Checkout from "./Checkout";
 import Dashboard from "./Dashboard";
 
 export {
@@ -15,5 +16,6 @@ export {
   EditProfile,
   ServiceDetails,
   ReservationForms,
+  Checkout,
   Dashboard,
 };
