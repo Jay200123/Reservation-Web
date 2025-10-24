@@ -1,16 +1,16 @@
 import type { StateCreator } from "zustand";
 import type { useServiceApi } from "../../@types";
-import { authApi } from "../api";
+import { authApi, basicApi } from "../api";
 
 export const useServiceStore: StateCreator<useServiceApi> = (_set) => ({
   getAllServices: async () => {
-    const result = await authApi.get("/services");
+    const result = await basicApi.get("/services");
 
     return result.data;
   },
 
   getServiceById: async (id: string) => {
-    const result = await authApi.get(`/service/${id}`);
+    const result = await basicApi.get(`/service/${id}`);
 
     return result.data;
   },
