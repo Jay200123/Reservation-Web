@@ -1,21 +1,29 @@
 import { useStore } from "../../@state/store";
 import { useQuery } from "@tanstack/react-query";
+import { useFormik } from "formik";
+import type { ReservationFormik, PaymentType } from "../../@types";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 export default function Checkout() {
+    const navigate = useNavigate();
 
     const {
-        user,
+        user: userState,
         services,
         reservation_date,
-        timeslot,
+        timeslot: timeslotState,
+        payment_type,
         getUserById,
-        getTimeslotById
+        getTimeslotById,
+        createReservation,
+        addPaymentType
     } = useStore();
 
     const { data } = useQuery({
         queryKey: ["user"],
-        queryFn: () => getUserById(user?._id!),
-        enabled: !!user?._id,
+        queryFn: () => getUserById(userState?._id!),
+        enabled: !!userState?._id,
         refetchInterval: false,
         refetchOnMount: false,
         refetchOnWindowFocus: false
@@ -24,13 +32,14 @@ export default function Checkout() {
     const user_details = data?.details;
 
     const { data: timeslotData } = useQuery({
-        queryKey: ["user"],
-        queryFn: () => getTimeslotById(timeslot?.toString()!),
-        enabled: !!timeslot,
+        queryKey: ["timeslot"],
+        queryFn: () => getTimeslotById(timeslotState?.toString()!),
+        enabled: !!timeslotState,
         refetchInterval: false,
         refetchOnMount: false,
         refetchOnWindowFocus: false
     });
+
 
     const timeslot_details = timeslotData?.details;
 
@@ -49,12 +58,72 @@ export default function Checkout() {
         });
     };
 
-    const subtotal = 750;
-    const total = 750;
+    /**
+    * Calculates the subtotal price of all selected services.
+     *
+    * This uses the Array.prototype.reduce() method, which loops through
+    * every item in the `services` array and adds up each `price` value.
+    *
+    * @param {Array} services - An array of service objects, each containing a `price` property.
+    * @returns {number} subtotal - The total price of all services combined.
+    *
+    * Example:
+    * const services = [
+    *   { price: 100 },
+    *   { price: 200 },
+    *   { price: 300 }
+    * ];
+    * const subtotal = services.reduce((total, item) => total + item.price, 0);
+    * console.log(subtotal); // Output: 600
+    *
+    * Explanation:
+    * - `reduce()` starts with the initial value of 0.
+    * - For each service, it adds `item.service` to the running total.
+    * - The final value after looping through all services is the subtotal.
+    */
+    const subtotal = services.reduce((item, total) => item + total.service_price, 0);
+
+    const total = subtotal;
+
+    const formik = useFormik<ReservationFormik>({
+        enableReinitialize: true,
+        initialValues: {
+            user: userState?._id.toString() || "",
+            services: services.map((service) => ({
+                service: service._id
+            })) || [],
+            timeslot: timeslotState?.toString() || "",
+            reservation_date: reservation_date || "",
+            payment_type: (payment_type as PaymentType) ?? null,
+        },
+
+        onSubmit: async (values) => {
+            try {
+                const result = await createReservation(values);
+                toast.success("Reservation successfully placed.")
+
+                if (result.details[0].payment_type == "ONLINE_PAYMENT") {
+                    window.location.href = result.details.payment.redirectUrl || ""
+                } else {
+                    toast.success("Reservation successfully placed.")
+                    navigate("/");
+                }
+
+            } catch (err: any) {
+                if (err.code == "ERR_NETWORK") {
+                    toast.error("We're having trouble connecting to the server. Please try again later.");
+                }
+                toast.error(err.response.data.message);
+            }
+        }
+    });
 
     return (
-        <div className="flex justify-center items-center lg:bg-[#d4af37] md:bg-[#d4af37] lg:p-5 md:p-4 p-0">
-            <div className="lg:w-[65rem] lg:h-[50rem] md:w-[55rem] md:h-[40rem] h-full w-full flex rounded-lg bg-white lg:shadow-lg md:shadow-lg shadow-none lg:m-0 md:m-3.5">
+        <div className="flex justify-center items-center lg:bg-[#d4af37] md:bg-[#d4af37] lg:p-5 md:p-4 p-2">
+            {/* Form Container */}
+            <div className="lg:w-[65rem] lg:h-[50rem] md:w-[55rem] md:h-[44rem] h-full w-full flex lg:flex-row md:flex-row flex-col rounded-lg bg-white lg:shadow-lg md:shadow-lg shadow-none lg:m-0 md:m-3.5">
+
+                {/* User Details Container */}
                 <div className="lg:w-1/2 md:w-1/2 w-full flex flex-col justify-center">
                     <div className=" lg:px-3.5 lg:py-3.5 md:px-2.5 md:py-2.5 px-1.5 py-1.5">
                         <h3 className="lg:text-3xl md:text-2xl text-lg text-center font-medium">Billing Details</h3>
@@ -138,9 +207,9 @@ export default function Checkout() {
                 </div>
 
                 {/* Subtotal Container */}
-                <div className="lg:w-1/2 md:w-1/2 w-full lg:p-3 md:p-2.5 p-2 flex flex-col justify-between">
+                <form onSubmit={formik.handleSubmit} className="lg:w-1/2 md:w-1/2 w-full lg:p-3 md:p-2.5 p-2 flex flex-col justify-between">
                     <div className=" lg:px-3.5 lg:py-3.5 md:px-2.5 md:py-2.5 px-1.5 py-1.5">
-                        <h3 className="lg:text-lg md:text-base text-sm text-left font-medium">Services</h3>
+                        <h3 className="lg:text-lg md:text-base text-lg text-left font-medium">Services</h3>
                         {/* Service Checkout Containe */}
                         {services.map((service) => (
                             <div
@@ -161,7 +230,7 @@ export default function Checkout() {
                                     <h3 className="font-semibold text-gray-800 text-base leading-tight">
                                         {service.service_name}
                                     </h3>
-                                    <p className="text-sm text-gray-500">{service.duration}</p>
+                                    <p className="lg:text-base md:text-base text-sm text-gray-500">{service.duration}</p>
                                 </div>
 
                                 {/* Price */}
@@ -175,29 +244,24 @@ export default function Checkout() {
 
                     </div>
 
-                    <div>
-                        <h3 className="lg:text-lg md:text-base text-sm text-left font-medium">Reservation Date</h3>
-                        <p className="lg:text-base md:text-sm text-xs">{formatted} <span>{timeslot_details?.start_time} - {timeslot_details?.end_time}</span></p>
+                    <div className="lg:m-3.5 md:m-2.5 m-2">
+                        <h3 className="lg:text-lg md:text-base text-lg text-left font-medium">Reservation Date</h3>
+                        <p className="lg:text-lg md:text-base text-lg">{formatted} <span>{timeslot_details?.start_time} - {timeslot_details?.end_time}</span></p>
                     </div>
 
                     {/* Mock Subtotal UI */}
                     <div className="border-t border-gray-300 pt-4">
                         <div className="space-y-2 text-sm md:text-base">
                             <div className="flex justify-between">
-                                <p>Subtotal:</p>
-                                <p>₱{subtotal.toLocaleString()}</p>
-                            </div>
-
-                            <div className="flex justify-between">
-                                <p>Shipping:</p>
-                                <p className="text-green-600 font-medium">Free</p>
+                                <p className="lg:text-lg md:text-base text-lg text-left font-medium">Subtotal:</p>
+                                <p className="lg:text-lg md:text-base text-lg">₱{subtotal.toLocaleString()}</p>
                             </div>
 
                             <hr className="my-2 border-gray-300" />
 
                             <div className="flex justify-between font-semibold text-lg">
-                                <p>Total:</p>
-                                <p>₱{total.toLocaleString()}</p>
+                                <p className="lg:text-lg md:text-base text-lg text-left font-medium">Total:</p>
+                                <p className="lg:text-lg md:text-base text-lg">₱{total.toLocaleString()}</p>
                             </div>
                         </div>
 
@@ -208,9 +272,10 @@ export default function Checkout() {
                                     type="radio"
                                     name="payment"
                                     value="paymaya"
+                                    onChange={() => addPaymentType("ONLINE_PAYMENT")}
                                     className="accent-[#0f9d58] w-4 h-4"
                                 />
-                                <span className="font-medium">PayMaya</span>
+                                <span className="font-medium lg:text-lg md:text-base text-lg">PayMaya</span>
                             </label>
 
                             <label className="flex items-center gap-2 cursor-pointer">
@@ -218,9 +283,10 @@ export default function Checkout() {
                                     type="radio"
                                     name="payment"
                                     value="cod"
+                                    onChange={() => addPaymentType("CASH")}
                                     className="accent-black w-4 h-4"
                                 />
-                                <span className="font-medium">Cash on Delivery</span>
+                                <span className="font-medium lg:text-lg md:text-base text-lg">Cash </span>
                             </label>
                         </div>
                     </div>
@@ -232,7 +298,7 @@ export default function Checkout() {
                             Place Reservation
                         </button>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     )
