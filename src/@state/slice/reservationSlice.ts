@@ -7,7 +7,7 @@ export const useReservationSlice: StateCreator<useReservationFormSlice> = (
   services: [],
   timeslot: null,
   reservation_date: null,
-  payment_type: null,
+  payment_type: "",
 
   addServiceToForm: (service: Services) => {
     set((state) => ({
@@ -31,12 +31,18 @@ export const useReservationSlice: StateCreator<useReservationFormSlice> = (
     });
   },
 
+  addPaymentType: (payment_type: string) => {
+    set({
+      payment_type: payment_type,
+    });
+  },
+
   clearForm: () => {
     set({
       services: [],
       timeslot: null,
       reservation_date: null,
-      payment_type: null,
+      payment_type: "",
     });
   },
 });

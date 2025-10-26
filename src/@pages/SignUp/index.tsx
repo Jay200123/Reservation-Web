@@ -33,7 +33,7 @@ export default function SignUp() {
                 formdata.append("fullname", formik.values.fullname);
                 formdata.append("email", formik.values.email);
                 formdata.append("contact_number", formik.values.contact_number);
-                formdata.append("addresss", formik.values.address);
+                formdata.append("address", formik.values.address);
                 formdata.append("city", formik.values.city);
                 values.image.forEach((file) => {
                     formdata.append("image", file)
