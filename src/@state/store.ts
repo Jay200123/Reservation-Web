@@ -6,7 +6,7 @@ import { useUserStore } from "./route/user";
 import { useServiceStore } from "./route/services";
 import { useTimeslotStore } from "./route/timeslot";
 import { useReservationStore } from "./route/reservation";
-import { useReservationSlice } from "./slice/reservationForm";
+import { useReservationSlice } from "./slice/reservationSlice";
 
 export const useStore = create<Store>()(
   persist(
