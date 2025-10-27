@@ -7,6 +7,8 @@ import { MotionWrapper, ProtectedRoutes } from "./@components";
 import { HomeLayout, UserLayout } from "./@layouts";
 import {
     Home,
+    About,
+    Contact,
     SignIn,
     SignUp,
     Profile,
@@ -27,6 +29,18 @@ const Router = createBrowserRouter(
                 <Route index path="/" element={
                     <MotionWrapper>
                         <Home />
+                    </MotionWrapper>
+                } />
+
+                <Route index path="/about" element={
+                    <MotionWrapper>
+                        <About />
+                    </MotionWrapper>
+                } />
+
+                <Route index path="/contact" element={
+                    <MotionWrapper>
+                        <Contact />
                     </MotionWrapper>
                 } />
 
