@@ -25,8 +25,8 @@ export default function Navbar() {
                 {/* Desktop Menu */}
                 <ul className="hidden md:flex gap-6 text-xs md:text-sm lg:text-sm items-center">
                     <li onClick={() => navigate("/")} className="cursor-pointer transition-all duration-300 ease-in-out hover:text-[#d4af37]"><i className="fa-solid fa-house mr-1"></i>Home</li>
-                    <li className="cursor-pointer  transition-all duration-300 hover:text-[#d4af37]"><i className="fa-solid fa-circle-info mr-1"></i>About</li>
-                    <li className="cursor-pointer  transition-all duration-300 hover:text-[#d4af37]"><i className="fa-solid fa-phone mr-1"></i>Contact Us</li>
+                    <li onClick={() => navigate("/about")} className="cursor-pointer  transition-all duration-300 hover:text-[#d4af37]"><i className="fa-solid fa-circle-info mr-1"></i>About</li>
+                    <li onClick={() => navigate("/contact")} className="cursor-pointer  transition-all duration-300 hover:text-[#d4af37]"><i className="fa-solid fa-phone mr-1"></i>Contact Us</li>
                     <li
                         onClick={() => navigate("/reservation/forms")}
                         className="relative flex items-center gap-1 cursor-pointer px-3 py-1 transition-all duration-300 hover:text-[#d4af37]"
