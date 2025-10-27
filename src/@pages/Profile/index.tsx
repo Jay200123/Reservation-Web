@@ -101,7 +101,7 @@ export default function Profile() {
                                             px-3 py-1.5 md:px-4 md:py-2 lg:px-5 lg:py-2.5
                                             w-auto lg:w-40
                                             mb-1.5 md:mb-2.5
-                                            transition-all duration-200 hover:bg-[#c9a128]"
+                                            transition-all duration-200 hover:bg-[#c9a128] cursor-pointer"
                         >
                             Edit Information
                         </button>

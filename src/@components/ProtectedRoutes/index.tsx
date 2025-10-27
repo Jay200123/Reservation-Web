@@ -78,7 +78,7 @@ export default function ProtectedRoutes({ children }: ProtectedRouteProp) {
   if (isLoading) {
     return (
       <div className="w-full h-screen flex items-center justify-center">
-        <FadeLoader />
+        <FadeLoader  color="#c9a128" />
       </div>
     )
   }
