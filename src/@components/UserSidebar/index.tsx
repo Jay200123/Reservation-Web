@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function UserSidebar() {
     const navigate = useNavigate();
-    const { logout } = useStore();
+    const { services, logout } = useStore();
 
     const handleLogout = async () => {
         await logout();
@@ -19,12 +19,12 @@ export default function UserSidebar() {
 
                 {/* Logo / Brand */}
                 <div className="relative inline-block">
-                    <h3 className="cursor-pointer text-xs md:text-sm lg:text-xl mt-4 font-medium transition-all duration-300 ease-in-out">
+                    <h3 onClick={() => navigate("/reservation/forms")} className="cursor-pointer text-xs md:text-sm lg:text-xl mt-4 font-medium transition-all duration-300 ease-in-out">
                         <i className="fa-solid fa-calendar mr-1"></i> Reservations
                     </h3>
 
                     <span className="absolute -top-1 -right-3 bg-red-500 text-white text-[10px] md:text-xs font-semibold lg:w-8 lg:h-8 lg:text-base flex items-center justify-center rounded-full">
-                        0
+                        {services.length}
                     </span>
                 </div>
 
