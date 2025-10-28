@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function UserSidebar() {
     const navigate = useNavigate();
-    const { services, logout } = useStore();
+    const { user, services, logout } = useStore();
 
     const handleLogout = async () => {
         await logout();
@@ -48,7 +48,7 @@ export default function UserSidebar() {
                         <i className="fa-solid fa-user-gear mr-1"></i>Services
                     </li>
 
-                    <li onClick={() => toast.error("Feature on progress")} className="cursor-pointer  transition-all duration-300 hover:bg-white hover:text-[#d4af37] lg:p-2.5 rounded-md font-medium">
+                    <li onClick={() => navigate(`/reservations/${user?._id}`)} className="cursor-pointer  transition-all duration-300 hover:bg-white hover:text-[#d4af37] lg:p-2.5 rounded-md font-medium">
                         <i className="fa-solid fa-bookmark mr-1"></i>Reservations
                     </li>
 
