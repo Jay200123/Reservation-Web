@@ -40,14 +40,29 @@ type CreateReservationResponse = {
   message: string;
 };
 
+type ReschedulePayload = {
+  timeslot: string;
+  reservation_date: string;
+  reason: string;
+};
+
 type ReservationActions = {
   getAllReservations: () => Promise<ReservationsResponse>;
   getReservationById: (id: string) => Promise<ReservationResponse>;
   createReservation: (data: any) => Promise<CreateReservationResponse>;
-  rescheduleReservation: () => Promise<void>;
-  updateReservationStatus: () => Promise<void>;
+  rescheduleReservation: (id: string, data: ReschedulePayload) => Promise<void>;
+  updateReservationStatus: (
+    id: string,
+    status: ReservationStatus
+  ) => Promise<void>;
+  getUserReservations: (id: string) => Promise<ReservationsResponse>;
 };
 
 type useReservationApi = ReservationActions;
 
-export type { Reservations, useReservationApi };
+export type {
+  Reservations,
+  ReschedulePayload,
+  ReservationStatus,
+  useReservationApi,
+};

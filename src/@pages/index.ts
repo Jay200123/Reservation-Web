@@ -8,6 +8,7 @@ import EditProfile from "./EditProfile";
 import ServiceDetails from "./ServiceDetails";
 import ReservationForms from "./ReservationForms";
 import Checkout from "./Checkout";
+import UserReservations from "./UserReservations";
 import Dashboard from "./Dashboard";
 
 export {
@@ -21,5 +22,6 @@ export {
   ServiceDetails,
   ReservationForms,
   Checkout,
+  UserReservations,
   Dashboard,
 };
