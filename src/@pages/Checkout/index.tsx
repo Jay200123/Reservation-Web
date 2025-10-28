@@ -17,7 +17,8 @@ export default function Checkout() {
         getUserById,
         getTimeslotById,
         createReservation,
-        addPaymentType
+        addPaymentType,
+        clearForm
     } = useStore();
 
     const { data } = useQuery({
@@ -100,7 +101,8 @@ export default function Checkout() {
         onSubmit: async (values) => {
             try {
                 const result = await createReservation(values);
-                toast.success("Reservation successfully placed.")
+                clearForm();
+                toast.success("Reservation successfully placed.");
 
                 if (result.details[0].payment_type == "ONLINE_PAYMENT") {
                     window.location.href = result.details.payment.redirectUrl || ""
