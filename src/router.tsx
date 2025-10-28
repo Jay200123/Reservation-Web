@@ -16,6 +16,7 @@ import {
     ServiceDetails,
     Checkout,
     ReservationForms,
+    UserReservations,
     Dashboard,
 } from "./@pages";
 
@@ -110,6 +111,14 @@ const Router = createBrowserRouter(
                     <ProtectedRoutes>
                         <MotionWrapper>
                             <EditProfile />
+                        </MotionWrapper>
+                    </ProtectedRoutes>
+                } />
+
+                <Route path="reservations/:user_id" element={
+                    <ProtectedRoutes>
+                        <MotionWrapper>
+                            <UserReservations />
                         </MotionWrapper>
                     </ProtectedRoutes>
                 } />
