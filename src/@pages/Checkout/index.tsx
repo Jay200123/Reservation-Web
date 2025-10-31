@@ -4,6 +4,7 @@ import { useFormik } from "formik";
 import type { ReservationFormik, PaymentType } from "../../@types";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { invalidateUserReservations } from "../../@helpers";
 
 export default function Checkout() {
     const navigate = useNavigate();
@@ -101,6 +102,7 @@ export default function Checkout() {
         onSubmit: async (values) => {
             try {
                 const result = await createReservation(values);
+                invalidateUserReservations();
                 clearForm();
                 toast.success("Reservation successfully placed.");
 
