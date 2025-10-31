@@ -3,13 +3,21 @@ import { useStore } from "../../@state/store";
 import { toast } from "react-toastify";
 
 export default function Navbar() {
+    // Use the `useNavigate` hook from React Router for page navigation
     const navigate = useNavigate();
-    const { user, access_token, services, logout } = useStore();
 
+    const {
+        user,
+        access_token,
+        services,
+        logout
+    } = useStore(); // Destructure user, access_token, services, and logout from the Zustand store
+
+    // Define an async `handleLogout` function to call the logout action and navigate to the sign-in page
     const handleLogout = async () => {
-        await logout();
-        toast.success("Logout successfully");
-        navigate("/signin");
+        await logout(); // Execute the logout API action
+        toast.success("Logged out successfully"); // Show a success toast
+        navigate("/signin"); // Redirect to the sign-in page
     };
 
     return (
@@ -33,24 +41,53 @@ export default function Navbar() {
                     >
                         <i className="fa-solid fa-calendar mr-1"></i>
                         Reservations
+
+                        {/* Show the total count of items in the services state */}
                         <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-semibold w-5 h-5 flex items-center justify-center rounded-full">
                             {services.length}
                         </span>
                     </li>
+
+                    {/* Conditional rendering based on `user` and `access_token` from Zustand store */}
                     {user && access_token ? (
                         <>
+                            {/* Navigate to user profile */}
                             <li
                                 onClick={() => navigate("/profile")}
-                                className="cursor-pointer  transition-all duration-300 hover:text-[#d4af37]">
-                                <i className="fa-solid fa-user mr-1"></i>Profile
+                                className="cursor-pointer transition-all duration-300 hover:text-[#d4af37]"
+                            >
+                                <i className="fa-solid fa-user mr-1"></i>
+                                Profile
                             </li>
 
-                            <li onClick={handleLogout} className="cursor-pointer  transition-all duration-300 hover:text-[#d4af37]"><i className="fa-solid fa-arrow-right-from-bracket mr-1"></i>Logout</li>
+                            {/* Handle user logout */}
+                            <li
+                                onClick={handleLogout}
+                                className="cursor-pointer transition-all duration-300 hover:text-[#d4af37]"
+                            >
+                                <i className="fa-solid fa-arrow-right-from-bracket mr-1"></i>
+                                Logout
+                            </li>
                         </>
                     ) : (
                         <>
-                            <li onClick={() => navigate("/signin")} className="cursor-pointer  transition-all duration-300 hover:text-[#d4af37]"><i className="fa-solid fa-right-to-bracket mr-1"></i>Sign In</li>
-                            <li onClick={() => navigate("/signup")} className="cursor-pointer  transition-all duration-300 hover:text-[#d4af37]"><i className="fa-solid fa-user-plus mr-1"></i>Sign Up</li>
+                            {/* Navigate to Sign In page */}
+                            <li
+                                onClick={() => navigate("/signin")}
+                                className="cursor-pointer transition-all duration-300 hover:text-[#d4af37]"
+                            >
+                                <i className="fa-solid fa-right-to-bracket mr-1"></i>
+                                Sign In
+                            </li>
+
+                            {/* Navigate to Sign Up page */}
+                            <li
+                                onClick={() => navigate("/signup")}
+                                className="cursor-pointer transition-all duration-300 hover:text-[#d4af37]"
+                            >
+                                <i className="fa-solid fa-user-plus mr-1"></i>
+                                Sign Up
+                            </li>
                         </>
                     )}
 
