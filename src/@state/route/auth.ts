@@ -1,6 +1,7 @@
 import type { StateCreator } from "zustand";
 import type { useAuthApi } from "../../@types";
 import { basicApi, authApi, refreshApi } from "../api";
+import { PATH } from "../../@constants";
 
 export const useAuthStore: StateCreator<useAuthApi> = (set) => ({
   user: null,
@@ -8,13 +9,13 @@ export const useAuthStore: StateCreator<useAuthApi> = (set) => ({
   refresh_token: "",
   isRefreshFailed: false,
   register: async (data: any) => {
-    const result = await basicApi.post("/register", data);
+    const result = await basicApi.post(PATH.REGISTER, data);
 
     return result.data;
   },
 
   login: async (username: string, password: string) => {
-    const result = await basicApi.post("/login", {
+    const result = await basicApi.post(PATH.LOGIN, {
       username,
       password,
     });
@@ -33,7 +34,7 @@ export const useAuthStore: StateCreator<useAuthApi> = (set) => ({
    * @returns
    */
   refresh: async () => {
-    const result = await refreshApi.get("/refresh");
+    const result = await refreshApi.get(PATH.REFRESH);
 
     // If the API responds with 401 it means the user has invalid credentials and will clear the access & refresh token state.
     if (result.data.status == 401) {
@@ -57,7 +58,7 @@ export const useAuthStore: StateCreator<useAuthApi> = (set) => ({
    * @returns
    */
   logout: async () => {
-    await authApi.post("/logout");
+    await authApi.post(PATH.LOGOUT);
     set({
       user: null,
       access_token: "",

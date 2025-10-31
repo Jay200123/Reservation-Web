@@ -12,9 +12,10 @@ export default function UserLayout() {
             <main className="min-h-screen min-w-full">
                 <div className="flex flex-1 h-screen">
                     {/* sidebar container */}
-                    <div className="w-[15%] h-full">
+                    <div className="w-[15%] h-full lg:block md:block hidden">
                         <UserSidebar />
                     </div>
+
                     {/* page container */}
                     <div key={location.pathname} className="overflow-y-auto w-full">
                         <Outlet />
