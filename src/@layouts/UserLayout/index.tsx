@@ -4,6 +4,30 @@ import { useLocation } from "react-router-dom";
 import { UserSidebar, Footer } from "../../@components";
 
 export default function UserLayout() {
+    /**
+ * UserLayout Component
+ * --------------------
+ * 
+ * Defines the primary layout for authenticated user pages.
+ * 
+ * Structure:
+ * - `UserSidebar`: Fixed sidebar displayed on large and medium screens.
+ * - `Outlet`: Dynamic route renderer for nested user-related pages.
+ * - `Footer`: Global footer displayed at the bottom of the layout.
+ * - `AnimatePresence`: Enables smooth animations during route transitions.
+ * 
+ * Responsive Design:
+ * - Sidebar is hidden on small screens for a clean mobile experience.
+ * - Content area is scrollable to handle long page content gracefully.
+ * 
+ * Example usage:
+ * ```jsx
+ * <Route element={<UserLayout />}>
+ *   <Route path="dashboard" element={<Dashboard />} />
+ *   <Route path="reservations" element={<Reservations />} />
+ * </Route>
+ * ```
+ */
     const location = useLocation();
 
     return (
