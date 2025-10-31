@@ -1,4 +1,6 @@
 export default function Footer() {
+    // Get the current date in ISO format (YYYY-MM-DD)
+
     const year = new Date().toISOString().split("T")[0];
 
     return (
@@ -42,6 +44,7 @@ export default function Footer() {
                 </div>
                 <div className="flex justify-between border-t border-white">
                     <div className="lg:m-2 md:m-2 m-1.5">
+                        {/* Display current year */}
                         <p className="lg:text-lg md:text-base text-sm">Copyright {year.split("-")[0]} - Renyel Jay Sioc</p>
                     </div>
                     <div className="lg:m-1.5 flex items-center">
