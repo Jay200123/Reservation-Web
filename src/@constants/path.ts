@@ -1,0 +1,20 @@
+export const PATH = {
+  REGISTER: "/register",
+  LOGIN: "/login",
+  REFRESH: "/refresh",
+  LOGOUT: "/logout",
+  USERS: "/users",
+  USER_ID: "/user/:id",
+  EDIT_USER_ID: "/user/edit/:id",
+  SERVICES: "/services",
+  SERVICE_ID: "/service/:id",
+  EDIT_SERVICE_ID: "/service/edit/:id",
+  TIMESLOTS: "/timeslots",
+  TIMESLOT_ID: "/timeslot/:id",
+  EDIT_TIMESLOT_ID: "/timeslot/edit/:id",
+  RESERVATIONS: "/reservations",
+  RESERVATION_ID: "/reservation/:id",
+  RESERVATION_RESCHEDULE_ID: "/reservation/reschedule/:id",
+  EDIT_RESERVATION_STATUS_ID: "/reservation/edit/status/:id",
+  RESERVATIONS_USER_ID:"/reservations/:user_id"
+};
