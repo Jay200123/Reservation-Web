@@ -33,13 +33,7 @@ export default function UserSidebar() {
                     <li onClick={() => navigate("/")} className="cursor-pointer transition-all duration-300 ease-in-out hover:bg-white hover:text-[#d4af37] lg:p-2.5 rounded-md font-medium">
                         <i className="fa-solid fa-house mr-1"></i>Home
                     </li>
-                    <li onClick={() => navigate("/about")} className="cursor-pointer  transition-all duration-300 hover:bg-white hover:text-[#d4af37] lg:p-2.5 rounded-md font-medium">
-                        <i className="fa-solid fa-circle-info mr-1"></i>About
-                    </li>
-                    <li onClick={() => navigate("/contact")} className="cursor-pointer  transition-all duration-300 hover:bg-white hover:text-[#d4af37] lg:p-2.5 rounded-md font-medium">
-                        <i className="fa-solid fa-phone mr-1"></i>Contact Us
-                    </li>
-
+                    
                     <li onClick={() => navigate("/profile")} className="cursor-pointer  transition-all duration-300 hover:bg-white hover:text-[#d4af37] lg:p-2.5 rounded-md font-medium">
                         <i className="fa-solid fa-user mr-1"></i>Profile
                     </li>
