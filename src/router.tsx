@@ -17,6 +17,7 @@ import {
     Checkout,
     ReservationForms,
     UserReservations,
+    RescheduleReservation,
     Dashboard,
 } from "./@pages";
 
@@ -115,10 +116,20 @@ const Router = createBrowserRouter(
                     </ProtectedRoutes>
                 } />
 
+                {/* User Reservations route  */}
                 <Route path="reservations/:user_id" element={
                     <ProtectedRoutes>
                         <MotionWrapper>
                             <UserReservations />
+                        </MotionWrapper>
+                    </ProtectedRoutes>
+                } />
+
+                {/* Reschedule Reservation route */}
+                <Route path="reservation/reschedule/:id" element={
+                    <ProtectedRoutes>
+                        <MotionWrapper>
+                            <RescheduleReservation />
                         </MotionWrapper>
                     </ProtectedRoutes>
                 } />
