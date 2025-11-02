@@ -28,4 +28,7 @@ type TimeslotActions = {
 
 type useTimeslotApi = TimeslotActions;
 
-export type { useTimeslotApi };
+export type { 
+  Timeslots, 
+  useTimeslotApi 
+};
