@@ -1,13 +1,18 @@
 import type { Services } from "./service";
+import type { Timeslots } from "./timeslot";
 import type { PaymentType } from "../formik/reservation";
 
 type ReservationStatus = "PENDING" | "RESCHEDULED" | "ONGOING" | "FINISHED";
 
+type ReservationServices = {
+  service: Services;
+};
+
 type Reservations = {
   _id: string;
   user: string;
-  services: Services[];
-  timeslot: string;
+  services: ReservationServices[];
+  timeslot: Timeslots;
   payment_type: PaymentType;
   status: ReservationStatus;
   reservation_date: Date;
