@@ -44,11 +44,6 @@ export default function UserSidebar() {
                         <i className="fa-solid fa-user mr-1"></i>Profile
                     </li>
 
-                    {/* Services Page */}
-                    <li onClick={() => toast.error("Feature on progress")} className="cursor-pointer  transition-all duration-300 hover:bg-white hover:text-[#d4af37] lg:p-2.5 rounded-md font-medium">
-                        <i className="fa-solid fa-user-gear mr-1"></i>Services
-                    </li>
-
                     {/* User Reservations page */}
                     <li onClick={() => navigate(`/reservations/${user?._id}`)} className="cursor-pointer  transition-all duration-300 hover:bg-white hover:text-[#d4af37] lg:p-2.5 rounded-md font-medium">
                         <i className="fa-solid fa-bookmark mr-1"></i>Reservations
