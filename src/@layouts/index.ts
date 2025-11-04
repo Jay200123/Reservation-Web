@@ -1,5 +1,6 @@
 import HomeLayout from "./Homelayout";
 import UserLayout from "./UserLayout";
+import ServiceLayout from "./ServicesLayout";
 /**
  * Layout Exports
  * ---------------
@@ -18,4 +19,8 @@ import UserLayout from "./UserLayout";
  * import { HomeLayout, UserLayout } from "@/layouts";
  * ```
  */
-export { HomeLayout, UserLayout };
+export { 
+    HomeLayout, 
+    UserLayout,
+    ServiceLayout
+ };
