@@ -1,5 +1,6 @@
 import Navbar from "./Navbar";
 import UserSidebar from "./UserSidebar";
+import ServiceSidebar from "./ServiceSidebar";
 import Footer from "./Footer";
 import MotionWrapper from "./MotionWrapper";
 import ProtectedRoutes from "./ProtectedRoutes";
@@ -24,10 +25,11 @@ import ProtectedRoutes from "./ProtectedRoutes";
  * ```
  */
 
-export { 
-    Navbar, 
-    UserSidebar, 
-    Footer, 
-    MotionWrapper, 
-    ProtectedRoutes
+export {
+  Navbar,
+  UserSidebar,
+  ServiceSidebar,
+  Footer,
+  MotionWrapper,
+  ProtectedRoutes,
 };
