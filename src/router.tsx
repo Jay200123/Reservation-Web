@@ -3,8 +3,15 @@ import {
     createBrowserRouter,
     createRoutesFromElements,
 } from "react-router-dom";
-import { MotionWrapper, ProtectedRoutes } from "./@components";
-import { HomeLayout, UserLayout } from "./@layouts";
+import {
+    MotionWrapper,
+    ProtectedRoutes
+} from "./@components";
+import {
+    HomeLayout,
+    UserLayout,
+    ServiceLayout
+} from "./@layouts";
 import {
     Home,
     About,
@@ -18,6 +25,7 @@ import {
     ReservationForms,
     UserReservations,
     RescheduleReservation,
+    UserServices,
     Dashboard,
 } from "./@pages";
 
@@ -91,6 +99,14 @@ const Router = createBrowserRouter(
                         </MotionWrapper>
                     </ProtectedRoutes>
 
+                } />
+            </Route>
+
+            <Route element={<ServiceLayout />}>
+                <Route path="/services" element={
+                    <MotionWrapper>
+                        <UserServices />
+                    </MotionWrapper>
                 } />
             </Route>
 
