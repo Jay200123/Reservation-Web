@@ -19,7 +19,7 @@ export default function ServiceLayout() {
                         </div>
 
                         {/* Pages */}
-                        <div key={location.pathname} className="w-full  border border-red-500">
+                        <div key={location.pathname} className="overflow-y-auto w-full border border-red-500">
                             <Outlet />
                         </div>
                     </div>
