@@ -39,30 +39,38 @@ export default function UserServices() {
             message: "Container 12"
         },
     ]
+
     return (
-        <>
-            <div className="h-screen overflow-y-auto">
-                <h3>This is User Services</h3>
+        <div className="h-screen overflow-y-auto bg-gradient-to-br from-gray-50 to-gray-200 p-8">
+            <h3 className="text-2xl font-semibold text-gray-800 mb-6 text-center">
+                User Services
+            </h3>
 
-                <div className="w-full flex items-center justify-center">
-                    {/* Box Containers */}
-                    <div className="grid grid-cols-4 gap-5 p-5 w-full">
+            <div className="w-full flex items-center justify-center">
+                {/* Grid Container */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full max-w-7xl">
+                    {test.map((item, index) => (
+                        <div
+                            key={index}
+                            className="bg-white border border-gray-200 shadow-md hover:shadow-lg transition-shadow duration-300 rounded-xl p-6 flex flex-col justify-between hover:-translate-y-1 transform"
+                        >
+                            <h5 className="text-lg font-medium text-gray-700 text-center mb-3">
+                                {item.message}
+                            </h5>
 
-
-                        {test.map((item, index) => {
-                            return (
-                                <div key={index} className="w-[350px] h-[400px] border border-b-black mt-3.5 rounded-md">
-                                    <h5>{item.message}</h5>
+                            <div className="flex-1 flex items-center justify-center">
+                                <div className="text-sm text-gray-500">
+                                    Description or details here...
                                 </div>
-                            )
-                        })}
+                            </div>
 
-
-                    </div>
+                            <button className="mt-5 bg-indigo-500 text-white py-2 px-4 rounded-md hover:bg-indigo-600 transition-colors duration-300">
+                                View Details
+                            </button>
+                        </div>
+                    ))}
                 </div>
             </div>
-
-
-        </>
-    )
+        </div>
+    );
 }
