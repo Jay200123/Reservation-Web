@@ -13,17 +13,17 @@ export default function ServiceLayout() {
             <AnimatePresence mode="wait">
                 <main className="min-h-screen w-full">
                     <div className="w-full h-full flex flex-row items-center">
-                        <div className="w-[20%] h-screen border border-blue-500">
+                        <div className="w-[20%] h-screen border-r border-gray-400">
                             {/* Service Sidebar */}
                             <ServiceSidebar />
                         </div>
 
                         {/* Pages */}
-                        <div key={location.pathname} className="overflow-y-auto w-full border border-red-500">
+                        <div key={location.pathname} className="overflow-y-auto w-full">
                             <Outlet />
                         </div>
                     </div>
-                    <div className="border border-yellow-500">
+                    <div>
                         <Footer />
                     </div>
                 </main>
