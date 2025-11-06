@@ -48,17 +48,18 @@ export default function Navbar() {
                         </span>
                     </li>
 
+                    {/* Services Sub menu */}
+                    <li
+                        onClick={() => navigate("/services")}
+                        className="cursor-pointer transition-all duration-300 hover:text-[#d4af37]"
+                    >
+                        <i className="fa-solid fa-user-gear mr-1"></i>Services
+
+                    </li>
+
                     {/* Conditional rendering based on `user` and `access_token` from Zustand store */}
                     {user && access_token ? (
                         <>
-                            {/* Services Sub menu */}
-                            <li
-                                onClick={() => navigate("/services")}
-                                className="cursor-pointer transition-all duration-300 hover:text-[#d4af37]"
-                            >
-                                <i className="fa-solid fa-user-gear mr-1"></i>Services
-
-                            </li>
                             {/* Navigate to user profile */}
                             <li
                                 onClick={() => navigate("/profile")}
