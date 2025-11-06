@@ -16,7 +16,7 @@ export default function UserServices() {
     const services = data?.details ?? [];
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-200 px-6 py-8 relative">
+        <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-200 px-6 py-8 relative ">
             <div className="absolute top-0 left-0 w-full flex items-center justify-between px-4 py-2">
                 <h3
                     className="lg:text-2xl md:text-lg text-base cursor-pointer hover:text-[#c9a128] transition-all duration-300"
@@ -38,7 +38,7 @@ export default function UserServices() {
             </div>
 
             <h3 className="text-3xl font-semibold text-gray-800 mb-8 text-center">
-                Our Services
+                Our <span className="text-[#c9a128]">Services</span>
             </h3>
 
             <div className="w-full flex items-center justify-center">
@@ -68,10 +68,10 @@ export default function UserServices() {
                                 </h3>
 
                                 <div className="flex justify-between items-center mt-3">
-                                    <span className="text-indigo-600 font-semibold text-base">
+                                    <span className="text-[#c9a128] font-semibold text-base">
                                         ₱{service.service_price}
                                     </span>
-                                    <button className="bg-indigo-500 text-white text-sm px-4 py-2 rounded-lg hover:bg-indigo-600 transition-colors duration-300">
+                                    <button className="bg-[#c9a128] border border-white cursor-pointer text-white text-sm px-4 py-2 rounded-lg hover:bg-[#c9a128] transition-colors duration-300">
                                         View Details
                                     </button>
                                 </div>
