@@ -6,7 +6,7 @@ export default function ServiceSidebar() {
             {/* Search */}
             <div>
                 <h3 className="text-lg font-semibold text-gray-800 mb-2">
-                    Search for a Service
+                    Search for a <span className="text-[#c9a128]">Service</span>
                 </h3>
                 <input
                     type="text"
@@ -20,7 +20,7 @@ export default function ServiceSidebar() {
             {/* Filter by Price */}
             <div>
                 <h3 className="text-lg font-semibold text-gray-800 mb-2">
-                    Filter by Price
+                    Filter by <span className="text-[#c9a128]">Price</span>
                 </h3>
                 <div className="flex gap-2">
                     <input
@@ -45,7 +45,7 @@ export default function ServiceSidebar() {
             {/* Filter by Rating */}
             <div>
                 <h3 className="text-lg font-semibold text-gray-800 mb-3 flex items-center gap-2">
-                    Filter by Rating
+                    Filter by <span className="text-[#c9a128]">Rating</span>
                 </h3>
                 <div className="flex flex-col space-y-2">
                     {[5, 4, 3, 2, 1].map((rating) => (
