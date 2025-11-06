@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 export default function UserServices() {
     const navigate = useNavigate();
 
-    const { getAllServices } = useStore();
+    const { services: serviceState, getAllServices } = useStore();
 
     const { data } = useQuery({
         queryKey: ["services"],
@@ -32,7 +32,7 @@ export default function UserServices() {
                     <i className="fa-solid fa-calendar mr-1"></i>
                     Reservations
                     <span className="absolute -top-2 -right-2 mt-1 bg-red-500 text-white text-xs font-semibold w-5 h-5 flex items-center justify-center rounded-full">
-                        {services.length}
+                        {serviceState.length}
                     </span>
                 </div>
             </div>
@@ -71,7 +71,9 @@ export default function UserServices() {
                                     <span className="text-[#c9a128] font-semibold text-base">
                                         ₱{service.service_price}
                                     </span>
-                                    <button className="bg-[#c9a128] border border-white cursor-pointer text-white text-sm px-4 py-2 rounded-lg hover:bg-[#c9a128] transition-colors duration-300">
+                                    <button
+                                        onClick={() => navigate(`/service/details/${service._id}`)}
+                                        className="bg-[#c9a128] border border-white cursor-pointer text-white text-sm px-4 py-2 rounded-lg hover:bg-[#c9a128] transition-colors duration-300">
                                         View Details
                                     </button>
                                 </div>
