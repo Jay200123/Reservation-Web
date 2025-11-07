@@ -63,8 +63,19 @@ export default function () {
     }
 
     const handleClearForms = () => {
-        toast.success("Forms successfully cleared.");
-        clearForm();
+
+        if (services.length == 0) {
+            toast.error("Please select a service first")
+
+        } else if (reservation_date == null) {
+            toast.error("Please select a reservation date first.")
+
+        } else if (timeslot == null) {
+            toast.error("Please select a timeslot first.")
+        } else {
+            toast.success("Forms successfully cleared.");
+            clearForm();
+        }
     }
 
     //Checkout handler
