@@ -30,77 +30,139 @@ export default function Navbar() {
                     Reservation Web
                 </h3>
 
-                {/* Desktop Menu */}
-                <ul className="hidden md:flex gap-6 text-xs md:text-sm lg:text-sm items-center">
-                    <li onClick={() => navigate("/")} className="cursor-pointer transition-all duration-300 ease-in-out hover:text-[#d4af37]"><i className="fa-solid fa-house mr-1"></i>Home</li>
-                    <li onClick={() => navigate("/about")} className="cursor-pointer  transition-all duration-300 hover:text-[#d4af37]"><i className="fa-solid fa-circle-info mr-1"></i>About</li>
-                    <li onClick={() => navigate("/contact")} className="cursor-pointer  transition-all duration-300 hover:text-[#d4af37]"><i className="fa-solid fa-phone mr-1"></i>Contact Us</li>
-                    <li
-                        onClick={() => navigate("/reservation/forms")}
-                        className="relative flex items-center gap-1 cursor-pointer px-3 py-1 transition-all duration-300 hover:text-[#d4af37]"
-                    >
-                        <i className="fa-solid fa-calendar mr-1"></i>
-                        Reservations
+                {/* Conditional rendering based on `user` and `access_token` from Zustand store */}
+                {user && access_token ? (
+                    <>
 
-                        {/* Show the total count of items in the services state */}
-                        <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-semibold w-5 h-5 flex items-center justify-center rounded-full">
-                            {services.length}
-                        </span>
-                    </li>
+                        {user?.role == "USER" ? (
+                            // User Menu
+                            <ul className="hidden md:flex gap-6 text-xs md:text-sm lg:text-sm items-center">
+                                <li onClick={() => navigate("/")} className="cursor-pointer transition-all duration-300 ease-in-out hover:text-[#d4af37]"><i className="fa-solid fa-house mr-1"></i>Home</li>
+                                <li onClick={() => navigate("/about")} className="cursor-pointer  transition-all duration-300 hover:text-[#d4af37]"><i className="fa-solid fa-circle-info mr-1"></i>About</li>
+                                <li onClick={() => navigate("/contact")} className="cursor-pointer  transition-all duration-300 hover:text-[#d4af37]"><i className="fa-solid fa-phone mr-1"></i>Contact Us</li>
+                                <li
+                                    onClick={() => navigate("/reservation/forms")}
+                                    className="relative flex items-center gap-1 cursor-pointer px-3 py-1 transition-all duration-300 hover:text-[#d4af37]"
+                                >
+                                    <i className="fa-solid fa-calendar mr-1"></i>
+                                    Reservations
 
-                    {/* Services Sub menu */}
-                    <li
-                        onClick={() => navigate("/services")}
-                        className="cursor-pointer transition-all duration-300 hover:text-[#d4af37]"
-                    >
-                        <i className="fa-solid fa-user-gear mr-1"></i>Services
+                                    {/* Show the total count of items in the services state */}
+                                    <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-semibold w-5 h-5 flex items-center justify-center rounded-full">
+                                        {services.length}
+                                    </span>
+                                </li>
 
-                    </li>
+                                {/* Services Sub menu */}
+                                <li
+                                    onClick={() => navigate("/services")}
+                                    className="cursor-pointer transition-all duration-300 hover:text-[#d4af37]"
+                                >
+                                    <i className="fa-solid fa-user-gear mr-1"></i>Services
 
-                    {/* Conditional rendering based on `user` and `access_token` from Zustand store */}
-                    {user && access_token ? (
-                        <>
-                            {/* Navigate to user profile */}
-                            <li
-                                onClick={() => navigate("/profile")}
-                                className="cursor-pointer transition-all duration-300 hover:text-[#d4af37]"
-                            >
-                                <i className="fa-solid fa-user mr-1"></i>
-                                Profile
-                            </li>
+                                </li>
 
-                            {/* Handle user logout */}
-                            <li
-                                onClick={handleLogout}
-                                className="cursor-pointer transition-all duration-300 hover:text-[#d4af37]"
-                            >
-                                <i className="fa-solid fa-arrow-right-from-bracket mr-1"></i>
-                                Logout
-                            </li>
-                        </>
-                    ) : (
-                        <>
-                            {/* Navigate to Sign In page */}
-                            <li
-                                onClick={() => navigate("/signin")}
-                                className="cursor-pointer transition-all duration-300 hover:text-[#d4af37]"
-                            >
-                                <i className="fa-solid fa-right-to-bracket mr-1"></i>
-                                Sign In
-                            </li>
+                                <li
+                                    onClick={() => navigate("/profile")}
+                                    className="cursor-pointer transition-all duration-300 hover:text-[#d4af37]"
+                                >
+                                    <i className="fa-solid fa-user mr-1"></i>
+                                    Profile
+                                </li>
 
-                            {/* Navigate to Sign Up page */}
-                            <li
-                                onClick={() => navigate("/signup")}
-                                className="cursor-pointer transition-all duration-300 hover:text-[#d4af37]"
-                            >
-                                <i className="fa-solid fa-user-plus mr-1"></i>
-                                Sign Up
-                            </li>
-                        </>
-                    )}
+                                {/* Handle user logout */}
+                                <li
+                                    onClick={handleLogout}
+                                    className="cursor-pointer transition-all duration-300 hover:text-[#d4af37]"
+                                >
+                                    <i className="fa-solid fa-arrow-right-from-bracket mr-1"></i>
+                                    Logout
+                                </li>
 
-                </ul>
+                            </ul>
+                        ) : (
+                            // Admin Menu
+                            <ul className="hidden md:flex gap-6 text-xs md:text-sm lg:text-sm items-center">
+                                <li onClick={() => navigate("/dashboard")} className="cursor-pointer transition-all duration-300 ease-in-out hover:text-[#d4af37]">
+                                    <i className="fa-solid fa-chart-simple mr-1"></i>Dashboard</li>
+                                <li onClick={() => toast.error("Feature on progress")} className="cursor-pointer  transition-all duration-300 hover:text-[#d4af37]">
+                                    <i className="fa-solid fa-users mr-1"></i>Users</li>
+                                <li onClick={() => toast.error("Feature on progress")} className="cursor-pointer  transition-all duration-300 hover:text-[#d4af37]">
+                                    <i className="fa-solid fa-user-gear mr-1"></i>Services</li>
+                                <li
+                                    onClick={() => toast.error("Feature on progress")}
+                                    className="relative flex items-center gap-1 cursor-pointer px-3 py-1 transition-all duration-300 hover:text-[#d4af37]"
+                                >
+                                    <i className="fa-solid fa-clock mr-1"></i>
+                                    Timeslots
+                                </li>
+                                <li
+                                    onClick={() => toast.error("Feature on progress")}
+                                    className="relative flex items-center gap-1 cursor-pointer px-3 py-1 transition-all duration-300 hover:text-[#d4af37]"
+                                >
+                                    <i className="fa-solid fa-calendar mr-1"></i>
+                                    Reservations
+                                </li>
+
+                                {/* Handle user logout */}
+                                <li
+                                    onClick={handleLogout}
+                                    className="cursor-pointer transition-all duration-300 hover:text-[#d4af37]"
+                                >
+                                    <i className="fa-solid fa-arrow-right-from-bracket mr-1"></i>
+                                    Logout
+                                </li>
+                            </ul>
+                        )}
+
+                    </>
+                ) : (
+                    <ul className="hidden md:flex gap-6 text-xs md:text-sm lg:text-sm items-center">
+                        <li onClick={() => navigate("/")} className="cursor-pointer transition-all duration-300 ease-in-out hover:text-[#d4af37]">
+                            <i className="fa-solid fa-house mr-1"></i>Home</li>
+                        <li onClick={() => navigate("/about")} className="cursor-pointer  transition-all duration-300 hover:text-[#d4af37]">
+                            <i className="fa-solid fa-circle-info mr-1"></i>About</li>
+                        <li onClick={() => navigate("/contact")} className="cursor-pointer  transition-all duration-300 hover:text-[#d4af37]">
+                            <i className="fa-solid fa-phone mr-1"></i>Contact Us</li>
+                        <li
+                            onClick={() => navigate("/services")}
+                            className="cursor-pointer transition-all duration-300 hover:text-[#d4af37]"
+                        >
+                            <i className="fa-solid fa-user-gear mr-1"></i>Services
+
+                        </li>
+
+                        <li
+                            onClick={() => navigate("/reservation/forms")}
+                            className="relative flex items-center gap-1 cursor-pointer px-3 py-1 transition-all duration-300 hover:text-[#d4af37]"
+                        >
+                            <i className="fa-solid fa-calendar mr-1"></i>
+                            Reservations
+
+                            {/* Show the total count of items in the services state */}
+                            <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-semibold w-5 h-5 flex items-center justify-center rounded-full">
+                                {services.length}
+                            </span>
+                        </li>
+                        {/* Navigate to Sign In page */}
+                        <li
+                            onClick={() => navigate("/signin")}
+                            className="cursor-pointer transition-all duration-300 hover:text-[#d4af37]"
+                        >
+                            <i className="fa-solid fa-right-to-bracket mr-1"></i>
+                            Sign In
+                        </li>
+
+                        {/* Navigate to Sign Up page */}
+                        <li
+                            onClick={() => navigate("/signup")}
+                            className="cursor-pointer transition-all duration-300 hover:text-[#d4af37]"
+                        >
+                            <i className="fa-solid fa-user-plus mr-1"></i>
+                            Sign Up
+                        </li>
+                    </ul>
+                )}
 
                 {/* Mobile Menu */}
                 <div className="block md:hidden">
