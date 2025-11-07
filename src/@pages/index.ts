@@ -12,6 +12,10 @@ import UserReservations from "./UserReservations";
 import RescheduleReservation from "./RescheduleReservation";
 import UserServices from "./UserServices";
 import Dashboard from "./Dashboard";
+import UsersTable from "./UsersTable";
+import ServicesTable from "./ServicesTable";
+import TimeslotsTable from "./TimeslotsTable";
+import ReservationsTable from "./ReservationsTable";
 
 export {
   Home,
@@ -28,4 +32,8 @@ export {
   RescheduleReservation,
   UserServices,
   Dashboard,
+  UsersTable,
+  ServicesTable,
+  TimeslotsTable,
+  ReservationsTable,
 };
