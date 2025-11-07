@@ -1,6 +1,6 @@
 import { useStore } from "../../@state/store";
 import { useQuery } from "@tanstack/react-query";
-import { FaArrowLeft } from "react-icons/fa";
+import { FaHome } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
 export default function UserServices() {
@@ -19,10 +19,10 @@ export default function UserServices() {
         <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-200 px-6 py-8 relative ">
             <div className="absolute top-0 left-0 w-full flex items-center justify-between px-4 py-2">
                 <h3
-                    className="lg:text-2xl md:text-lg text-base cursor-pointer hover:text-[#c9a128] transition-all duration-300"
+                    className="lg:text-3xl md:text-lg text-base cursor-pointer hover:text-[#c9a128] transition-all duration-300"
                     onClick={() => navigate("/")}
                 >
-                    <FaArrowLeft />
+                    <FaHome />
                 </h3>
 
                 <div
