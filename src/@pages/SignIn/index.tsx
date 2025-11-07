@@ -6,10 +6,14 @@ import { signInSchema } from "../../@validations";
 import { motion } from "motion/react";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 
 export default function SignUp() {
     const navigate = useNavigate();
     const { login } = useStore();
+
+    const [isPasswordShow, setIsPasswordShow] = useState(false);
 
     const formik = useFormik<SignInFormik>({
         initialValues: {
@@ -40,6 +44,8 @@ export default function SignUp() {
     const signup = () => {
         navigate("/signup");
     }
+
+    console.log(isPasswordShow)
 
     return (
         <div className="min-h-screen flex justify-center items-center lg:bg-[#d4af37] md:bg-[#d4af37]">
@@ -86,19 +92,39 @@ export default function SignUp() {
                         </div>
 
                         <div className="flex flex-col p-2.5">
-                            <label htmlFor="password">Password</label>
+                            <label htmlFor="password" className="mb-1 text-gray-700 font-medium">
+                                Password
+                            </label>
+
                             <div className="relative">
+                                {/* Left Lock Icon */}
                                 <i className="fa-solid fa-lock absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+
+                                {/* Password Input */}
                                 <input
-                                    type="password"
+                                    type={isPasswordShow ? "text" : "password"}
                                     id="password"
                                     name="password"
-                                    className="p-1.5 border border-gray-400 w-full rounded-md pr-3 pl-10 focus:outline-none focus:border-[#d4af37]"
+                                    placeholder="•••••••"
                                     onBlur={formik.handleBlur}
                                     onChange={formik.handleChange}
                                     value={formik.values.password}
-                                    placeholder="*****" />
+                                    className="p-2 border border-gray-400 w-full rounded-md pr-10 pl-10 focus:outline-none focus:border-[#d4af37] transition-all duration-300"
+                                />
+
+                                {/* Show / Hide Icon */}
+                                <div
+                                    onClick={() => setIsPasswordShow(!isPasswordShow)}
+                                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-[#d4af37] cursor-pointer transition-colors duration-200"
+                                >
+                                    {isPasswordShow ? (
+                                        <FaRegEye size={18} />
+                                    ) : (
+                                        <FaRegEyeSlash size={18} />
+                                    )}
+                                </div>
                             </div>
+
                             <div className="min-h-[1.25rem] mt-1.5">
                                 {formik.touched.password && formik.errors.password && (
                                     <motion.p
@@ -125,9 +151,9 @@ export default function SignUp() {
 
                         <p className="lg:text-lg md:text-base text-sm text-center">Don't have an account yet?<span className="text-[#d4af37] underline ml-1.5 cursor-pointer" onClick={signup}>Sign Up</span></p>
                     </form>
-                </div>
+                </div >
 
-            </div>
-        </div>
+            </div >
+        </div >
     )
 }
