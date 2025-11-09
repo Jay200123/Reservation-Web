@@ -9,10 +9,11 @@ import { invalidateVerify } from "../../@helpers";
 
 type ProtectedRouteProp = {
   children: ReactNode;
+  userRole: string[]
 };
 
 
-export default function ProtectedRoutes({ children }: ProtectedRouteProp) {
+export default function ProtectedRoutes({ children, userRole }: ProtectedRouteProp) {
 
   const {
     user,
@@ -23,6 +24,14 @@ export default function ProtectedRoutes({ children }: ProtectedRouteProp) {
     refresh
   } = useStore();
 
+  if (userRole) {
+
+    const isRoleAuthorized = Array.isArray(userRole) ? userRole.includes(user?.role ?? "") : false;
+
+    if (!isRoleAuthorized) {
+      return <Navigate to="/forbidden" />
+    }
+  }
 
   /**
  * Verifies the user's authorization status by fetching user details using TanStack Query.
@@ -78,7 +87,7 @@ export default function ProtectedRoutes({ children }: ProtectedRouteProp) {
   if (isLoading) {
     return (
       <div className="w-full h-screen flex items-center justify-center">
-        <FadeLoader  color="#c9a128" />
+        <FadeLoader color="#c9a128" />
       </div>
     )
   }
