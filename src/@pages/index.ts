@@ -1,6 +1,7 @@
 import Home from "./Home";
 import About from "./About";
 import Contact from "./Contact";
+import Forbidden from "./Forbiddden";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 import Profile from "./Profile";
@@ -21,6 +22,7 @@ export {
   Home,
   About,
   Contact,
+  Forbidden,
   SignIn,
   SignUp,
   Profile,
