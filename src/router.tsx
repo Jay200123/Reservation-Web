@@ -17,6 +17,7 @@ import {
     About,
     Contact,
     Forbidden,
+    NotFound,
     SignIn,
     SignUp,
     Profile,
@@ -94,6 +95,12 @@ const Router = createBrowserRouter(
                             <Forbidden />
                         </MotionWrapper>
                     </ProtectedRoutes>
+                } />
+
+                <Route path="*" element={
+                    <MotionWrapper>
+                        <NotFound />
+                    </MotionWrapper>
                 } />
 
                 {/* Checkout Form */}
