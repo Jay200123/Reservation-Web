@@ -85,19 +85,19 @@ export default function Navbar() {
                             <ul className="hidden md:flex gap-6 text-xs md:text-sm lg:text-sm items-center">
                                 <li onClick={() => navigate("/dashboard")} className="cursor-pointer transition-all duration-300 ease-in-out hover:text-[#d4af37]">
                                     <i className="fa-solid fa-chart-simple mr-1"></i>Dashboard</li>
-                                <li onClick={() => toast.error("Feature on progress")} className="cursor-pointer  transition-all duration-300 hover:text-[#d4af37]">
+                                <li onClick={() => navigate("/users/table")} className="cursor-pointer  transition-all duration-300 hover:text-[#d4af37]">
                                     <i className="fa-solid fa-users mr-1"></i>Users</li>
-                                <li onClick={() => toast.error("Feature on progress")} className="cursor-pointer  transition-all duration-300 hover:text-[#d4af37]">
+                                <li onClick={() => navigate("/services/table")} className="cursor-pointer  transition-all duration-300 hover:text-[#d4af37]">
                                     <i className="fa-solid fa-user-gear mr-1"></i>Services</li>
                                 <li
-                                    onClick={() => toast.error("Feature on progress")}
+                                    onClick={() => navigate("/timeslots/table")}
                                     className="relative flex items-center gap-1 cursor-pointer px-3 py-1 transition-all duration-300 hover:text-[#d4af37]"
                                 >
                                     <i className="fa-solid fa-clock mr-1"></i>
                                     Timeslots
                                 </li>
                                 <li
-                                    onClick={() => toast.error("Feature on progress")}
+                                    onClick={() => navigate("/reservations/table")}
                                     className="relative flex items-center gap-1 cursor-pointer px-3 py-1 transition-all duration-300 hover:text-[#d4af37]"
                                 >
                                     <i className="fa-solid fa-calendar mr-1"></i>
