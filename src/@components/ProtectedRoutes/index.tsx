@@ -24,12 +24,15 @@ export default function ProtectedRoutes({ children, userRole }: ProtectedRoutePr
     refresh
   } = useStore();
 
+
   if (userRole) {
+    // Check if the authenticated user's role is authorized to access the route
+    const isAuthorized = Array.isArray(userRole) && user?.role
+      ? userRole.includes(user.role)
+      : false;
 
-    const isRoleAuthorized = Array.isArray(userRole) ? userRole.includes(user?.role ?? "") : false;
-
-    if (!isRoleAuthorized) {
-      return <Navigate to="/forbidden" />
+    if (!isAuthorized) {
+      return <Navigate to="/forbidden" replace />;
     }
   }
 
