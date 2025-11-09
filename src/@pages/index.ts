@@ -2,6 +2,7 @@ import Home from "./Home";
 import About from "./About";
 import Contact from "./Contact";
 import Forbidden from "./Forbiddden";
+import NotFound from "./NotFound";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 import Profile from "./Profile";
@@ -23,6 +24,7 @@ export {
   About,
   Contact,
   Forbidden,
+  NotFound,
   SignIn,
   SignUp,
   Profile,
