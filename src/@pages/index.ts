@@ -15,6 +15,7 @@ import RescheduleReservation from "./RescheduleReservation";
 import UserServices from "./UserServices";
 import Dashboard from "./Dashboard";
 import UsersTable from "./UsersTable";
+import UserDetails from "./UsersTable/getUserById";
 import ServicesTable from "./ServicesTable";
 import TimeslotsTable from "./TimeslotsTable";
 import ReservationsTable from "./ReservationsTable";
@@ -37,6 +38,7 @@ export {
   UserServices,
   Dashboard,
   UsersTable,
+  UserDetails,
   ServicesTable,
   TimeslotsTable,
   ReservationsTable,
