@@ -30,6 +30,7 @@ import {
     UserServices,
     Dashboard,
     UsersTable,
+    UserDetails,
     ServicesTable,
     TimeslotsTable,
     ReservationsTable
@@ -180,6 +181,16 @@ const Router = createBrowserRouter(
                     <ProtectedRoutes userRole={["ADMIN"]}>
                         <MotionWrapper>
                             <UsersTable />
+                        </MotionWrapper>
+                    </ProtectedRoutes>
+                } />
+
+
+                {/* User Details  */}
+                <Route path="/user/:id" element={
+                    <ProtectedRoutes userRole={["ADMIN"]}>
+                        <MotionWrapper>
+                            <UserDetails />
                         </MotionWrapper>
                     </ProtectedRoutes>
                 } />
