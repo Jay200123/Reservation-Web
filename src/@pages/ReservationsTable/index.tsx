@@ -1,7 +1,8 @@
-export default function ReservationsTable(){
+export default function ReservationsTable() {
     return (
-        <>
-        <h3>Reservations Table</h3>
-        </>
+                <div className="flex items-center justify-center min-h-screen">
+
+            <h3>Reservations Table</h3>
+        </div>
     )
 }
