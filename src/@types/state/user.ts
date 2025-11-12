@@ -24,6 +24,12 @@ type UserDetails = {
   image: Image[];
 };
 
+type UsersApiResponse = {
+  status: number;
+  details: UserDetails[];
+  message: string;
+};
+
 type UserApiResponse = {
   status: number;
   details: UserDetails;
@@ -31,7 +37,7 @@ type UserApiResponse = {
 };
 
 type UserActions = {
-  getAllUsers: () => Promise<UserDetails[]>;
+  getAllUsers: () => Promise<UsersApiResponse>;
   getUserById: (id: string) => Promise<UserApiResponse>;
   updateUserById: (id: string, data: Partial<FormData>) => Promise<void>;
 };
