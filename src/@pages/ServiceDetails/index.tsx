@@ -70,8 +70,8 @@ export default function ServiceDetails() {
                             <div className="relative">
                                 <input
                                     type="text"
-                                    id="service_name"
-                                    name="service_name"
+                                    id="duration"
+                                    name="duration"
                                     value={service?.duration || ""}
                                     readOnly
                                     className="p-1.5 border border-gray-400 w-full rounded-md pr-3 focus:outline-none focus:border-[#d4af37]"
@@ -80,11 +80,11 @@ export default function ServiceDetails() {
                         </div>
 
                         <div className="flex flex-col p-2.5">
-                            <label htmlFor="fullname">Service Duration</label>
+                            <label htmlFor="fullname">Service Description</label>
                             <div className="relative">
                                 <textarea
-                                    id="service_name"
-                                    name="service_name"
+                                    id="description"
+                                    name="description"
                                     value={service?.description || ""}
                                     rows={6}
                                     readOnly
