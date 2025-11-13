@@ -32,6 +32,7 @@ import {
     UsersTable,
     UserDetails,
     ServicesTable,
+    GetServiceById,
     TimeslotsTable,
     ReservationsTable
 } from "./@pages";
@@ -200,6 +201,15 @@ const Router = createBrowserRouter(
                     <ProtectedRoutes userRole={["ADMIN"]}>
                         <MotionWrapper>
                             <ServicesTable />
+                        </MotionWrapper>
+                    </ProtectedRoutes>
+                } />
+
+                {/* Service Details page */}
+                <Route path="/service/:id" element={
+                    <ProtectedRoutes userRole={["ADMIN"]}>
+                        <MotionWrapper>
+                            <GetServiceById />
                         </MotionWrapper>
                     </ProtectedRoutes>
                 } />
