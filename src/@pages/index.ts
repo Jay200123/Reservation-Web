@@ -17,6 +17,7 @@ import Dashboard from "./Dashboard";
 import UsersTable from "./UsersTable";
 import UserDetails from "./UsersTable/getUserById";
 import ServicesTable from "./ServicesTable";
+import GetServiceById from "./ServicesTable/getServiceById";
 import TimeslotsTable from "./TimeslotsTable";
 import ReservationsTable from "./ReservationsTable";
 
@@ -40,6 +41,7 @@ export {
   UsersTable,
   UserDetails,
   ServicesTable,
+  GetServiceById,
   TimeslotsTable,
   ReservationsTable,
 };
