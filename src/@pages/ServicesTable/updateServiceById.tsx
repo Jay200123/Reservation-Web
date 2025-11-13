@@ -60,8 +60,8 @@ export default function updateServiceById() {
                 {/* Image Layout */}
                 <div className="flex flex-col items-center justify-around w-1/2">
                     {service?.image.map((file) => (
-                        <div key={file.public_id} className="w-[12rem] h-[12rem]">
-                            <img src={file.url} alt="Service" className="w-full h-full object-contain object-center rounded-lg" />
+                        <div key={file.public_id} className="w-[12rem] h-[12rem] shadow">
+                            <img src={file.url} alt="Service" className="w-full h-full object-cover object-center rounded-lg" />
                         </div>
                     ))}
                 </div>
