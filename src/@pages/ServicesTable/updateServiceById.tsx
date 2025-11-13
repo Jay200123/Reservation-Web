@@ -58,12 +58,12 @@ export default function updateServiceById() {
         <div className="flex justify-center items-center lg:bg-[#d4af37] md:bg-[#d4af37] lg:p-5 md:p-4 p-0">
             <form onSubmit={formik.handleSubmit} className="lg:w-[70rem] lg:max-h-[65rem] md:w-[60rem] md:h-[62rem] h-full w-full flex rounded-lg bg-white lg:shadow-lg md:shadow-lg shadow-none lg:m-0 md:m-3.5">
                 {/* Image Layout */}
-                <div className="h-auto lg:block lg:w-1/2 md:block md:w-1/2 w-full hidden">
-                    <img
-                        src={service?.image[Math.floor(Math.random() * service?.image.length)].url}
-                        className="w-full h-full object-cover object-center"
-                        alt="ImageOne"
-                    />
+                <div className="flex flex-col items-center justify-around w-1/2">
+                    {service?.image.map((file) => (
+                        <div key={file.public_id} className="w-[12rem] h-[12rem]">
+                            <img src={file.url} alt="Service" className="w-full h-full object-contain object-center rounded-lg" />
+                        </div>
+                    ))}
                 </div>
 
                 {/* Service Information Layout */}
