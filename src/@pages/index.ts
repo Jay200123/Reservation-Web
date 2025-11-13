@@ -18,6 +18,7 @@ import UsersTable from "./UsersTable";
 import UserDetails from "./UsersTable/getUserById";
 import ServicesTable from "./ServicesTable";
 import GetServiceById from "./ServicesTable/getServiceById";
+import UpdateServiceById from "./ServicesTable/updateServiceById";
 import TimeslotsTable from "./TimeslotsTable";
 import ReservationsTable from "./ReservationsTable";
 
@@ -42,6 +43,7 @@ export {
   UserDetails,
   ServicesTable,
   GetServiceById,
+  UpdateServiceById,
   TimeslotsTable,
   ReservationsTable,
 };
