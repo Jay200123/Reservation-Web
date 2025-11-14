@@ -40,7 +40,7 @@ type ServiceResponse = {
 type ServiceActions = {
   getAllServices: () => Promise<ServicesResponse>;
   getServiceById: (id: string) => Promise<ServiceResponse>;
-  addService: (data: any) => Promise<void>;
+  addService: (data: any) => Promise<ServiceResponse>;
   updateServiceById: (id: string, data: any) => Promise<ServiceResponse>;
 };
 
