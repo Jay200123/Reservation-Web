@@ -42,6 +42,20 @@ export default function ServicesTable() {
             selector: (row) => row.description
         },
         {
+            name: "Images",
+            cell: (row) => {
+                return (
+                    <div className="flex items-center justify-center p-1">
+                        < img
+                            src={row?.image[Math.floor(Math.random() * row?.image.length)]?.url}
+                            alt={row?.image[Math.floor(Math.random() * row.image.length)]?.originalname}
+                            className="object-contain lg:h-22 lg:w-22 md:h-16 md:w-16 h-10 w-10 rounded-md"
+                        />
+                    </div>
+                )
+            }
+        },
+        {
             name: "Actions",
             cell: row => (
                 <div className="flex items-center text-center">
@@ -64,7 +78,15 @@ export default function ServicesTable() {
             {isLoading ? (
                 <FadeLoader color="#c9a128" />
             ) : (
-                <div className="flex flex-col rounded-md shadow-lg">
+                <div className="flex flex-col rounded-md shadow-lg p-2">
+                    <div className="flex items-center justify-end">
+                        <button
+                            onClick={() => navigate("/service/add")}
+                            className="text-[1rem] mb-2 p-2 bg-[#d4af37] cursor-pointer border transition-all duration-500 hover:opacity-75 rounded-md text-white mt-4"
+                        >
+                            <i className="mr-1 fa-solid fa-plus"></i> Add Service
+                        </button>
+                    </div>
                     <DataTable
                         title="Services Table"
                         columns={columns}
