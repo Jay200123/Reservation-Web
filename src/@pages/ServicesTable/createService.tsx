@@ -16,7 +16,7 @@ export default function createService() {
         enableReinitialize: true,
         initialValues: {
             service_name: "",
-            service_price: "",
+            service_price: 0,
             duration: "",
             description: "",
             image: []
@@ -191,7 +191,6 @@ export default function createService() {
                                 />
                             </div>
                         </div>
-
 
                         <div className="w-full flex justify-center items-center p-2.5">
                             <button
