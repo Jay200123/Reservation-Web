@@ -53,6 +53,20 @@ export default function UsersTable() {
             selector: (row) => row?.city
         },
         {
+            name: "Images",
+            cell: (row) => {
+                return (
+                    <div className="flex items-center justify-center p-1">
+                        < img
+                            src={row?.image[Math.floor(Math.random() * row?.image.length)]?.url}
+                            alt={row?.image[Math.floor(Math.random() * row.image.length)]?.originalname}
+                            className="object-contain lg:h-22 lg:w-22 md:h-16 md:w-16 h-10 w-10 rounded-md"
+                        />
+                    </div>
+                )
+            }
+        },
+        {
             name: "Actions",
             cell: row => (
                 <div className="flex text-center items-center ">
