@@ -40,8 +40,8 @@ type ServiceResponse = {
 type ServiceActions = {
   getAllServices: () => Promise<ServicesResponse>;
   getServiceById: (id: string) => Promise<ServiceResponse>;
-  addService: (data: any) => Promise<ServiceResponse>;
-  updateServiceById: (id: string, data: any) => Promise<ServiceResponse>;
+  addService: (data: FormData) => Promise<ServiceResponse>;
+  updateServiceById: (id: string, data: FormData) => Promise<ServiceResponse>;
 };
 
 type useServiceApi = ServiceActions;
