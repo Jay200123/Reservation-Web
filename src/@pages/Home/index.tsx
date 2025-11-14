@@ -106,7 +106,7 @@ export default function Home() {
                                     <div className="h-9/12 overflow-hidden">
                                         <img
                                             onClick={() => navigate(`/service/details/${service._id}`)}
-                                            src={service.image[Math.floor(Math.random() * service.image.length)].url}
+                                            src={service.image[Math.floor(Math.random() * service.image.length)]?.url}
                                             alt={service.service_name}
                                             className="w-full h-full object-center hover:scale-105 duration-500 ease-in-out cursor-pointer"
                                         />
