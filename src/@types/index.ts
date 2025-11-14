@@ -1,5 +1,6 @@
 export * from "./formik/auth";
 export * from "./formik/reservation";
+export * from "./formik/service";
 export * from "./state/auth";
 export * from "./state/user";
 export * from "./state/service";
