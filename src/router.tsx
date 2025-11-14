@@ -33,6 +33,7 @@ import {
     UserDetails,
     ServicesTable,
     GetServiceById,
+    AddService,
     UpdateServiceById,
     TimeslotsTable,
     ReservationsTable
@@ -214,6 +215,16 @@ const Router = createBrowserRouter(
                         </MotionWrapper>
                     </ProtectedRoutes>
                 } />
+
+                {/* Add Service */}
+                <Route path="/service/add" element={
+                    <ProtectedRoutes userRole={["ADMIN"]}>
+                        <MotionWrapper>
+                            <AddService />
+                        </MotionWrapper>
+                    </ProtectedRoutes>
+                } />
+
 
                 {/* Edit Service */}
                 <Route path="/service/edit/:id" element={
