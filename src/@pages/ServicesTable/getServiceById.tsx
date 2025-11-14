@@ -24,7 +24,7 @@ export default function getServiceById() {
                 {/* Image Layout */}
                 <div className="h-auto lg:block lg:w-1/2 md:block md:w-1/2 w-full hidden">
                     <img
-                        src={service?.image[Math.floor(Math.random() * service?.image.length)].url}
+                        src={service?.image[Math.floor(Math.random() * service?.image.length)]?.url}
                         className="w-full h-full object-cover object-center"
                         alt="ImageOne"
                     />
