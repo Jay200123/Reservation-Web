@@ -2,6 +2,7 @@ import type { StateCreator } from "zustand";
 import type { useServiceApi } from "../../@types";
 import { authApi, basicApi } from "../api";
 import { PATH } from "../../@constants";
+import type { Services } from "../../@types";
 
 export const useServiceStore: StateCreator<useServiceApi> = (_set) => ({
   getAllServices: async () => {
@@ -16,7 +17,7 @@ export const useServiceStore: StateCreator<useServiceApi> = (_set) => ({
     return result.data;
   },
 
-  addService: async (data: any) => {
+  addService: async (data: Services) => {
     const result = await authApi.post(PATH.SERVICES, {
       data,
     });
@@ -24,10 +25,10 @@ export const useServiceStore: StateCreator<useServiceApi> = (_set) => ({
     return result.data;
   },
 
-  updateServiceById: async (id: string, data: any) => {
+  updateServiceById: async (id: string, data: Partial<Services>) => {
     const result = await authApi.patch(
       PATH.EDIT_SERVICE_ID.replace(":id", id),
-      { data }
+      data
     );
 
     return result.data;
