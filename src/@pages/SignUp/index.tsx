@@ -312,6 +312,7 @@ export default function SignUp() {
                                 />
                             </div>
                         </div>
+                        
                         <div className="w-full flex justify-center items-center p-2.5">
                             <button
                                 type="submit"
