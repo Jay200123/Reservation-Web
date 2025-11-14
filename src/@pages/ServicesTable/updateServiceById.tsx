@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useFormik } from "formik";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import type { ServiceFormik } from "../../@types";
 
 export default function updateServiceById() {
     const navigate = useNavigate();
@@ -23,11 +24,11 @@ export default function updateServiceById() {
 
     const service = data?.details;
 
-    const formik = useFormik({
+    const formik = useFormik<ServiceFormik>({
         enableReinitialize: true,
         initialValues: {
             service_name: service?.service_name || "",
-            service_price: service?.service_price || "",
+            service_price: service?.service_price || 0,
             duration: service?.duration || "",
             description: service?.description || "",
             image: []
@@ -97,7 +98,7 @@ export default function updateServiceById() {
                                     name="service_price"
                                     onBlur={formik.handleBlur}
                                     onChange={formik.handleChange}
-                                    value={formik.values.service_price || ""}
+                                    value={formik.values.service_price || 0}
                                     className="p-1.5 border border-gray-400 w-full rounded-md pr-3 focus:outline-none focus:border-[#d4af37]"
                                 />
                             </div>
@@ -129,6 +130,23 @@ export default function updateServiceById() {
                                     value={formik.values.description || ""}
                                     rows={6}
                                     className="p-1.5 border border-gray-400 w-full rounded-md pr-3 focus:outline-none focus:border-[#d4af37]"
+                                />
+                            </div>
+                        </div>
+
+                        <div className="flex flex-col p-2.5">
+                            <label htmlFor="image">Image Upload</label>
+                            <div>
+                                <input
+                                    type="file"
+                                    id="image"
+                                    name="image"
+                                    multiple
+                                    onChange={(e) => {
+                                        const files = Array.from(e.currentTarget.files || []);
+                                        formik.setFieldValue("image", files)
+                                    }}
+                                    className="cursor-pointer p-1.5"
                                 />
                             </div>
                         </div>
