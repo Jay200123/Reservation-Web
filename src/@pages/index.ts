@@ -22,6 +22,7 @@ import AddService from "./ServicesTable/createService";
 import UpdateServiceById from "./ServicesTable/updateServiceById";
 import TimeslotsTable from "./TimeslotsTable";
 import GetTimeslotById from "./TimeslotsTable/getTimeslotById";
+import AddTimeslot from "./TimeslotsTable/createTimeslot";
 import UpdateTimeslotById from "./TimeslotsTable/updateTimeslotById";
 import ReservationsTable from "./ReservationsTable";
 
@@ -50,6 +51,7 @@ export {
   UpdateServiceById,
   TimeslotsTable,
   GetTimeslotById,
+  AddTimeslot,
   UpdateTimeslotById,
   ReservationsTable,
 };
