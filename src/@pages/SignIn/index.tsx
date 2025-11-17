@@ -45,7 +45,6 @@ export default function SignUp() {
         navigate("/signup");
     }
 
-    console.log(isPasswordShow)
 
     return (
         <div className="min-h-screen flex justify-center items-center lg:bg-[#d4af37] md:bg-[#d4af37]">
