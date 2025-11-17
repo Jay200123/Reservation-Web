@@ -37,6 +37,7 @@ import {
     UpdateServiceById,
     TimeslotsTable,
     GetTimeslotById,
+    AddTimeslot,
     UpdateTimeslotById,
     ReservationsTable
 } from "./@pages";
@@ -250,6 +251,14 @@ const Router = createBrowserRouter(
                     <ProtectedRoutes userRole={["ADMIN"]}>
                         <MotionWrapper>
                             <GetTimeslotById />
+                        </MotionWrapper>
+                    </ProtectedRoutes>
+                } />
+
+                <Route path="/timeslot/add" element={
+                    <ProtectedRoutes userRole={["ADMIN"]}>
+                        <MotionWrapper>
+                            <AddTimeslot />
                         </MotionWrapper>
                     </ProtectedRoutes>
                 } />
