@@ -39,8 +39,6 @@ export default function updateTimeslotById() {
 
             const result = await updateTimeslotById(timeslot?._id!, formData);
 
-            console.log(result);
-
             if (result.status == 200) {
                 toast.success(result.message);
                 navigate("/timeslots/table")
