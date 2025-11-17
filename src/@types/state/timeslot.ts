@@ -2,8 +2,8 @@ type Timeslots = {
   _id: string;
   start_time: string;
   end_time: string;
-  date_created: Date;
-  date_modified: Date;
+  createdAt: Date;
+  updatedAt: Date;
 };
 
 type TimeslotsResponse = {
@@ -22,13 +22,10 @@ type TimeslotActions = {
   getAllTimeslots: () => Promise<TimeslotsResponse>;
   getTimeslotById: (id: string) => Promise<TimeslotResponse>;
   createTimeslot: (data: FormData) => Promise<void>;
-  updateTimeslotById: (id: string, data: FormData) => Promise<void>;
+  updateTimeslotById: (id: string, data: FormData) => Promise<TimeslotResponse>;
   deleteTimeslotById: (id: string) => Promise<void>;
 };
 
 type useTimeslotApi = TimeslotActions;
 
-export type { 
-  Timeslots, 
-  useTimeslotApi 
-};
+export type { Timeslots, useTimeslotApi };
