@@ -52,7 +52,7 @@ export default function TimeslotsTable() {
                     />
 
                     <FaPencilAlt className='mr-2 text-xl text-blue-500'
-                        onClick={() => navigate(`/service/edit/${row._id}`)}
+                        onClick={() => navigate(`/edit/timeslot/${row._id}`)}
                     />
                 </div>
             )
