@@ -24,18 +24,6 @@ export default function ProtectedRoutes({ children, userRole }: ProtectedRoutePr
     refresh
   } = useStore();
 
-
-  if (userRole) {
-    // Check if the authenticated user's role is authorized to access the route
-    const isAuthorized = Array.isArray(userRole) && user?.role
-      ? userRole.includes(user.role)
-      : false;
-
-    if (!isAuthorized) {
-      return <Navigate to="/forbidden" replace />;
-    }
-  }
-
   /**
  * Verifies the user's authorization status by fetching user details using TanStack Query.
  * The `useQuery` hook calls the Get User By ID API and uses its built-in
@@ -81,6 +69,18 @@ export default function ProtectedRoutes({ children, userRole }: ProtectedRoutePr
   if (!access_token || !refresh_token) {
     return <Navigate to="/signin" replace />
   }
+
+  if (userRole) {
+    // Check if the authenticated user's role is authorized to access the route
+    const isAuthorized = Array.isArray(userRole) && user?.role
+      ? userRole.includes(user.role)
+      : false;
+
+    if (!isAuthorized) {
+      return <Navigate to="/forbidden" replace />;
+    }
+  }
+
 
   /**
   * If `isLoading` is true, it means the `useQuery` request is still in progress. 
