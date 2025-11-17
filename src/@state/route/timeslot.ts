@@ -21,9 +21,12 @@ const useTimeslotStore: StateCreator<useTimeslotApi> = (_set) => ({
   },
 
   updateTimeslotById: async (id: string, data: FormData) => {
-    return await authApi.post(PATH.EDIT_TIMESLOT_ID.replace(":id", id), {
-      data,
-    });
+    const result = await authApi.patch(
+      PATH.EDIT_TIMESLOT_ID.replace(":id", id),
+      data
+    );
+
+    return result?.data;
   },
 
   deleteTimeslotById: async (id: string) => {
