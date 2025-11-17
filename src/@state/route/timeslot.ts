@@ -17,7 +17,9 @@ const useTimeslotStore: StateCreator<useTimeslotApi> = (_set) => ({
   },
 
   createTimeslot: async (data: FormData) => {
-    return await authApi.post(PATH.TIMESLOTS, { data });
+    const result = await authApi.post(PATH.TIMESLOTS, data);
+
+    return result?.data;
   },
 
   updateTimeslotById: async (id: string, data: FormData) => {
