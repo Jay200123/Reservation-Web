@@ -67,6 +67,14 @@ export default function TimeslotsTable() {
                 <FadeLoader color="#c9a128" />
             ) : (
                 <div className="w-full max-w-6xl mx-auto rounded-md">
+                    <div className="flex items-center justify-end">
+                        <button
+                            onClick={() => navigate("/timeslot/add")}
+                            className="text-[1rem] mb-2 p-2 bg-[#d4af37] cursor-pointer border transition-all duration-500 hover:opacity-75 rounded-md text-white mt-4"
+                        >
+                            <i className="mr-1 fa-solid fa-plus"></i> Add Timeslot
+                        </button>
+                    </div>
                     <DataTable
                         title="Timeslots Table"
                         columns={columns}
