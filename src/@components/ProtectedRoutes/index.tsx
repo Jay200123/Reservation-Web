@@ -96,7 +96,7 @@ export default function ProtectedRoutes({ children, userRole }: ProtectedRoutePr
   }
 
   if (isRefreshFailed) {
-    return <Navigate to="signin" replace />
+    return <Navigate to="/signin" replace />
   }
 
   return (
