@@ -83,18 +83,17 @@ export default function UsersTable() {
             {isLoading ? (
                 <FadeLoader color="#c9a128" />
             ) : (
-                <div className="flex flex-col rounded-md shadow-lg">
-                    <DataTable
-                        title="Users Table"
-                        columns={columns}
-                        data={users}
-                        pagination
-                        highlightOnHover
-                        pointerOnHover
-                        paginationPerPage={10}
-                        paginationRowsPerPageOptions={[10, 20, 30]}
-                        customStyles={tableCustomStyles}
-                    />
+                <div className="w-full max-w-7xl mx-auto rounded-md">                    <DataTable
+                    title="Users Table"
+                    columns={columns}
+                    data={users}
+                    pagination
+                    highlightOnHover
+                    pointerOnHover
+                    paginationPerPage={10}
+                    paginationRowsPerPageOptions={[10, 20, 30]}
+                    customStyles={tableCustomStyles}
+                />
                 </div>
 
             )}
