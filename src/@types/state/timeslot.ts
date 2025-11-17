@@ -21,7 +21,7 @@ type TimeslotResponse = {
 type TimeslotActions = {
   getAllTimeslots: () => Promise<TimeslotsResponse>;
   getTimeslotById: (id: string) => Promise<TimeslotResponse>;
-  createTimeslot: (data: FormData) => Promise<void>;
+  createTimeslot: (data: FormData) => Promise<TimeslotResponse>;
   updateTimeslotById: (id: string, data: FormData) => Promise<TimeslotResponse>;
   deleteTimeslotById: (id: string) => Promise<void>;
 };
