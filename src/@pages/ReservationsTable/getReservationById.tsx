@@ -18,10 +18,10 @@ export default function getReservationById() {
     });
 
     const reservation = data?.details;
-    
+
     return (
         <div className="flex justify-center items-center lg:bg-[#d4af37] md:bg-[#d4af37] lg:p-5 md:p-4 p-0">
-            <div className="lg:w-[70rem] lg:max-h-[7xl] md:w-[60rem] md:h-[62rem] h-full w-full flex rounded-lg bg-white lg:shadow-lg md:shadow-lg shadow-none lg:m-0 md:m-3.5 overflow-y-auto">
+            <div className="lg:w-[70rem] lg:max-h-[70rem] md:w-[60rem] md:h-[62rem] h-full w-full flex rounded-lg bg-white lg:shadow-lg md:shadow-lg shadow-none lg:m-0 md:m-3.5 overflow-y-auto">
                 {/* Image Layout */}
                 <div className="lg:block lg:w-1/2 md:block md:w-1/2 w-full hidden">
                     <img src={ImageOne} className="w-full h-full object-cover" alt="ImageOne" />
