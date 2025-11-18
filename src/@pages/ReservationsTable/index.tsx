@@ -20,7 +20,10 @@ export default function ReservationsTable() {
 
     const { data, isLoading } = useQuery({
         queryKey: ["reservations"],
-        queryFn: getAllReservations
+        queryFn: getAllReservations,
+        refetchInterval: false,
+        refetchOnWindowFocus: false,
+        refetchOnMount: false
     });
 
     const reservations = data?.details ?? [];
