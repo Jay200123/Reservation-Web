@@ -1,6 +1,7 @@
 import type { Services } from "./service";
 import type { Timeslots } from "./timeslot";
 import type { PaymentType } from "../formik/reservation";
+import type { User } from "./user";
 
 type ReservationStatus = "PENDING" | "RESCHEDULED" | "ONGOING" | "FINISHED";
 
@@ -10,9 +11,10 @@ type ReservationServices = {
 
 type Reservations = {
   _id: string;
-  user: string;
+  user: User;
   services: ReservationServices[];
   timeslot: Timeslots;
+  amount: number,
   payment_type: PaymentType;
   status: ReservationStatus;
   reservation_date: Date;
