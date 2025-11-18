@@ -6,6 +6,7 @@ import { tableCustomStyles } from "../../@utils";
 import type { Timeslots } from "../../@types/state/timeslot";
 import { FaRegEye, FaPencilAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export default function TimeslotsTable() {
 
@@ -66,7 +67,7 @@ export default function TimeslotsTable() {
             {isLoading ? (
                 <FadeLoader color="#c9a128" />
             ) : (
-                <div className="w-full max-w-6xl mx-auto rounded-md">
+                <div className="w-full max-w-7xl mx-auto rounded-md">
                     <div className="flex items-center justify-end">
                         <button
                             onClick={() => navigate("/timeslot/add")}
