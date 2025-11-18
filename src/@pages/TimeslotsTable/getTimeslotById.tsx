@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import ImageOne from "../../assets/ReservationOne.avif";
 
-
 export default function getTimeslotById() {
     const { id } = useParams();
 
