@@ -25,6 +25,7 @@ import GetTimeslotById from "./TimeslotsTable/getTimeslotById";
 import AddTimeslot from "./TimeslotsTable/createTimeslot";
 import UpdateTimeslotById from "./TimeslotsTable/updateTimeslotById";
 import ReservationsTable from "./ReservationsTable";
+import GetReservationById from "./ReservationsTable/getReservationById";
 
 export {
   Home,
@@ -54,4 +55,5 @@ export {
   AddTimeslot,
   UpdateTimeslotById,
   ReservationsTable,
+  GetReservationById,
 };
