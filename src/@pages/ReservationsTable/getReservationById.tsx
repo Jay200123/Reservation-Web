@@ -18,10 +18,10 @@ export default function getReservationById() {
     });
 
     const reservation = data?.details;
-
+    
     return (
         <div className="flex justify-center items-center lg:bg-[#d4af37] md:bg-[#d4af37] lg:p-5 md:p-4 p-0">
-            <div className="lg:w-[70rem] lg:max-h-[65rem] md:w-[60rem] md:h-[62rem] h-full w-full flex rounded-lg bg-white lg:shadow-lg md:shadow-lg shadow-none lg:m-0 md:m-3.5">
+            <div className="lg:w-[70rem] lg:max-h-[7xl] md:w-[60rem] md:h-[62rem] h-full w-full flex rounded-lg bg-white lg:shadow-lg md:shadow-lg shadow-none lg:m-0 md:m-3.5 overflow-y-auto">
                 {/* Image Layout */}
                 <div className="lg:block lg:w-1/2 md:block md:w-1/2 w-full hidden">
                     <img src={ImageOne} className="w-full h-full object-cover" alt="ImageOne" />
@@ -51,12 +51,18 @@ export default function getReservationById() {
                             <label htmlFor="reservation_date">Reservation Date</label>
                             <div className="relative">
                                 <input
-                                    type="date"
+                                    type="text"
                                     id="reservation_date"
                                     name="reservation_date"
-                                    value={reservation?.reservation_date.toISOString().split("T")[0]}
+                                    placeholder={
+                                        reservation?.reservation_date
+                                            ? new Date(reservation?.reservation_date.toLocaleString())
+                                                .toISOString()
+                                                .split("T")[0]
+                                            : ""
+                                    }
                                     readOnly
-                                    className="p-1.5 border border-gray-400 w-full rounded-md pr-3 focus:outline-none focus:border-[#d4af37]"
+                                    className="p-1.5 border border-gray-400 w-full rounded-md pr-3 focus:outline-none focus:border-[#d4af37] placeholder:text-black"
                                 />
                             </div>
                         </div>
@@ -65,10 +71,10 @@ export default function getReservationById() {
                             <label htmlFor="start_time">Start Time</label>
                             <div className="relative">
                                 <input
-                                    type="date"
+                                    type="text"
                                     id="start_time"
                                     name="start_time"
-                                    value={reservation?.timeslot?.start_time}
+                                    value={reservation?.timeslot?.start_time || ""}
                                     readOnly
                                     className="p-1.5 border border-gray-400 w-full rounded-md pr-3 focus:outline-none focus:border-[#d4af37]"
                                 />
@@ -79,10 +85,10 @@ export default function getReservationById() {
                             <label htmlFor="end_time">End Time</label>
                             <div className="relative">
                                 <input
-                                    type="date"
+                                    type="text"
                                     id="end_time"
                                     name="end_time"
-                                    value={reservation?.timeslot?.end_time}
+                                    value={reservation?.timeslot?.end_time || ""}
                                     readOnly
                                     className="p-1.5 border border-gray-400 w-full rounded-md pr-3 focus:outline-none focus:border-[#d4af37]"
                                 />
@@ -115,7 +121,7 @@ export default function getReservationById() {
                                             ) : (
                                                 <img
                                                     className="object-contain w-32 h-32 md:w-40 md:h-40"
-                                                    src={service?.service?.image[0]?.url || ""}
+                                                    src={service?.service?.image[0]?.url}
                                                     alt="Product"
                                                 />
                                             )}
@@ -147,7 +153,7 @@ export default function getReservationById() {
                                     type="text"
                                     id="status"
                                     name="status"
-                                    value={reservation?.status}
+                                    value={reservation?.status || ""}
                                     readOnly
                                     className="p-1.5 border border-gray-400 w-full rounded-md pr-3 focus:outline-none focus:border-[#d4af37]"
                                 />
@@ -161,7 +167,7 @@ export default function getReservationById() {
                                     type="number"
                                     id="amount"
                                     name="amount"
-                                    value={reservation?.amount}
+                                    value={reservation?.amount || 0}
                                     readOnly
                                     className="p-1.5 border border-gray-400 w-full rounded-md pr-3 focus:outline-none focus:border-[#d4af37]"
                                 />
@@ -172,10 +178,10 @@ export default function getReservationById() {
                             <label htmlFor="end_time">Payment Type</label>
                             <div className="relative">
                                 <input
-                                    type="number"
+                                    type="text"
                                     id="payment_type"
                                     name="payment_type"
-                                    value={reservation?.payment_type}
+                                    value={reservation?.payment_type || ""}
                                     readOnly
                                     className="p-1.5 border border-gray-400 w-full rounded-md pr-3 focus:outline-none focus:border-[#d4af37]"
                                 />
