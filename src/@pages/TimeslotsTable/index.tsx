@@ -6,7 +6,6 @@ import { tableCustomStyles } from "../../@utils";
 import type { Timeslots } from "../../@types/state/timeslot";
 import { FaRegEye, FaPencilAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 
 export default function TimeslotsTable() {
 
