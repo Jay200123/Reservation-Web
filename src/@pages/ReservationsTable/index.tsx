@@ -28,8 +28,6 @@ export default function ReservationsTable() {
 
     const reservations = data?.details ?? [];
 
-    console.log(reservations);
-
     const columns: TableColumn<Reservations>[] = [
         {
             name: "Reservation ID",
