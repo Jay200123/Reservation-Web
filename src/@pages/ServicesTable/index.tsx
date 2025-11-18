@@ -78,7 +78,7 @@ export default function ServicesTable() {
             {isLoading ? (
                 <FadeLoader color="#c9a128" />
             ) : (
-                <div className="w-full max-w-6xl mx-auto rounded-md">
+                <div className="w-full max-w-7xl mx-auto rounded-md">
                     <div className="flex items-center justify-end">
                         <button
                             onClick={() => navigate("/service/add")}
