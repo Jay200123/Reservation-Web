@@ -44,4 +44,4 @@ type UserActions = {
 
 type useUserApi = UserActions;
 
-export type { useUserApi, UserDetails };
+export type { useUserApi, UserDetails, User };
