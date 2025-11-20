@@ -8,7 +8,6 @@ import type { Reservations } from "../../@types";
 import {
     FaRegEye,
     FaPencilAlt,
-    FaCalendarDay
 } from "react-icons/fa";
 import { toast } from "react-toastify";
 
@@ -86,10 +85,6 @@ export default function ReservationsTable() {
 
                     <FaPencilAlt className='mr-2 text-xl text-blue-500'
                         onClick={() => toast.error("Edit Status: Feature on progress")}
-                    />
-
-                    <FaCalendarDay className='mr-2 text-xl text-red-500'
-                        onClick={() => toast.error("Reschedule: Feature on progress")}
                     />
                 </div>
             )
