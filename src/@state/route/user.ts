@@ -4,8 +4,13 @@ import { authApi } from "../api";
 import { PATH } from "../../@constants";
 
 export const useUserStore: StateCreator<useUserApi> = (_set) => ({
-  getAllUsers: async () => {
-    const result = await authApi.get(PATH.USERS);
+  getAllUsers: async (skip: number, limit: number) => {
+    const result = await authApi.get(PATH.USERS, {
+      params: {
+        skip: skip,
+        limit: limit,
+      },
+    });
 
     return result.data;
   },
