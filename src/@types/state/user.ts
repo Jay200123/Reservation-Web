@@ -37,7 +37,7 @@ type UserApiResponse = {
 };
 
 type UserActions = {
-  getAllUsers: () => Promise<UsersApiResponse>;
+  getAllUsers: (skip: number, limit: number) => Promise<UsersApiResponse>;
   getUserById: (id: string) => Promise<UserApiResponse>;
   updateUserById: (id: string, data: Partial<FormData>) => Promise<void>;
 };
