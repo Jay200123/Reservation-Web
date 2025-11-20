@@ -12,15 +12,24 @@ export default function UsersTable() {
 
     const { getAllUsers } = useStore();
 
+    let skip = 0;
+    const limit = 10;
+
     const { data, isLoading } = useQuery({
         queryKey: ["users"],
-        queryFn: getAllUsers,
+        queryFn: () => getAllUsers(skip, limit),
         refetchOnMount: false,
         refetchOnWindowFocus: false,
         refetchInterval: false
     });
 
     const users = data?.details ?? [];
+
+    const handleRowsPerChange = (newLimit: number, currentPage: number) => {
+        console.log("Limit Rows:", newLimit);
+        console.log("Current Rows Page", currentPage)
+
+    }
 
 
     const columns: TableColumn<UserDetails>[] = [
@@ -83,17 +92,19 @@ export default function UsersTable() {
             {isLoading ? (
                 <FadeLoader color="#c9a128" />
             ) : (
-                <div className="w-full max-w-7xl mx-auto rounded-md">                    <DataTable
-                    title="Users Table"
-                    columns={columns}
-                    data={users}
-                    pagination
-                    highlightOnHover
-                    pointerOnHover
-                    paginationPerPage={10}
-                    paginationRowsPerPageOptions={[10, 20, 30]}
-                    customStyles={tableCustomStyles}
-                />
+                <div className="w-full max-w-7xl mx-auto rounded-md">
+                    <DataTable
+                        title="Users Table"
+                        columns={columns}
+                        data={users}
+                        pagination
+                        highlightOnHover
+                        pointerOnHover
+                        paginationPerPage={limit}
+                        paginationRowsPerPageOptions={[10, 20, 30]}
+                        onChangeRowsPerPage={handleRowsPerChange}
+                        customStyles={tableCustomStyles}
+                    />
                 </div>
 
             )}
