@@ -2,11 +2,15 @@ import type { StateCreator } from "zustand";
 import type { useServiceApi } from "../../@types";
 import { authApi, basicApi } from "../api";
 import { PATH } from "../../@constants";
-import type { Services } from "../../@types";
 
 export const useServiceStore: StateCreator<useServiceApi> = (_set) => ({
-  getAllServices: async () => {
-    const result = await basicApi.get(PATH.SERVICES);
+  getAllServices: async (skip: number, limit: number) => {
+    const result = await basicApi.get(PATH.SERVICES, {
+      params: {
+        skip: skip,
+        limit: limit,
+      },
+    });
 
     return result.data;
   },
@@ -17,7 +21,7 @@ export const useServiceStore: StateCreator<useServiceApi> = (_set) => ({
     return result.data;
   },
 
-  addService: async (data: Services) => {
+  addService: async (data: FormData) => {
     const result = await authApi.post(PATH.SERVICES, {
       data,
     });
@@ -25,7 +29,7 @@ export const useServiceStore: StateCreator<useServiceApi> = (_set) => ({
     return result.data;
   },
 
-  updateServiceById: async (id: string, data: Partial<Services>) => {
+  updateServiceById: async (id: string, data: FormData) => {
     const result = await authApi.patch(
       PATH.EDIT_SERVICE_ID.replace(":id", id),
       data
