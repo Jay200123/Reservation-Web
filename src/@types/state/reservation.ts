@@ -14,7 +14,7 @@ type Reservations = {
   user: User;
   services: ReservationServices[];
   timeslot: Timeslots;
-  amount: number,
+  amount: number;
   payment_type: PaymentType;
   status: ReservationStatus;
   reservation_date: Date;
@@ -54,7 +54,10 @@ type ReschedulePayload = {
 };
 
 type ReservationActions = {
-  getAllReservations: () => Promise<ReservationsResponse>;
+  getAllReservations: (
+    skip: number,
+    limit: number
+  ) => Promise<ReservationsResponse>;
   getReservationById: (id: string) => Promise<ReservationResponse>;
   createReservation: (data: any) => Promise<CreateReservationResponse>;
   rescheduleReservation: (id: string, data: ReschedulePayload) => Promise<void>;
