@@ -38,7 +38,7 @@ type ServiceResponse = {
 };
 
 type ServiceActions = {
-  getAllServices: () => Promise<ServicesResponse>;
+  getAllServices: (skip: number, limit: number) => Promise<ServicesResponse>;
   getServiceById: (id: string) => Promise<ServiceResponse>;
   addService: (data: FormData) => Promise<ServiceResponse>;
   updateServiceById: (id: string, data: FormData) => Promise<ServiceResponse>;
