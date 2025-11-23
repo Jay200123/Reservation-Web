@@ -6,31 +6,25 @@ import type { UserDetails } from "../../@types";
 import { tableCustomStyles } from "../../@utils";
 import { FaEye } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 export default function UsersTable() {
     const navigate = useNavigate();
 
+    const [skip, setSkip] = useState(0);
+    const [limit, setLimit] = useState(10);
+
     const { getAllUsers } = useStore();
 
-    let skip = 0;
-    const limit = 10;
-
     const { data, isLoading } = useQuery({
-        queryKey: ["users"],
+        queryKey: ["users", skip, limit],
         queryFn: () => getAllUsers(skip, limit),
         refetchOnMount: false,
         refetchOnWindowFocus: false,
-        refetchInterval: false
+        refetchInterval: false,
     });
 
     const users = data?.details ?? [];
-
-    const handleRowsPerChange = (newLimit: number, currentPage: number) => {
-        console.log("Limit Rows:", newLimit);
-        console.log("Current Rows Page", currentPage)
-
-    }
-
 
     const columns: TableColumn<UserDetails>[] = [
         {
@@ -97,12 +91,41 @@ export default function UsersTable() {
                         title="Users Table"
                         columns={columns}
                         data={users}
-                        pagination
                         highlightOnHover
                         pointerOnHover
+                        pagination
+                        paginationServer
+                        paginationTotalRows={users.length ?? 0}
                         paginationPerPage={limit}
                         paginationRowsPerPageOptions={[10, 20, 30]}
-                        onChangeRowsPerPage={handleRowsPerChange}
+                        onChangeRowsPerPage={(newLimit, page) => {
+                            // When the user changes "rows per page" (5 → 10 → 15)
+                            // 1. Update the limit (how many rows to fetch)
+                            setLimit(newLimit);
+
+                            // 2. Recalculate the skip based on the current page
+                            //
+                            // Example:
+                            // If you're on page 2 and you change rowsPerPage from 5 → 10:
+                            // skip = (2 - 1) * 10 = 10
+                            //
+                            // This ensures you stay on page 2 with the updated limit
+                            setSkip((page - 1) * newLimit);
+                        }}
+
+                        onChangePage={(page) => {
+                            // When the user changes page (1 → 2 → 3)
+                            //
+                            // Recalculate the skip based on:
+                            // skip = (page - 1) * limit
+                            //
+                            // Example:
+                            // page = 3, limit = 5
+                            // skip = (3 - 1) * 5 = 10
+                            //
+                            // Meaning: skip the first 10 records and fetch the next part
+                            setSkip((page - 1) * limit);
+                        }}
                         customStyles={tableCustomStyles}
                     />
                 </div>
