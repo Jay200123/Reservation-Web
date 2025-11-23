@@ -19,7 +19,7 @@ type TimeslotResponse = {
 };
 
 type TimeslotActions = {
-  getAllTimeslots: () => Promise<TimeslotsResponse>;
+  getAllTimeslots: (skip: number, limit: number) => Promise<TimeslotsResponse>;
   getTimeslotById: (id: string) => Promise<TimeslotResponse>;
   createTimeslot: (data: FormData) => Promise<TimeslotResponse>;
   updateTimeslotById: (id: string, data: FormData) => Promise<TimeslotResponse>;
