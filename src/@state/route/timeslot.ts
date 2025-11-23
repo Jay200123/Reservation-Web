@@ -4,8 +4,13 @@ import { basicApi, authApi } from "../api";
 import { PATH } from "../../@constants";
 
 const useTimeslotStore: StateCreator<useTimeslotApi> = (_set) => ({
-  getAllTimeslots: async () => {
-    const result = await basicApi.get(PATH.TIMESLOTS);
+  getAllTimeslots: async (skip: number, limit: number) => {
+    const result = await basicApi.get(PATH.TIMESLOTS, {
+      params: {
+        skip: skip,
+        limit: limit,
+      },
+    });
 
     return result.data;
   },
