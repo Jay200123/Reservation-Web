@@ -6,16 +6,20 @@ import { tableCustomStyles } from "../../@utils";
 import type { Timeslots } from "../../@types/state/timeslot";
 import { FaRegEye, FaPencilAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 export default function TimeslotsTable() {
 
     const navigate = useNavigate();
 
+    const [skip, setSkip] = useState(0);
+    const [limit, setLimit] = useState(0);
+
     const { getAllTimeslots } = useStore();
 
     const { data, isLoading } = useQuery({
-        queryKey: ["timeslots"],
-        queryFn: getAllTimeslots
+        queryKey: ["timeslots", skip, limit],
+        queryFn: () => getAllTimeslots(skip, limit)
     });
 
     const timeslots = data?.details ?? [];
@@ -79,11 +83,41 @@ export default function TimeslotsTable() {
                         title="Timeslots Table"
                         columns={columns}
                         data={timeslots}
-                        pagination
                         highlightOnHover
                         pointerOnHover
-                        paginationPerPage={10}
+                        pagination
+                        paginationServer
+                        paginationTotalRows={timeslots.length ?? 0}
+                        paginationPerPage={limit}
                         paginationRowsPerPageOptions={[10, 20, 30]}
+                        onChangeRowsPerPage={(newLimit, page) => {
+                            // When the user changes "rows per page" (5 → 10 → 15)
+                            // 1. Update the limit (how many rows to fetch)
+                            setLimit(newLimit);
+
+                            // 2. Recalculate the skip based on the current page
+                            //
+                            // Example:
+                            // If you're on page 2 and you change rowsPerPage from 5 → 10:
+                            // skip = (2 - 1) * 10 = 10
+                            //
+                            // This ensures you stay on page 2 with the updated limit
+                            setSkip((page - 1) * newLimit);
+                        }}
+
+                        onChangePage={(page) => {
+                            // When the user changes page (1 → 2 → 3)
+                            //
+                            // Recalculate the skip based on:
+                            // skip = (page - 1) * limit
+                            //
+                            // Example:
+                            // page = 3, limit = 5
+                            // skip = (3 - 1) * 5 = 10
+                            //
+                            // Meaning: skip the first 10 records and fetch the next part
+                            setSkip((page - 1) * limit);
+                        }}
                         customStyles={tableCustomStyles}
                     />
                 </div>
