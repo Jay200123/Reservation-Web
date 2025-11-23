@@ -8,8 +8,13 @@ import { authApi } from "../api";
 import { PATH } from "../../@constants";
 
 export const useReservationStore: StateCreator<useReservationApi> = (_set) => ({
-  getAllReservations: async () => {
-    const result = await authApi.get(PATH.RESERVATIONS);
+  getAllReservations: async (skip: number, limit: number) => {
+    const result = await authApi.get(PATH.RESERVATIONS, {
+      params: {
+        skip: skip,
+        limit: limit,
+      },
+    });
 
     return result.data;
   },
