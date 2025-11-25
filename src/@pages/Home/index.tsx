@@ -5,9 +5,13 @@ import { useStore } from "../../@state/store";
 import { useNavigate } from "react-router-dom";
 import type { Services } from "../../@types";
 import { toast } from "react-toastify";
+import { useState } from "react";
 
 export default function Home() {
     const navigate = useNavigate();
+
+    const [skip, setSkip] = useState(0);
+    const [limit, setLimit] = useState(10);
 
     const {
         services: serviceState,
@@ -16,8 +20,8 @@ export default function Home() {
     } = useStore();
 
     const { data } = useQuery({
-        queryKey: ["services"],
-        queryFn: getAllServices,
+        queryKey: ["services", limit, skip],
+        queryFn: () => getAllServices(limit, skip),
         refetchOnWindowFocus: false, // Disable automatic refetching when the window or tab becomes active again.
         refetchOnMount: false, // Prevent refetching when the component remounts (use cached data instead).
         refetchInterval: false, // Disable polling — the query won’t auto-refetch at a set interval.
