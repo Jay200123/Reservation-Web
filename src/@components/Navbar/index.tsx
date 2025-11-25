@@ -10,7 +10,7 @@ export default function Navbar() {
         user,
         access_token,
         services,
-        logout
+        logout,
     } = useStore(); // Destructure user, access_token, services, and logout from the Zustand store
 
     // Define an async `handleLogout` function to call the logout action and navigate to the sign-in page
