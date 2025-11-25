@@ -9,6 +9,7 @@ export const PATH = {
   SERVICES: "/services",
   SERVICE_ID: "/service/:id",
   EDIT_SERVICE_ID: "/service/edit/:id",
+  CUSTOMER_SERVICES: "/customer/services",
   TIMESLOTS: "/timeslots",
   TIMESLOT_ID: "/timeslot/:id",
   EDIT_TIMESLOT_ID: "/timeslot/edit/:id",
@@ -16,5 +17,5 @@ export const PATH = {
   RESERVATION_ID: "/reservation/:id",
   RESERVATION_RESCHEDULE_ID: "/reservation/reschedule/:id",
   EDIT_RESERVATION_STATUS_ID: "/reservation/edit/status/:id",
-  RESERVATIONS_USER_ID:"/reservations/:user_id"
+  RESERVATIONS_USER_ID: "/reservations/:user_id",
 };
