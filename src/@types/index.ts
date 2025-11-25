@@ -7,4 +7,5 @@ export * from "./state/user";
 export * from "./state/service";
 export * from "./state/form";
 export * from "./state/reservation";
+export * from "./slice/service";
 export * from "./store";
