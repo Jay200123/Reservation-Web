@@ -4,10 +4,12 @@ import type { useServiceApi } from "./state/service";
 import type { useTimeslotApi } from "./state/timeslot";
 import type { useReservationApi } from "./state/reservation";
 import type { useReservationFormSlice } from "./state/form";
+import type { useServiceFilterSlice } from "./slice/service";
 
 export type Store = useAuthApi &
   useUserApi &
   useServiceApi &
   useTimeslotApi &
   useReservationApi &
-  useReservationFormSlice;
+  useReservationFormSlice &
+  useServiceFilterSlice;
