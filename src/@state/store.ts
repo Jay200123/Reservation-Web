@@ -7,6 +7,7 @@ import { useServiceStore } from "./route/services";
 import { useTimeslotStore } from "./route/timeslot";
 import { useReservationStore } from "./route/reservation";
 import { useReservationSlice } from "./slice/reservationSlice";
+import { useServiceSlice } from "./slice/serviceSlice";
 
 export const useStore = create<Store>()(
   persist(
@@ -14,7 +15,7 @@ export const useStore = create<Store>()(
       //slices custom hooks here.
       //ex. ...useGreetSlice(...a)
       ...useReservationSlice(...a),
-
+      ...useServiceSlice(...a),
       //api custom hooks here.
       //ex. ...useUserApi(...a)
       ...useAuthStore(...a),
