@@ -2,15 +2,19 @@ import { useStore } from "../../@state/store";
 import { useQuery } from "@tanstack/react-query";
 import { FaHome } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 export default function UserServices() {
     const navigate = useNavigate();
 
-    const { services: serviceState, getAllServices } = useStore();
+    const [skip, setSkip] = useState(0);
+    const [limit, setLimit] = useState(10);
+
+    const { services: serviceState, service_name, service_price, getUserServices } = useStore();
 
     const { data } = useQuery({
-        queryKey: ["services"],
-        queryFn: getAllServices,
+        queryKey: ["customer_services", skip, limit, service_price, service_name],
+        queryFn: () => getUserServices(service_name, service_price, skip, limit),
     });
 
     const services = data?.details ?? [];
@@ -46,7 +50,8 @@ export default function UserServices() {
                     {services.map((service) => (
                         <div
                             key={service._id}
-                            className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col"
+                            onClick={() => navigate(`/service/details/${service._id}`)}
+                            className="bg-white cursor-pointer rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col"
                         >
                             {/* Image */}
                             <div className="w-full h-56 md:h-60 lg:h-64 overflow-hidden">
