@@ -37,4 +37,22 @@ export const useServiceStore: StateCreator<useServiceApi> = (_set) => ({
 
     return result.data;
   },
+
+  getUserServices: async (
+    service_name: string,
+    service_price: number,
+    skip: number,
+    limit: number
+  ) => {
+    const result = await basicApi.get("/customer/services", {
+      params: {
+        service_name: service_name,
+        service_price: service_price,
+        skip: skip,
+        limit: limit,
+      },
+    });
+
+    return result.data;
+  },
 });
