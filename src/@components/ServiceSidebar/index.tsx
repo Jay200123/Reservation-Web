@@ -1,6 +1,11 @@
 import { FaStar } from "react-icons/fa";
+import { useStore } from "../../@state/store";
 
 export default function ServiceSidebar() {
+
+    const { serviceNameFilter,
+        servicePriceFilter } = useStore();
+
     return (
         <aside className="w-full h-full bg-white rounded-2xl shadow-md p-5 flex flex-col justify-between gap-6 border border-gray-100">
             {/* Search */}
