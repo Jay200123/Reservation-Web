@@ -12,7 +12,6 @@ const basicApi = axios.create({
 const authApi = axios.create({
   baseURL: `${import.meta.env.VITE_BASE_URL}/api/v1`,
   headers: {
-    "Content-Type": "application/json",
     Accept: "application/json",
   },
 });
@@ -45,8 +44,4 @@ refreshApi.interceptors.request.use((config) => {
   return config;
 });
 
-export { 
-  basicApi, 
-  authApi,
-  refreshApi
- };
+export { basicApi, authApi, refreshApi };
