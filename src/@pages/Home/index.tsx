@@ -20,8 +20,8 @@ export default function Home() {
     } = useStore();
 
     const { data } = useQuery({
-        queryKey: ["services", limit, skip],
-        queryFn: () => getAllServices(limit, skip),
+        queryKey: ["services", skip, limit],
+        queryFn: () => getAllServices(skip, limit),
         refetchOnWindowFocus: false, // Disable automatic refetching when the window or tab becomes active again.
         refetchOnMount: false, // Prevent refetching when the component remounts (use cached data instead).
         refetchInterval: false, // Disable polling — the query won’t auto-refetch at a set interval.
