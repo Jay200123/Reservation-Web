@@ -16,6 +16,9 @@ export default function ServiceSidebar() {
                 <input
                     type="text"
                     placeholder="Search Service..."
+                    id="service_name"
+                    name="service_name"
+                    onChange={(e) => serviceNameFilter(e.target.value)}
                     className="w-full p-2.5 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:text-[#c9a128] placeholder-gray-400 transition-all duration-300"
                 />
             </div>
@@ -29,14 +32,16 @@ export default function ServiceSidebar() {
                 </h3>
                 <div className="flex gap-2">
                     <input
-                        type="text"
+                        type="number"
                         id="min"
                         name="min"
+                        onChange={(e) => servicePriceFilter(Number(e.target.value))}
                         placeholder="Min"
                         className="w-1/2 p-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:text-[#c9a128] placeholder-gray-400 transition-all duration-300"
                     />
                     <input
-                        type="text"
+                        // Working on this feature in Backend 
+                        type="number"
                         id="max"
                         name="max"
                         placeholder="Max"
