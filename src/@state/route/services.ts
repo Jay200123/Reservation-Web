@@ -22,9 +22,7 @@ export const useServiceStore: StateCreator<useServiceApi> = (_set) => ({
   },
 
   addService: async (data: FormData) => {
-    const result = await authApi.post(PATH.SERVICES, {
-      data,
-    });
+    const result = await authApi.post(PATH.SERVICES, data);
 
     return result.data;
   },
