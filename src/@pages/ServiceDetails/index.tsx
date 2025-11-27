@@ -8,7 +8,7 @@ export default function ServiceDetails() {
     const { getServiceById } = useStore();
 
     const { data } = useQuery({
-        queryKey: ["service"],
+        queryKey: ["service", id],
         queryFn: () => getServiceById(id!),
         enabled: !!id,
         refetchOnMount: false,
