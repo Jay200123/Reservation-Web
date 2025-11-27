@@ -9,7 +9,7 @@ export default function getReservationById() {
     const { getReservationById } = useStore();
 
     const { data } = useQuery({
-        queryKey: ["reservation"],
+        queryKey: ["reservation", id],
         queryFn: () => getReservationById(id!),
         enabled: !!id,
         refetchOnMount: false,
