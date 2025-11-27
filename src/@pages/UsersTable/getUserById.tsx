@@ -8,7 +8,7 @@ export default function UserDetails() {
     const { getUserById } = useStore();
 
     const { data } = useQuery({
-        queryKey: ["service"],
+        queryKey: ["service", id],
         queryFn: () => getUserById(id!),
         enabled: !!id,
         refetchOnMount: false,
