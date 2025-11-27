@@ -104,8 +104,9 @@ export default function Home() {
 
                 {services?.length > 0 ? (
                     <>
+                        {/* Using JavaScript's slice() to display only the first 4 services */}
                         <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 lg:gap-6 md:gap-4 gap-3 lg:mt-4">
-                            {services?.map((service) => (
+                            {services?.slice(0, 4)?.map((service) => (
                                 <div key={service._id} className="lg:w-[26rem] md:w-[14rem] lg:h-[32rem] md:h-[28rem] w-full h-[26rem] rounded-lg shadow-lg border border-gray-400">
                                     <div className="h-9/12 overflow-hidden">
                                         <img
