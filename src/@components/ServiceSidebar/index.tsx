@@ -37,15 +37,7 @@ export default function ServiceSidebar() {
                         name="min"
                         onChange={(e) => servicePriceFilter(Number(e.target.value))}
                         placeholder="Min"
-                        className="w-1/2 p-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:text-[#c9a128] placeholder-gray-400 transition-all duration-300"
-                    />
-                    <input
-                        // Working on this feature in Backend 
-                        type="number"
-                        id="max"
-                        name="max"
-                        placeholder="Max"
-                        className="w-1/2 p-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:text-[#c9a128] placeholder-gray-400 transition-all duration-300"
+                        className="w-full p-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:text-[#c9a128] placeholder-gray-400 transition-all duration-300"
                     />
                 </div>
             </div>
