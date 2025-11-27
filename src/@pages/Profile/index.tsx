@@ -8,7 +8,7 @@ export default function Profile() {
     const { user, getUserById } = useStore();
 
     const { data } = useQuery({
-        queryKey: ["user"],
+        queryKey: ["user", user?._id],
         queryFn: () => getUserById(user?._id!!),
         enabled: !!user?._id
     });
