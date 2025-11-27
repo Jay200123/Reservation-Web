@@ -13,16 +13,18 @@ export default function updateServiceById() {
 
     const { getServiceById, updateServiceById } = useStore();
 
+    console.log({ id })
+
     const { data } = useQuery({
-        queryKey: ["service"],
+        queryKey: ["service", id],
         queryFn: () => getServiceById(id!),
-        enabled: !!id,
-        refetchOnMount: false,
-        refetchOnWindowFocus: false,
-        refetchInterval: false
+        enabled: !!id
     });
 
     const service = data?.details;
+
+    console.log({ service });
+
 
     const formik = useFormik<ServiceFormik>({
         enableReinitialize: true,
