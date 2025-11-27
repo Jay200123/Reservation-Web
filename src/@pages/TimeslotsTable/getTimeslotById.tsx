@@ -9,7 +9,7 @@ export default function getTimeslotById() {
     const { getTimeslotById } = useStore();
 
     const { data } = useQuery({
-        queryKey: ["timeslot"],
+        queryKey: ["timeslot", id],
         queryFn: () => getTimeslotById(id!),
         enabled: !!id,
         refetchOnMount: false,
