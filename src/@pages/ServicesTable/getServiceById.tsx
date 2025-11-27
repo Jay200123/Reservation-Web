@@ -8,7 +8,7 @@ export default function getServiceById() {
     const { getServiceById } = useStore();
 
     const { data } = useQuery({
-        queryKey: ["service"],
+        queryKey: ["service", id],
         queryFn: () => getServiceById(id!),
         enabled: !!id,
         refetchOnMount: false,
@@ -17,6 +17,8 @@ export default function getServiceById() {
     });
 
     const service = data?.details;
+
+    console.log({ service });
 
     return (
         <div className="flex justify-center items-center lg:bg-[#d4af37] md:bg-[#d4af37] lg:p-5 md:p-4 p-0">
