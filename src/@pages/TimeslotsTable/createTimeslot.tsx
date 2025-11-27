@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import type { TimeslotFormik } from "../../@types";
 import ImageOne from "../../assets/ReservationOne.avif";
+import { FaArrowLeft } from "react-icons/fa";
 
 export default function createTimeslot() {
     const navigate = useNavigate();
@@ -31,6 +32,10 @@ export default function createTimeslot() {
         }
     });
 
+    const back = () => {
+        window.history.back();
+    }
+
     return (
         <div className="flex justify-center items-center lg:bg-[#d4af37] md:bg-[#d4af37] lg:p-5 md:p-4 p-0">
             <form onSubmit={formik.handleSubmit} className="lg:w-[70rem] lg:max-h-[65rem] md:w-[60rem] md:h-[62rem] h-full w-full flex rounded-lg bg-white lg:shadow-lg md:shadow-lg shadow-none lg:m-0 md:m-3.5">
@@ -40,7 +45,11 @@ export default function createTimeslot() {
                 </div>
 
                 {/* Service Information Layout */}
-                <div className="lg:w-1/2 md:w-1/2 w-full flex flex-col justify-center">
+                <div className="lg:w-1/2 md:w-1/2 w-full flex flex-col justify-center relative">
+                    <FaArrowLeft
+                        onClick={() => back()}
+                        className="absolute top-0 left-0 bottom-0 lg:m-2 md:m-1.5 m-1 lg:text-3xl md:text-2xl text-lg transition-all duration-300 hover:text-[#d4af37] cursor-pointer"
+                    />
                     <div className=" lg:px-3.5 lg:py-3.5 md:px-2.5 md:py-2.5 px-1.5 py-1.5">
                         <h3 className="lg:text-4xl md:text-2xl text-lg text-center font-medium">Timeslot Information</h3>
                         <p className="lg:text-base lg:mt-3.5 md:text-sm text-xs text-center">Provide the details of a timeslot below. Clear and accurate information helps customers understand what you offer best.</p>
