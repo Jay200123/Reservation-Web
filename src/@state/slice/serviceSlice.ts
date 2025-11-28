@@ -17,9 +17,17 @@ export const useServiceSlice: StateCreator<useServiceFilterSlice> = (set) => ({
     });
   },
 
-  serviceRating: (rating: number) => {
+  serviceRatingFilter: (rating: number) => {
     set({
       service_rating: rating,
+    });
+  },
+
+  serviceClearFilter: () => {
+    set({
+      service_name: "",
+      service_price: 0,
+      service_rating: 0,
     });
   },
 });
