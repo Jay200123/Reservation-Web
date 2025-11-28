@@ -7,7 +7,8 @@ type ServiceState = {
 type ServiceActions = {
   serviceNameFilter: (service_name: string) => void;
   servicePriceFilter: (service_price: number) => void;
-  serviceRating: (rating: number) => void;
+  serviceRatingFilter: (rating: number) => void;
+  serviceClearFilter: () => void;
 };
 
 type useServiceFilterSlice = ServiceState & ServiceActions;
