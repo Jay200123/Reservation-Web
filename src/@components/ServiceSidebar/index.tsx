@@ -1,10 +1,23 @@
 import { FaStar } from "react-icons/fa";
 import { useStore } from "../../@state/store";
+import { useEffect } from "react";
 
 export default function ServiceSidebar() {
 
-    const { serviceNameFilter,
-        servicePriceFilter } = useStore();
+    const {
+        serviceNameFilter,
+        servicePriceFilter,
+        serviceRatingFilter,
+        serviceClearFilter,
+    } = useStore();
+
+    useEffect(() => {
+        return () => {
+            // clears the service filter state after the UserServices page unmounts
+            serviceClearFilter();
+        }
+    }, [serviceClearFilter])
+
 
     return (
         <aside className="w-full h-full bg-white rounded-2xl shadow-md p-5 flex flex-col justify-between gap-6 border border-gray-100">
@@ -57,7 +70,7 @@ export default function ServiceSidebar() {
                         >
                             <div className="flex">
                                 {[...Array(rating)].map((_, index) => (
-                                    <FaStar key={index} className="text-yellow-500" />
+                                    <FaStar key={index} onClick={() => serviceRatingFilter(rating)} className="text-yellow-500" />
                                 ))}
                             </div>
                             <span className="text-sm text-[#c9a128]">{rating} Stars</span>
