@@ -9,7 +9,6 @@ import {
     FaRegEye,
     FaPencilAlt,
 } from "react-icons/fa";
-import { toast } from "react-toastify";
 import { useState } from "react";
 
 export default function ReservationsTable() {
@@ -18,6 +17,8 @@ export default function ReservationsTable() {
 
     const [skip, setSkip] = useState(0);
     const [limit, setLimit] = useState(0);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
 
     const { getAllReservations } = useStore();
 
@@ -87,8 +88,11 @@ export default function ReservationsTable() {
                         onClick={() => navigate(`/reservation/${row._id}`)}
                     />
 
-                    <FaPencilAlt className='mr-2 text-xl text-blue-500'
-                        onClick={() => toast.error("Edit Status: Feature on progress")}
+                    <FaPencilAlt className='mr-2 text-xl text-blue-500 cursor-pointer'
+                        onClick={() => {
+                            // setSelectedReservation(row);
+                            setIsModalOpen(true);
+                        }}
                     />
                 </div>
             )
@@ -140,6 +144,25 @@ export default function ReservationsTable() {
                         }}
                         customStyles={tableCustomStyles}
                     />
+
+                    {isModalOpen && (
+                        <div className="fixed inset-0 bg-white/40 backdrop-blur-sm flex items-center justify-center rounded-md">
+                            <div className="bg-white p-6 rounded shadow-lg w-96">
+                                <h2 className="text-xl font-semibold mb-4">Reservation Details</h2>
+
+                                {/* Display selected row data */}
+                                <p><strong>Name:</strong> Lorem</p>
+                                <p><strong>Date:</strong> test</p>
+
+                                <button
+                                    onClick={() => setIsModalOpen(false)}
+                                    className="mt-4 px-4 py-2 bg-red-500 text-white rounded"
+                                >
+                                    Close
+                                </button>
+                            </div>
+                        </div>
+                    )}
                 </div>
 
             )}
