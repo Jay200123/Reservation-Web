@@ -16,7 +16,7 @@ export default function Home() {
     const {
         services: serviceState,
         getAllServices,
-        addServiceToForm
+        addServiceToForm,
     } = useStore();
 
     const { data } = useQuery({
