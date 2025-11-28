@@ -10,10 +10,21 @@ export default function UserServices() {
     const [skip, setSkip] = useState(0);
     const [limit, setLimit] = useState(10);
 
-    const { services: serviceState, service_name, service_price, getUserServices } = useStore();
+    const {
+        services: serviceState,
+        service_name,
+        service_price,
+        getUserServices
+    } = useStore();
 
     const { data } = useQuery({
-        queryKey: ["customer_services", skip, limit, service_price, service_name],
+        queryKey: [
+            "customer_services", 
+            skip, 
+            limit, 
+            service_price, 
+            service_name
+        ],
         queryFn: () => getUserServices(service_name, service_price, skip, limit),
     });
 
