@@ -42,6 +42,7 @@ type AuthActions = {
   register: (data: FormData) => Promise<void>;
   login: (email: string, password: string) => Promise<AuthResponse>;
   refresh: () => Promise<RefreshResponse>;
+  resetRefresh: () => void;
   logout: () => Promise<void>;
 };
 
