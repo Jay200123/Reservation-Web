@@ -47,8 +47,10 @@ const Router = createBrowserRouter(
     createRoutesFromElements(
         <Route>
             {/*Public Routes here */}
+            {/* Parent component */}
             <Route element={<HomeLayout />}>
 
+                {/* Child component  */}
                 {/* Landing Page Route */}
                 <Route index path="/" element={
                     <MotionWrapper>
