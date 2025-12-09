@@ -21,7 +21,8 @@ export default function ProtectedRoutes({ children, userRole }: ProtectedRoutePr
     refresh_token,
     isRefreshFailed,
     getUserById,
-    refresh
+    refresh,
+    resetRefresh
   } = useStore();
 
   /**
@@ -58,6 +59,8 @@ export default function ProtectedRoutes({ children, userRole }: ProtectedRoutePr
 
     handleRefresh();
 
+    // Returns a cleanup function — React will call this when the component unmounts
+    // or before the effect runs again.
     return () => {
 
     }
@@ -96,6 +99,7 @@ export default function ProtectedRoutes({ children, userRole }: ProtectedRoutePr
   }
 
   if (isRefreshFailed) {
+    resetRefresh();
     return <Navigate to="/signin" replace />
   }
 
