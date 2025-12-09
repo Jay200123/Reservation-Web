@@ -1,6 +1,9 @@
-export default function Footer() {
-    // Get the current date in ISO format (YYYY-MM-DD)
+import { useNavigate } from "react-router-dom";
 
+export default function Footer() {
+    const navigate = useNavigate();
+
+    // Get the current date in ISO format (YYYY-MM-DD)
     const year = new Date().toISOString().split("T")[0];
 
     return (
@@ -9,31 +12,31 @@ export default function Footer() {
                 <div className=" flex lg:flex-row md:flex-row flex-col lg:justify-between md:justify-between justify-around lg:h-[12rem] md:h-[22rem] h-[28rem]">
                     <ul>
                         <li className="font-bold lg:text-lg md:text-lg text-base lg:m-1.5 md:m-1.5 m-1">Primary Information</li>
-                        <li className="lg:text-base md:text-base text-sm lg:m-2 md:m-1.5 m-1 cursor-pointer">Reservation Web</li>
-                        <li className="lg:text-base md:text-base text-sm lg:m-2 md:m-1.5 m-1 cursor-pointer">About</li>
-                        <li className="lg:text-base md:text-base text-sm lg:m-2 md:m-1.5 m-1 cursor-pointer">123 Lorem St., Ipsum City, Dolor 4567
+                        <li onClick={()=>navigate("/")} className="lg:text-base md:text-base text-sm lg:m-2 md:m-1.5 m-1 cursor-pointer transition-all duration-300 ease-in-out hover:underline">Reservation Web</li>
+                        <li onClick={()=>navigate("/about")} className="lg:text-base md:text-base text-sm lg:m-2 md:m-1.5 m-1 cursor-pointer transition-all duration-300 ease-in-out hover:underline">About</li>
+                        <li className="lg:text-base md:text-base text-sm lg:m-2 md:m-1.5 m-1 cursor-pointer transition-all duration-300 ease-in-out hover:underline">123 Lorem St., Ipsum City, Dolor 4567
                         </li>
-                        <li className="lg:text-base md:text-base text-sm lg:m-2 md:m-1.5 m-1 cursor-pointer">8:00 A.M to 5:00 P.M (Monday - Saturdays)</li>
+                        <li className="lg:text-base md:text-base text-sm lg:m-2 md:m-1.5 m-1 cursor-pointer transition-all duration-300 ease-in-out hover:underline">8:00 A.M to 5:00 P.M (Monday - Saturdays)</li>
                     </ul>
 
                     <ul>
-                        <li className="font-bold lg:text-lg md:text-lg text-base lg:m-1.5 md:m-1.5 m-1 cursor-pointer">Contact </li>
-                        <li className="lg:text-base md:text-base text-sm lg:m-2 md:m-1.5 m-1 cursor-pointer">+63 9123456789</li>
-                        <li className="lg:text-base md:text-base text-sm lg:m-2 md:m-1.5 m-1 cursor-pointer">lorem.ipsum@gmail.com</li>
+                        <li className="font-bold lg:text-lg md:text-lg text-base lg:m-1.5 md:m-1.5 m-1 cursor-pointer transition-all duration-300 ease-in-out hover:underline">Contact </li>
+                        <li className="lg:text-base md:text-base text-sm lg:m-2 md:m-1.5 m-1 cursor-pointer transition-all duration-300 ease-in-out hover:underline">+63 9123456789</li>
+                        <li className="lg:text-base md:text-base text-sm lg:m-2 md:m-1.5 m-1 cursor-pointer transition-all duration-300 ease-in-out hover:underline">lorem.ipsum@gmail.com</li>
                     </ul>
 
                     <ul>
-                        <li className="font-bold lg:text-lg md:text-lg text-base lg:m-1.5 md:m-1.5 m-1">Quick Links</li>
-                        <li className="lg:text-base md:text-base text-sm lg:m-2 md:m-1.5 m-1 cursor-pointer">Sign Up</li>
-                        <li className="lg:text-base md:text-base text-sm lg:m-2 md:m-1.5 m-1 cursor-pointer">Sign In</li>
-                        <li className="lg:text-base md:text-base text-sm lg:m-2 md:m-1.5 m-1 cursor-pointer">Services</li>
+                        <li className="font-bold lg:text-lg md:text-lg text-base lg:m-1.5 md:m-1.5 m-1 transition-all duration-300 ease-in-out hover:underline">Quick Links</li>
+                        <li onClick={()=>navigate("/signup")} className="lg:text-base md:text-base text-sm lg:m-2 md:m-1.5 m-1 cursor-pointer transition-all duration-300 ease-in-out hover:underline">Sign Up</li>
+                        <li onClick={()=>navigate("/signin")} className="lg:text-base md:text-base text-sm lg:m-2 md:m-1.5 m-1 cursor-pointer transition-all duration-300 ease-in-out hover:underline">Sign In</li>
+                        <li className="lg:text-base md:text-base text-sm lg:m-2 md:m-1.5 m-1 cursor-pointer transition-all duration-300 ease-in-out hover:underline">Services</li>
                     </ul>
 
 
                     <ul>
-                        <li className="font-bold lg:text-lg md:text-lg text-base lg:m-1.5 md:m-1.5 m-1">Legal</li>
-                        <li className="lg:text-base md:text-base text-sm lg:m-2 md:m-1.5 m-1 cursor-pointer">Privacy Policy</li>
-                        <li className="lg:text-base md:text-base text-sm lg:m-2 md:m-1.5 m-1 cursor-pointer">Terms & Conditions.</li>
+                        <li className="font-bold lg:text-lg md:text-lg text-base lg:m-1.5 md:m-1.5 m-1 transition-all duration-300 ease-in-out hover:underline">Legal</li>
+                        <li className="lg:text-base md:text-base text-sm lg:m-2 md:m-1.5 m-1 cursor-pointer transition-all duration-300 ease-in-out hover:underline">Privacy Policy</li>
+                        <li className="lg:text-base md:text-base text-sm lg:m-2 md:m-1.5 m-1 cursor-pointer transition-all duration-300 ease-in-out hover:underline">Terms & Conditions.</li>
                     </ul>
                 </div>
                 <div className=" lg:h-12 lg:m-2 md:m-1.5 m-1 flex items-center">
