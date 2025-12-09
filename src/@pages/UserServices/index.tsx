@@ -19,10 +19,10 @@ export default function UserServices() {
 
     const { data } = useQuery({
         queryKey: [
-            "customer_services", 
-            skip, 
-            limit, 
-            service_price, 
+            "customer_services",
+            skip,
+            limit,
+            service_price,
             service_name
         ],
         queryFn: () => getUserServices(service_name, service_price, skip, limit),
@@ -57,46 +57,55 @@ export default function UserServices() {
             </h3>
 
             <div className="w-full flex items-center justify-center">
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 max-w-7xl w-full">
-                    {services.map((service) => (
-                        <div
-                            key={service._id}
-                            onClick={() => navigate(`/service/details/${service._id}`)}
-                            className="bg-white cursor-pointer rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col"
-                        >
-                            {/* Image */}
-                            <div className="w-full h-56 md:h-60 lg:h-64 overflow-hidden">
-                                <img
-                                    src={
-                                        service.image[
-                                            Math.floor(Math.random() * service.image.length)
-                                        ]?.url
-                                    }
-                                    alt={service.service_name}
-                                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                                />
-                            </div>
+                {services?.length > 0 ? (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 max-w-7xl w-full">
+                        {services.map((service) => (
+                            <div
+                                key={service._id}
+                                onClick={() => navigate(`/service/details/${service._id}`)}
+                                className="bg-white cursor-pointer rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col"
+                            >
+                                {/* Image */}
+                                <div className="w-full h-56 md:h-60 lg:h-64 overflow-hidden">
+                                    <img
+                                        src={
+                                            service.image[
+                                                Math.floor(Math.random() * service.image.length)
+                                            ]?.url
+                                        }
+                                        alt={service.service_name}
+                                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                                    />
+                                </div>
 
-                            {/* Info */}
-                            <div className="flex flex-col justify-between flex-grow p-5">
-                                <h3 className="text-lg font-medium text-gray-800 truncate">
-                                    {service.service_name}
-                                </h3>
+                                {/* Info */}
+                                <div className="flex flex-col justify-between flex-grow p-5">
+                                    <h3 className="text-lg font-medium text-gray-800 truncate">
+                                        {service.service_name}
+                                    </h3>
 
-                                <div className="flex justify-between items-center mt-3">
-                                    <span className="text-[#c9a128] font-semibold text-base">
-                                        ₱{service.service_price}
-                                    </span>
-                                    <button
-                                        onClick={() => navigate(`/service/details/${service._id}`)}
-                                        className="bg-[#c9a128] border border-white cursor-pointer text-white text-sm px-4 py-2 rounded-lg hover:bg-[#c9a128] transition-colors duration-300">
-                                        View Details
-                                    </button>
+                                    <div className="flex justify-between items-center mt-3">
+                                        <span className="text-[#c9a128] font-semibold text-base">
+                                            ₱{service.service_price}
+                                        </span>
+                                        <button
+                                            onClick={() => navigate(`/service/details/${service._id}`)}
+                                            className="bg-[#c9a128] border border-white cursor-pointer text-white text-sm px-4 py-2 rounded-lg hover:bg-[#c9a128] transition-colors duration-300">
+                                            View Details
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    ))}
-                </div>
+                        ))}
+                    </div>
+                ) : (
+                    <div className="w-full flex items-center justify-center ">
+                        <h3 className="font-medium lg:text-2xl md:text-lg text-base">
+                            No <span className="text-[#c9a128]">Services</span> Found...
+                        </h3>
+                    </div>
+                )}
+
             </div>
         </div>
     );
