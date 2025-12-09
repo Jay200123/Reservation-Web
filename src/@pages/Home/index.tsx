@@ -15,6 +15,7 @@ export default function Home() {
 
     const {
         services: serviceState,
+        user,
         getAllServices,
         addServiceToForm,
     } = useStore();
@@ -122,9 +123,11 @@ export default function Home() {
                                         <p className="lg:text-base md:text-sm text-xs ">Duration: <span className="text-[#c9a128]">{service.duration}</span></p>
 
                                         <div className="flex items-center justify-end p-1.5">
-                                            <i
+                                            {user?.role == "USER" ? (<i
                                                 onClick={() => handleService(service)}
-                                                className="fa-solid fa-clipboard lg:text-2xl cursor-pointer transition-all duration-300 ease-in-out hover:text-[#d4af37]"></i>
+                                                className="fa-solid fa-clipboard lg:text-2xl cursor-pointer transition-all duration-300 ease-in-out hover:text-[#d4af37]"></i>) : (
+                                                <></>
+                                            )}
                                         </div>
                                     </div>
                                 </div>
@@ -133,7 +136,7 @@ export default function Home() {
                     </>) : (
                     <>
                         <div className="flex w-full h-full justify-center">
-                            <h3 className="font-medium lg:text-3xl md:text-2xl text-lg">No Services Found</h3>
+                            <h3 className="font-medium lg:text-3xl md:text-2xl text-lg">No <span className="text-[#c9a128]">Services</span> Found</h3>
                         </div>
                     </>
                 )}
