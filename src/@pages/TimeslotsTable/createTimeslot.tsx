@@ -23,7 +23,7 @@ export default function createTimeslot() {
 
             const result = await createTimeslot(formData);
 
-            if (result.status == 200) {
+            if (result.status == 201) {
                 toast.success(result.message);
                 navigate("/timeslots/table")
             } else {
@@ -90,7 +90,7 @@ export default function createTimeslot() {
                                 type="submit"
                                 disabled={!formik.isValid || formik.isSubmitting}
                                 className={`rounded-2xl border border-white bg-[#d4af37] text-white lg:text-lg md:text-base text-base p-1.5 lg:px-2.5 lg:py-2.5 w-full md:px-1.5 md:py-1.5 lg:[8rem] lg:font-medium md:mb-2.5 mb-1.5 cursor-pointer ${!formik.isValid && "cursor-not-allowed opacity-50"}`}>
-                                Update Timeslot
+                                Create Timeslot
                             </button>
                         </div>
                     </div>
