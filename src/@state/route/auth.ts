@@ -34,23 +34,28 @@ export const useAuthStore: StateCreator<useAuthApi> = (set) => ({
    * @returns
    */
   refresh: async () => {
-    const result = await refreshApi.get(PATH.REFRESH);
+    try {
+      const result = await refreshApi.get(PATH.REFRESH);
+      set({
+        access_token: result.data.details.access_token,
+        refresh_token: result.data.details.refresh_token,
+      });
 
-    // If the API responds with 401 it means the user has invalid credentials and will clear the access & refresh token state.
-    if (result.data.status == 401) {
+      return result.data;
+    } catch (err: any) {
+      // If the API responds with 401 it means the user has invalid credentials and will clear the access & refresh token state.
       set({
         access_token: "",
         refresh_token: "",
         isRefreshFailed: true,
       });
     }
+  },
 
+  resetRefresh: () => {
     set({
-      access_token: result.data.details.access_token,
-      refresh_token: result.data.details.refresh_token,
+      isRefreshFailed: false,
     });
-
-    return result.data;
   },
 
   /**
