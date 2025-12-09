@@ -6,6 +6,7 @@ import 'react-calendar/dist/Calendar.css';
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { DateFormatter } from "../../@utils";
+import { useState } from "react";
 
 export default function () {
     const navigate = useNavigate();
@@ -21,9 +22,12 @@ export default function () {
         clearForm,
     } = useStore();
 
+    const [skip, setSkip] = useState(0);
+    const [limit, setLimit] = useState(10);
+
     const { data: timeslotData } = useQuery({
         queryKey: ["timeslots"],
-        queryFn: getAllTimeslots
+        queryFn: () => getAllTimeslots(skip, limit)
     });
 
     const timeslots = timeslotData?.details;
