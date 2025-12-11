@@ -321,6 +321,14 @@ const Router = createBrowserRouter(
                         </MotionWrapper>
                     </ProtectedRoutes>
                 } />
+
+                <Route path="/ratings" element={
+                    <ProtectedRoutes userRole={["ADMIN"]}>
+                        <MotionWrapper>
+                            <RatingsTable />
+                        </MotionWrapper>
+                    </ProtectedRoutes>
+                } />
             </Route>
 
         </Route>
