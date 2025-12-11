@@ -6,6 +6,7 @@ import { useUserStore } from "./route/user";
 import { useServiceStore } from "./route/services";
 import { useTimeslotStore } from "./route/timeslot";
 import { useReservationStore } from "./route/reservation";
+import { useRatingsStore } from "./route/ratings";
 import { useReservationSlice } from "./slice/reservationSlice";
 import { useServiceSlice } from "./slice/serviceSlice";
 
@@ -23,6 +24,7 @@ export const useStore = create<Store>()(
       ...useServiceStore(...a),
       ...useTimeslotStore(...a),
       ...useReservationStore(...a),
+      ...useRatingsStore(...a),
     }),
     {
       name: "root",
