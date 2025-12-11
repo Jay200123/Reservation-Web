@@ -40,7 +40,11 @@ import {
     AddTimeslot,
     UpdateTimeslotById,
     ReservationsTable,
-    GetReservationById
+    GetReservationById,
+    RatingsTable,
+    GetRatingsById,
+    AddRating,
+    UpdateRating,
 } from "./@pages";
 
 const Router = createBrowserRouter(
@@ -122,6 +126,31 @@ const Router = createBrowserRouter(
                     </ProtectedRoutes>
 
                 } />
+
+                {/* view rating details */}
+                <Route path="/rating/:id" element={
+                    <MotionWrapper>
+                        <GetRatingsById />
+                    </MotionWrapper>
+                } />
+
+                {/* add rating forms */}
+                <Route path="/rating/add" element={
+                    <ProtectedRoutes userRole={["USER"]}>
+                        <MotionWrapper>
+                            <AddRating />
+                        </MotionWrapper>
+                    </ProtectedRoutes>
+                } />
+
+                {/* update rating forms */}
+                <Route path="/rating/edit/:id" element={
+                    <ProtectedRoutes userRole={["USER"]}>
+                        <MotionWrapper>
+                            <UpdateRating />
+                        </MotionWrapper>
+                    </ProtectedRoutes>
+                } />
             </Route>
 
             <Route element={<ServiceLayout />}>
@@ -171,6 +200,7 @@ const Router = createBrowserRouter(
                         </MotionWrapper>
                     </ProtectedRoutes>
                 } />
+
             </Route>
 
             {/* ADMIN Private Route */}
