@@ -26,6 +26,10 @@ import AddTimeslot from "./TimeslotsTable/createTimeslot";
 import UpdateTimeslotById from "./TimeslotsTable/updateTimeslotById";
 import ReservationsTable from "./ReservationsTable";
 import GetReservationById from "./ReservationsTable/getReservationById";
+import RatingsTable from "./RatingsTable";
+import GetRatingsById from "./RatingsTable/getRatingById";
+import AddRating from "./AddRating";
+import UpdateRating from "./UpdateRating";
 
 export {
   Home,
@@ -56,4 +60,8 @@ export {
   UpdateTimeslotById,
   ReservationsTable,
   GetReservationById,
+  RatingsTable,
+  GetRatingsById,
+  AddRating,
+  UpdateRating,
 };
