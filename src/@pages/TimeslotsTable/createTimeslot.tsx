@@ -6,7 +6,7 @@ import type { TimeslotFormik } from "../../@types";
 import ImageOne from "../../assets/ReservationOne.avif";
 import { FaArrowLeft } from "react-icons/fa";
 
-export default function createTimeslot() {
+export default function CreateTimeslot() {
     const navigate = useNavigate();
     const { createTimeslot } = useStore();
 
