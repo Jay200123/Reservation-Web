@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import ImageOne from "../../assets/ReservationOne.avif";
 
-export default function getReservationById() {
+export default function GetReservationById() {
     const { id } = useParams();
 
     const { getReservationById } = useStore();
