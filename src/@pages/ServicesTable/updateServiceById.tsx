@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import type { ServiceFormik } from "../../@types";
 import { FaArrowLeft } from "react-icons/fa";
 
-export default function updateServiceById() {
+export default function UpdateServiceById() {
     const navigate = useNavigate();
 
     const { id } = useParams();
