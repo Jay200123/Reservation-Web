@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { FaArrowLeft } from "react-icons/fa";
 
-export default function getServiceById() {
+export default function GetServiceById() {
     const { id } = useParams();
 
     const { getServiceById } = useStore();
