@@ -8,7 +8,7 @@ import type { TimeslotFormik } from "../../@types";
 import ImageOne from "../../assets/ReservationOne.avif";
 import { FaArrowLeft } from "react-icons/fa";
 
-export default function updateTimeslotById() {
+export default function UpdateTimeslotById() {
     const navigate = useNavigate();
 
     const { id } = useParams();
