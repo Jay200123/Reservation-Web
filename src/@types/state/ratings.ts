@@ -3,6 +3,7 @@ import type { Reservations } from "./reservation";
 import type { Image } from "./image";
 
 type Ratings = {
+  _id: string;
   user: User;
   reservation: Reservations;
   description: string;
