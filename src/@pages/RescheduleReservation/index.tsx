@@ -7,10 +7,15 @@ import { toast } from "react-toastify";
 import { useNavigate, useParams } from "react-router-dom";
 import { DateFormatter } from "../../@utils";
 import { useFormik } from "formik";
+import { useState } from "react";
 
 export default function RescheduleReservation() {
     const { id } = useParams();
     const navigate = useNavigate();
+
+    const [skip, setSkip] = useState(0);
+    const [limit, setLimit] = useState(0);
+
 
     const {
         timeslot,
@@ -33,7 +38,7 @@ export default function RescheduleReservation() {
 
     const { data: timeslotData } = useQuery({
         queryKey: ["timeslots"],
-        queryFn: getAllTimeslots
+        queryFn: () => getAllTimeslots(skip, limit)
     });
 
     const timeslots = timeslotData?.details;
