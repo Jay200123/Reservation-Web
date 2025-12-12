@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { DateFormatter } from "../../@utils";
 import { useState } from "react";
 
-export default function () {
+export default function ReservationForms() {
     const navigate = useNavigate();
 
     const {
