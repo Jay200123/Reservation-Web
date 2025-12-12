@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import ImageOne from "../../assets/ReservationOne.avif";
 import { FaArrowLeft } from "react-icons/fa";
 
-export default function getTimeslotById() {
+export default function GetTimeslotById() {
     const { id } = useParams();
 
     const { getTimeslotById } = useStore();
