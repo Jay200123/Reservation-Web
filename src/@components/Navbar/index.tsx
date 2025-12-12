@@ -96,12 +96,21 @@ export default function Navbar() {
                                     <i className="fa-solid fa-clock mr-1"></i>
                                     Timeslots
                                 </li>
+
                                 <li
                                     onClick={() => navigate("/reservations/table")}
                                     className="relative flex items-center gap-1 cursor-pointer px-3 py-1 transition-all duration-300 hover:text-[#d4af37]"
                                 >
                                     <i className="fa-solid fa-calendar mr-1"></i>
                                     Reservations
+                                </li>
+
+                                <li
+                                    onClick={() => navigate("/ratings")}
+                                    className="relative flex items-center gap-1 cursor-pointer px-3 py-1 transition-all duration-300 hover:text-[#d4af37]"
+                                >
+                                    <i className="fa-solid fa-star mr-1"></i>
+                                    Ratings
                                 </li>
 
                                 {/* Handle user logout */}
