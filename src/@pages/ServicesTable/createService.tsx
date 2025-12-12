@@ -8,7 +8,7 @@ import { createServiceSchema } from "../../@validations";
 import { motion } from "motion/react";
 import { FaArrowLeft } from "react-icons/fa";
 
-export default function createService() {
+export default function CreateService() {
     const navigate = useNavigate();
 
     const { addService } = useStore();
