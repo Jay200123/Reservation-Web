@@ -22,8 +22,8 @@ export default function ReservationForms() {
         clearForm,
     } = useStore();
 
-    const [skip, setSkip] = useState(0);
-    const [limit, setLimit] = useState(10);
+    const [skip] = useState(0);
+    const [limit] = useState(10);
 
     const { data: timeslotData } = useQuery({
         queryKey: ["timeslots"],
