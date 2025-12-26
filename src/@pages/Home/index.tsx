@@ -10,8 +10,8 @@ import { useState } from "react";
 export default function Home() {
     const navigate = useNavigate();
 
-    const [skip, setSkip] = useState(0);
-    const [limit, setLimit] = useState(10);
+    const [skip] = useState(0);
+    const [limit] = useState(10);
 
     const {
         services: serviceState,
@@ -79,19 +79,23 @@ export default function Home() {
                     </p>
 
                     {/* Button Section */}
-                    <div className="w-full flex justify-center items-center">
-                        <button
-                            onClick={() => navigate("/signin")}
-                            className="rounded-2xl border border-white bg-[#d4af37] text-white 
+                    {user?.role == "USER" ? (<>
+                    </>) : (
+                        <div className="w-full flex justify-center items-center">
+                            <button
+                                onClick={() => navigate("/signin")}
+                                className="rounded-2xl border border-white bg-[#d4af37] text-white 
                 text-xs md:text-sm lg:text-base font-medium
                 px-3 py-1.5 md:px-4 md:py-2 lg:px-5 lg:py-2.5
                 w-auto lg:w-40
                 mb-1.5 md:mb-2.5
                 transition-all duration-200 hover:bg-[#c9a128] cursor-pointer"
-                        >
-                            Learn More
-                        </button>
-                    </div>
+                            >
+                                Learn More
+                            </button>
+                        </div>
+                    )}
+
 
 
                 </div>
