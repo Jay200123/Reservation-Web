@@ -13,8 +13,8 @@ export default function RescheduleReservation() {
     const { id } = useParams();
     const navigate = useNavigate();
 
-    const [skip, setSkip] = useState(0);
-    const [limit, setLimit] = useState(0);
+    const [skip ] = useState(0);
+    const [limit] = useState(0);
 
 
     const {
