@@ -1,7 +1,7 @@
 import { useStore } from "../../@state/store";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import ImageOne from "../../assets/ReservationOne.avif";
+import { FaArrowLeft } from "react-icons/fa";
 
 export default function GetReservationById() {
     const { id } = useParams();
@@ -19,12 +19,68 @@ export default function GetReservationById() {
 
     const reservation = data?.details;
 
+    const back = () => {
+        window.history.back();
+    }
+
     return (
         <div className="flex justify-center items-center lg:bg-[#d4af37] md:bg-[#d4af37] lg:p-5 md:p-4 p-0">
-            <div className="lg:w-[70rem] lg:max-h-[70rem] md:w-[60rem] md:h-[62rem] h-full w-full flex rounded-lg bg-white lg:shadow-lg md:shadow-lg shadow-none lg:m-0 md:m-3.5 overflow-y-auto">
+            <div className="relative lg:w-[70rem] lg:max-h-[70rem] md:w-[60rem] md:h-[62rem] h-full w-full flex rounded-lg bg-white lg:shadow-lg md:shadow-lg shadow-none lg:m-0 md:m-3.5 overflow-y-auto">
+                <FaArrowLeft
+                    onClick={() => back()}
+                    className="absolute top-0 left-0 bottom-0 lg:m-2 md:m-1.5 m-1 lg:text-3xl md:text-2xl text-lg transition-all duration-300 hover:text-[#d4af37] cursor-pointer"
+                />
                 {/* Image Layout */}
                 <div className="lg:block lg:w-1/2 md:block md:w-1/2 w-full hidden">
-                    <img src={ImageOne} className="w-full h-full object-cover" alt="ImageOne" />
+                    {/* <img src={ImageOne} className="w-full h-full object-cover" alt="ImageOne" /> */}
+                    <div className="flex flex-col w-full h-full items-center justify-center">
+                        <h3 className="lg:text-4xl md:text-2xl text-lg text-center font-medium">Reservation Services</h3>
+
+                        {reservation?.services?.map((service, index) => (
+                            <div
+                                key={index}
+                                className="flex w-full gap-4 p-4 bg-white border border-gray-200 rounded-lg shadow-sm"
+                            >
+                                <div className="flex w-[30%] justify-center items-center">
+                                    {service?.service?.image?.length > 1 ? (
+                                        <img
+                                            className="object-contain w-32 h-32 md:w-40 md:h-40"
+                                            src={
+                                                service?.service?.image[
+                                                    Math.floor(
+                                                        Math.random() * service?.service?.image?.length
+                                                    )
+                                                ]?.url
+                                            }
+                                            alt="Service"
+                                        />
+                                    ) : (
+                                        <img
+                                            className="object-contain w-32 h-32 md:w-40 md:h-40"
+                                            src={service?.service?.image[0]?.url}
+                                            alt="Product"
+                                        />
+                                    )}
+                                </div>
+                                <div className="flex flex-col w-[70%] justify-between">
+                                    <div className="flex items-center justify-between mb-2">
+                                        <h3 className="text-base font-medium md:text-lg">
+                                            {service?.service?.service_name}
+                                        </h3>
+                                        <h3 className="text-base font-medium text-green-600 md:text-lg">
+                                            ₱  {service?.service?.service_price}
+                                        </h3>
+                                    </div>
+                                    <div className="flex items-center justify-end">
+                                        <h3 className="text-sm text-gray-700 md:text-lg">
+                                            Duration: {service.service.duration}
+                                        </h3>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+
                 </div>
 
                 {/* Service Information Layout */}
@@ -99,7 +155,7 @@ export default function GetReservationById() {
                             <h3 className="mb-4 text-sm font-medium md:text-lg md:font-bold">
                                 Services
                             </h3>
-                            <div className="w-full h-[30rem] border border-gray-300 overflow-y-auto rounded-md shadow-sm p-4 space-y-4">
+                            {/* <div className="w-full h-[30rem] border border-gray-300 overflow-y-auto rounded-md shadow-sm p-4 space-y-4">
                                 {reservation?.services?.map((service, index) => (
                                     <div
                                         key={index}
@@ -143,7 +199,49 @@ export default function GetReservationById() {
                                         </div>
                                     </div>
                                 ))}
-                            </div>
+{reservation?.services?.map((service, index) => (
+                                    <div
+                                        key={index}
+                                        className="flex w-full gap-4 p-4 bg-white border border-gray-200 rounded-lg shadow-sm"
+                                    >
+                                        <div className="flex w-[30%] justify-center items-center">
+                                            {service?.service?.image?.length > 1 ? (
+                                                <img
+                                                    className="object-contain w-32 h-32 md:w-40 md:h-40"
+                                                    src={
+                                                        service?.service?.image[
+                                                            Math.floor(
+                                                                Math.random() * service?.service?.image?.length
+                                                            )
+                                                        ]?.url
+                                                    }
+                                                    alt="Service"
+                                                />
+                                            ) : (
+                                                <img
+                                                    className="object-contain w-32 h-32 md:w-40 md:h-40"
+                                                    src={service?.service?.image[0]?.url}
+                                                    alt="Product"
+                                                />
+                                            )}
+                                        </div>
+                                        <div className="flex flex-col w-[70%] justify-between">
+                                            <div className="flex items-center justify-between mb-2">
+                                                <h3 className="text-base font-medium md:text-lg">
+                                                    {service?.service?.service_name}
+                                                </h3>
+                                                <h3 className="text-base font-medium text-green-600 md:text-lg">
+                                                    ₱  {service?.service?.service_price}
+                                                </h3>
+                                            </div>
+                                            <div className="flex items-center justify-end">
+                                                <h3 className="text-sm text-gray-700 md:text-lg">
+                                                    Duration: {service.service.duration}
+                                                </h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}                            </div> */}
                         </div>
 
                         <div className="flex flex-col p-2.5">
