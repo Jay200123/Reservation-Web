@@ -84,7 +84,7 @@ export default function ReservationsTable() {
             name: "Actions",
             cell: (row) => (
                 <div className="flex items-center text-center">
-                    <FaRegEye className='mr-2 text-xl text-green-500'
+                    <FaRegEye className='mr-2 text-xl text-green-500 cursor-pointer'
                         onClick={() => navigate(`/reservation/${row._id}`)}
                     />
 
