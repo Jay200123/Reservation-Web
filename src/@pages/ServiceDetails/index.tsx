@@ -1,12 +1,19 @@
 import { useStore } from "../../@state/store";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { FaArrowLeft } from "react-icons/fa";
+import { FaArrowLeft, FaCalendar } from "react-icons/fa";
+import type { Services } from "../../@types";
+import { toast } from "react-toastify";
 
 export default function ServiceDetails() {
     const { id } = useParams();
 
-    const { getServiceById } = useStore();
+    const {
+        getServiceById,
+        addServiceToForm,
+        services: serviceState,
+        user
+    } = useStore();
 
     const { data } = useQuery({
         queryKey: ["service", id],
@@ -23,6 +30,25 @@ export default function ServiceDetails() {
         window.history.back();
     }
 
+    console.log({ service });
+    console.log({ user });
+
+    const handleService = (service: Services) => {
+        // Check if the selected service already exists in the current state by comparing IDs.
+        // This ensures that only one service can be added per reservation.
+        const isServiceExists = serviceState.find((item) => item._id == service._id);
+
+        // If the service already exists, display an error toast notification.
+        if (isServiceExists) {
+            toast.error("Only one service can be selected per scheduled reservation.");
+        }
+        else {
+            // Otherwise, add the selected service to the state.
+            toast.success("Service selected.")
+            addServiceToForm(service);
+        }
+    }
+
     return (
         <div className="flex justify-center items-center lg:bg-[#d4af37] md:bg-[#d4af37] lg:p-5 md:p-4 p-0">
             <div className="lg:w-[70rem] lg:max-h-[65rem] md:w-[60rem] md:h-[62rem] h-full w-full flex rounded-lg bg-white lg:shadow-lg md:shadow-lg shadow-none lg:m-0 md:m-3.5">
@@ -37,10 +63,10 @@ export default function ServiceDetails() {
 
                 {/* Service Information Layout */}
                 <div className="lg:w-1/2 md:w-1/2 w-full flex flex-col justify-center relative">
-                    <FaArrowLeft 
-                        onClick={() => back()} 
+                    <FaArrowLeft
+                        onClick={() => back()}
                         className="absolute top-0 left-0 bottom-0 lg:m-2 md:m-1.5 m-1 lg:text-3xl md:text-2xl text-lg transition-all duration-300 hover:text-[#d4af37] cursor-pointer"
-                         />
+                    />
                     <div className=" lg:px-3.5 lg:py-3.5 md:px-2.5 md:py-2.5 px-1.5 py-1.5">
                         <h3 className="lg:text-4xl md:text-2xl text-lg text-center font-medium">Service Information</h3>
                         <p className="lg:text-base lg:mt-3.5 md:text-sm text-xs text-center">Provide the details of your service below. Clear and accurate information helps customers understand what you offer best.</p>
@@ -101,6 +127,27 @@ export default function ServiceDetails() {
                                 />
                             </div>
                         </div>
+
+
+                        {user?.role == "ADMIN" ? (<></>) : (
+                            <div className="w-full flex justify-center items-center p-2.5">
+                                <button
+                                    type="submit"
+                                    onClick={() => {
+                                        /**
+                                            * Ensures that the service data is fully loaded before invoking `handleService`,
+                                            * preventing TypeScript errors caused by the `service` value being possibly undefined.
+                                        */
+                                        if (service) {
+                                            handleService(service)
+                                        }
+                                    }}
+                                    className={`rounded-2xl border border-white bg-[#d4af37] text-white lg:text-lg md:text-base text-base p-1.5 lg:px-2.5 lg:py-2.5 w-full md:px-1.5 md:py-1.5 lg:[8rem] lg:font-medium md:mb-2.5 mb-1.5 cursor-pointer flex items-center justify-center`}>
+                                    <span className="lg:mr-1.5 md:mr-1 mr-1"><FaCalendar /></span>Select Service
+                                </button>
+                            </div>
+                        )}
+
                     </div>
                 </div>
             </div>
