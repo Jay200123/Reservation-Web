@@ -7,8 +7,8 @@ import { useState } from "react";
 export default function UserServices() {
     const navigate = useNavigate();
 
-    const [skip, setSkip] = useState(0);
-    const [limit, setLimit] = useState(10);
+    const [skip] = useState(0);
+    const [limit] = useState(10);
 
     const {
         services: serviceState,
